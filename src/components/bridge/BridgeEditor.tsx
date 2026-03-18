@@ -190,7 +190,7 @@ export const BridgeEditor: React.FC = () => {
             Bridge Deal Editor
           </h1>
           <p className="text-xs tracking-widest uppercase" style={{ color: 'hsl(215 15% 50%)' }}>
-            Professional Hand Analysis Tool
+            Professional Deal Editing Tool
           </p>
         </div>
         {board && (
