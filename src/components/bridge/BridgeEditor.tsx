@@ -153,6 +153,67 @@ export const BridgeEditor: React.FC = () => {
     toast('JSON file exported successfully!');
   }, [board, playCards]);
 
+  const buildBboUrl = useCallback((currentBoard: BridgeBoard, currentPlayCards: Map<string, number>): string => {
+    const directions: Direction[] = ['West', 'North', 'East', 'South'];
+    const southIdx = directions.indexOf('South');
+    const directionsSouthFirst: Direction[] = [
+      ...directions.slice(southIdx),
+      ...directions.slice(0, southIdx),
+    ];
+
+    const seatMap: Record<string, typeof currentBoard.Seats[0]> = {};
+    for (const seat of currentBoard.Seats) {
+      seatMap[seat.Direction] = seat;
+    }
+
+    const players = directionsSouthFirst.map(d => seatMap[d]?.Player ?? '');
+    const playersStr = players.join(',');
+
+    const hands: string[] = [];
+    for (let i = 0; i < directionsSouthFirst.length; i++) {
+      const d = directionsSouthFirst[i];
+      const seat = seatMap[d];
+      const hand = seat?.Hand;
+      const s = hand?.Spades ?? '';
+      const h = hand?.Hearts ?? '';
+      const dm = hand?.Diamonds ?? '';
+      const c = hand?.Clubs ?? '';
+
+      let prefix = '';
+      if (i === 0) {
+        const dealer = currentBoard.Dealer ?? directions[0];
+        const dIdx = directions.indexOf(dealer as Direction);
+        let num = (dIdx + 2) % 4;
+        if (num === 0) num = 4;
+        prefix = String(num);
+      }
+      hands.push(`${prefix}S${s}H${h}D${dm}C${c}`);
+    }
+
+    const mdParam = hands.join(',');
+    const auction = (currentBoard.Auction ?? []).join('');
+
+    const playSequence = Array.from(currentPlayCards.entries())
+      .sort((a, b) => a[1] - b[1])
+      .map(([card]) => card);
+    const playEntries = playSequence.map(card => `pc|${card}|`).join('');
+
+    const boardNum = currentBoard['Board number'];
+    const boardPart = boardNum != null ? `Board%20${boardNum}|` : '';
+
+    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||md|${mdParam}|ah|${boardPart}mb|${auction}|${playEntries}`;
+  }, []);
+
+  const copyUrl = useCallback(() => {
+    if (!board) return;
+    const url = buildBboUrl(board, playCards);
+    navigator.clipboard.writeText(url).then(() => {
+      toast('BBO URL copied to clipboard!');
+    }).catch(() => {
+      toast('Failed to copy URL. Please try again.');
+    });
+  }, [board, playCards, buildBboUrl]);
+
   const clearPlaySequence = useCallback(() => {
     setPlayCards(new Map());
     setPlayOrderCounter(1);
@@ -278,6 +339,18 @@ export const BridgeEditor: React.FC = () => {
                 }}
               >
                 Export JSON
+              </Button>
+              <Button
+                onClick={copyUrl}
+                variant="outline"
+                className="px-4 text-sm font-semibold"
+                style={{
+                  background: 'hsl(220 18% 18%)',
+                  border: '1px solid hsl(43 50% 35%)',
+                  color: 'hsl(43 70% 60%)',
+                }}
+              >
+                Copy URL
               </Button>
               <Button
                 onClick={clearPlaySequence}
