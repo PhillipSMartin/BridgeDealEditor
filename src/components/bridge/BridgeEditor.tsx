@@ -212,7 +212,7 @@ export const BridgeEditor: React.FC = () => {
   return (
     <div className="w-full min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-center">Bridge Board Editor</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">Bridge Deal Editor</h1>
         
         <div className="flex flex-col gap-4 mb-6">
           <div className="flex flex-wrap gap-4 justify-center">
