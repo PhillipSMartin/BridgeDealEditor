@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { BridgeTable } from './BridgeTable';
+import { BboUrlBuilder } from './BboUrlBuilder';
 import { BridgeBoard, Direction, Suit } from '@/types/bridge';
 import { LinParser } from '@/utils/linParser';
 import { toast } from 'sonner';
@@ -352,6 +353,7 @@ export const BridgeEditor: React.FC = () => {
               >
                 Copy URL
               </Button>
+              <BboUrlBuilder board={board} playCards={playCards} />
               <Button
                 onClick={clearPlaySequence}
                 variant="outline"
