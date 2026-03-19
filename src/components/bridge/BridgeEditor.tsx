@@ -268,70 +268,51 @@ export const BridgeEditor: React.FC = () => {
 
       {/* Toolbar */}
       <div
-        className="w-full px-6 py-4 border-b flex flex-wrap gap-4 items-end justify-center"
+        className="w-full px-6 pt-4 border-b flex flex-col gap-3"
         style={{ background: 'hsl(220 22% 11%)', borderColor: 'hsl(220 18% 20%)' }}
       >
-        {/* Load JSON */}
-        <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'hsl(43 70% 55%)' }}>
-            Load JSON File
-          </label>
-          <label
-            className="flex items-center gap-2 px-4 py-2 rounded cursor-pointer text-sm font-medium transition-colors"
-            style={{
-              background: 'hsl(220 18% 18%)',
-              border: '1px solid hsl(220 18% 28%)',
-              color: 'hsl(210 20% 80%)',
-            }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-            Choose File
-            <input type="file" accept=".json" onChange={loadJsonFile} className="hidden" />
-          </label>
-        </div>
-
-        {/* BBO URL */}
-        <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'hsl(43 70% 55%)' }}>
-            Import BBO URL
-          </label>
-          <div className="flex gap-2">
-            <Input
-              type="text"
-              placeholder="Paste BBO URL here..."
-              value={bboUrl}
-              onChange={(e) => setBboUrl(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && importBboUrl()}
-              className="w-72 text-sm"
+        {/* Row 1: Import controls */}
+        <div className="flex flex-wrap gap-4 items-end justify-center pb-3">
+          {/* Load JSON */}
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'hsl(43 70% 55%)' }}>
+              Load JSON File
+            </label>
+            <label
+              className="flex items-center gap-2 px-4 py-2 rounded cursor-pointer text-sm font-medium transition-colors"
               style={{
                 background: 'hsl(220 18% 18%)',
                 border: '1px solid hsl(220 18% 28%)',
-                color: 'hsl(210 20% 88%)',
-              }}
-            />
-            <Button
-              onClick={importBboUrl}
-              className="px-4 text-sm font-semibold"
-              style={{
-                background: 'hsl(43 70% 42%)',
-                color: 'hsl(220 25% 8%)',
-                border: 'none',
+                color: 'hsl(210 20% 80%)',
               }}
             >
-              Import
-            </Button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              Choose File
+              <input type="file" accept=".json" onChange={loadJsonFile} className="hidden" />
+            </label>
           </div>
-        </div>
 
-        {/* Actions */}
-        {board && (
+          {/* BBO URL */}
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'hsl(43 70% 55%)' }}>
-              Actions
+              Import BBO URL
             </label>
             <div className="flex gap-2">
+              <Input
+                type="text"
+                placeholder="Paste BBO URL here..."
+                value={bboUrl}
+                onChange={(e) => setBboUrl(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && importBboUrl()}
+                className="w-72 text-sm"
+                style={{
+                  background: 'hsl(220 18% 18%)',
+                  border: '1px solid hsl(220 18% 28%)',
+                  color: 'hsl(210 20% 88%)',
+                }}
+              />
               <Button
-                onClick={exportJson}
+                onClick={importBboUrl}
                 className="px-4 text-sm font-semibold"
                 style={{
                   background: 'hsl(43 70% 42%)',
@@ -339,34 +320,57 @@ export const BridgeEditor: React.FC = () => {
                   border: 'none',
                 }}
               >
-                Export JSON
-              </Button>
-              <Button
-                onClick={copyUrl}
-                variant="outline"
-                className="px-4 text-sm font-semibold"
-                style={{
-                  background: 'hsl(220 18% 18%)',
-                  border: '1px solid hsl(43 50% 35%)',
-                  color: 'hsl(43 70% 60%)',
-                }}
-              >
-                Copy URL
-              </Button>
-              <BboUrlBuilder board={board} playCards={playCards} />
-              <Button
-                onClick={clearPlaySequence}
-                variant="outline"
-                className="px-4 text-sm"
-                style={{
-                  background: 'hsl(220 18% 18%)',
-                  border: '1px solid hsl(220 18% 30%)',
-                  color: 'hsl(210 20% 75%)',
-                }}
-              >
-                Clear Play
+                Import
               </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Row 2: Actions (only when a board is loaded) */}
+        {board && (
+          <div
+            className="flex flex-wrap gap-2 items-center justify-center py-3 border-t"
+            style={{ borderColor: 'hsl(220 18% 20%)' }}
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest mr-2" style={{ color: 'hsl(43 70% 55%)' }}>
+              Actions
+            </span>
+            <Button
+              onClick={exportJson}
+              className="px-4 text-sm font-semibold"
+              style={{
+                background: 'hsl(43 70% 42%)',
+                color: 'hsl(220 25% 8%)',
+                border: 'none',
+              }}
+            >
+              Export JSON
+            </Button>
+            <Button
+              onClick={copyUrl}
+              variant="outline"
+              className="px-4 text-sm font-semibold"
+              style={{
+                background: 'hsl(220 18% 18%)',
+                border: '1px solid hsl(43 50% 35%)',
+                color: 'hsl(43 70% 60%)',
+              }}
+            >
+              Copy URL
+            </Button>
+            <BboUrlBuilder board={board} playCards={playCards} />
+            <Button
+              onClick={clearPlaySequence}
+              variant="outline"
+              className="px-4 text-sm"
+              style={{
+                background: 'hsl(220 18% 18%)',
+                border: '1px solid hsl(220 18% 30%)',
+                color: 'hsl(210 20% 75%)',
+              }}
+            >
+              Clear Play
+            </Button>
           </div>
         )}
       </div>
