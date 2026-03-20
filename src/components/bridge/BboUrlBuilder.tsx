@@ -137,10 +137,6 @@ export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }
     }).catch(() => toast('Failed to copy URL'));
   };
 
-  const openInBbo = () => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   const needsDirs = type === 'single-hand' || type === 'pair-hands' || type === 'hands-with-bidding';
   const needsVul = type === 'all-hands' || type === 'bridge-movie';
 
@@ -177,7 +173,7 @@ export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }
       </DialogTrigger>
 
       <DialogContent
-        className="max-w-2xl"
+        className="max-w-3xl"
         style={{ background: 'hsl(220 22% 11%)', border: '1px solid hsl(220 18% 24%)', color: 'hsl(210 20% 88%)' }}
       >
         <DialogHeader>
@@ -186,7 +182,7 @@ export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }
           </DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col gap-5 mt-1">
+        <div className="flex flex-col gap-5 mt-1 overflow-y-auto max-h-[80vh] pr-1">
           {/* Presentation type */}
           <div>
             <div style={sectionLabel}>Presentation type</div>
@@ -317,32 +313,38 @@ export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }
             )}
           </div>
 
-          {/* URL preview */}
+          {/* Iframe preview */}
           <div>
-            <div style={sectionLabel}>Generated URL</div>
+            <div style={sectionLabel}>Preview</div>
             <div
-              className="rounded-lg p-3 text-xs break-all font-mono"
-              style={{ background: 'hsl(220 18% 15%)', border: '1px solid hsl(220 18% 24%)', color: 'hsl(210 20% 60%)', maxHeight: '80px', overflowY: 'auto' }}
+              className="rounded-lg overflow-hidden"
+              style={{ border: '1px solid hsl(220 18% 24%)', background: '#fff' }}
             >
-              {url}
+              <iframe
+                key={url}
+                src={url}
+                width="100%"
+                height="420"
+                style={{ display: 'block', border: 'none' }}
+                title="BBO Handviewer"
+              />
             </div>
           </div>
 
-          {/* Action buttons */}
-          <div className="flex gap-3 justify-end">
+          {/* URL + copy */}
+          <div className="flex gap-2 items-center">
+            <div
+              className="flex-1 rounded-lg px-3 py-2 text-xs break-all font-mono"
+              style={{ background: 'hsl(220 18% 15%)', border: '1px solid hsl(220 18% 24%)', color: 'hsl(210 20% 55%)', maxHeight: '56px', overflowY: 'auto' }}
+            >
+              {url}
+            </div>
             <Button
               onClick={copyUrl}
-              className="px-5 font-semibold"
+              className="shrink-0 px-5 font-semibold"
               style={{ background: 'hsl(43 70% 42%)', color: 'hsl(220 25% 8%)', border: 'none' }}
             >
               Copy URL
-            </Button>
-            <Button
-              onClick={openInBbo}
-              className="px-5 font-semibold"
-              style={{ background: 'hsl(150 50% 30%)', color: '#fff', border: 'none' }}
-            >
-              Open in BBO ↗
             </Button>
           </div>
         </div>
