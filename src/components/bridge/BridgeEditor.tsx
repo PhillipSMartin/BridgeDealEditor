@@ -6,6 +6,14 @@ import { BboUrlBuilder } from './BboUrlBuilder';
 import { BridgeBoard, Direction, Suit } from '@/types/bridge';
 import { LinParser } from '@/utils/linParser';
 import { toast } from 'sonner';
+import { RefreshCw } from 'lucide-react';
+
+const ROTATE_DIRECTION: Record<Direction, Direction> = {
+  North: 'East',
+  East: 'South',
+  South: 'West',
+  West: 'North',
+};
 
 export const BridgeEditor: React.FC = () => {
   const [board, setBoard] = useState<BridgeBoard | null>(null);
@@ -137,6 +145,20 @@ export const BridgeEditor: React.FC = () => {
     setDraggedCard(null);
     toast(`Moved ${rank}${suit[0]} from ${fromDirection} to ${targetDirection}`);
   }, [draggedCard, board]);
+
+  const rotateDeal = useCallback(() => {
+    if (!board) return;
+    const rotated: BridgeBoard = {
+      ...board,
+      Dealer: ROTATE_DIRECTION[board.Dealer as Direction] ?? board.Dealer,
+      Seats: board.Seats.map(seat => ({
+        ...seat,
+        Direction: ROTATE_DIRECTION[seat.Direction] ?? seat.Direction,
+      })),
+    };
+    setBoard(rotated);
+    toast('Deal rotated');
+  }, [board]);
 
   const exportJson = useCallback(() => {
     if (!board) return;
@@ -370,6 +392,19 @@ export const BridgeEditor: React.FC = () => {
               }}
             >
               Clear Play
+            </Button>
+            <Button
+              onClick={rotateDeal}
+              variant="outline"
+              className="px-4 text-sm flex items-center gap-2"
+              style={{
+                background: 'hsl(220 18% 18%)',
+                border: '1px solid hsl(220 18% 30%)',
+                color: 'hsl(210 20% 75%)',
+              }}
+            >
+              <RefreshCw size={14} />
+              Rotate
             </Button>
           </div>
         )}
