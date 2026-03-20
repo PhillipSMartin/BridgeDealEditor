@@ -10,12 +10,16 @@ function splitSuits(hand: string): string[] {
   return hand.split(/[SHDC]/).slice(1);
 }
 
+function sortRanks(ranks: string): string {
+  return [...ranks].sort((a, b) => RANK_ORDER.indexOf(a) - RANK_ORDER.indexOf(b)).join('');
+}
+
 function buildHand(suits: string[]): Hand {
   return {
-    Spades: suits[0] || '',
-    Hearts: suits[1] || '',
-    Diamonds: suits[2] || '',
-    Clubs: suits[3] || '',
+    Spades: sortRanks(suits[0] || ''),
+    Hearts: sortRanks(suits[1] || ''),
+    Diamonds: sortRanks(suits[2] || ''),
+    Clubs: sortRanks(suits[3] || ''),
   };
 }
 
