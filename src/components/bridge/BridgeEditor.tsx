@@ -415,7 +415,7 @@ export const BridgeEditor: React.FC = () => {
                 color: 'hsl(43 70% 60%)',
               }}
             >
-              Copy URL
+              Copy BBO URL
             </Button>
             <BboUrlBuilder board={board} playCards={playCards} />
           </div>
