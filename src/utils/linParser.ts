@@ -1,6 +1,8 @@
 import { BridgeBoard, Direction, Hand } from '@/types/bridge';
 
 const DIRECTIONS: Direction[] = ['West', 'North', 'East', 'South'];
+const SUIT_LETTERS = ['S', 'H', 'D', 'C'] as const;
+const RANK_ORDER = 'AKQJT98765432';
 
 function splitSuits(hand: string): string[] {
   // input 'S96432HKQ94DT5C73' (possibly with an integer preceding the S)
@@ -14,6 +16,34 @@ function buildHand(suits: string[]): Hand {
     Hearts: suits[1] || '',
     Diamonds: suits[2] || '',
     Clubs: suits[3] || '',
+  };
+}
+
+function handStringToCardSet(handStr: string): Set<string> {
+  const suits = splitSuits(handStr);
+  const cards = new Set<string>();
+  for (let i = 0; i < 4; i++) {
+    for (const rank of (suits[i] || '')) {
+      cards.add(`${SUIT_LETTERS[i]}${rank}`);
+    }
+  }
+  return cards;
+}
+
+function buildHandFromRemainingCards(usedCards: Set<string>): Hand {
+  const remaining: Record<string, string> = { S: '', H: '', D: '', C: '' };
+  for (const suit of SUIT_LETTERS) {
+    for (const rank of RANK_ORDER) {
+      if (!usedCards.has(`${suit}${rank}`)) {
+        remaining[suit] += rank;
+      }
+    }
+  }
+  return {
+    Spades: remaining.S,
+    Hearts: remaining.H,
+    Diamonds: remaining.D,
+    Clubs: remaining.C,
   };
 }
 
@@ -57,8 +87,8 @@ export class LinParser {
       const decoded = decodeURIComponent(url);
 
       const boardNumber = extractBoardNumber(decoded);
-      const hands = extractHands(decoded);
-      const dealer = extractDealer(hands[0]);
+      const handStrings = extractHands(decoded);
+      const dealer = extractDealer(handStrings[0]);
       const players = extractPlayers(decoded);
       const auction = extractAuction(decoded);
 
@@ -72,10 +102,35 @@ export class LinParser {
         ...DIRECTIONS.slice(0, southIndex),
       ];
 
-      const seats = players.map((player, i) => ({
-        Player: player,
-        Direction: directionsSouthFirst[i],
-        Hand: buildHand(splitSuits(hands[i])),
+      // Parse the four hand slots; one may be missing (empty or no suit letters).
+      // The missing hand is reconstructed from the 13 cards not held by the other three.
+      const parsedHands: (Hand | null)[] = [null, null, null, null];
+      const usedCards = new Set<string>();
+      let missingIndex = -1;
+
+      for (let i = 0; i < 4; i++) {
+        const slot = handStrings[i] || '';
+        const hasSuits = /[SHDC]/.test(slot);
+        if (!hasSuits) {
+          if (missingIndex !== -1) throw new Error('More than one hand is missing');
+          missingIndex = i;
+        } else {
+          const hand = buildHand(splitSuits(slot));
+          parsedHands[i] = hand;
+          for (const card of handStringToCardSet(slot)) {
+            usedCards.add(card);
+          }
+        }
+      }
+
+      if (missingIndex !== -1) {
+        parsedHands[missingIndex] = buildHandFromRemainingCards(usedCards);
+      }
+
+      const seats = directionsSouthFirst.map((direction, i) => ({
+        Player: players[i] || '',
+        Direction: direction,
+        Hand: parsedHands[i] ?? buildHand([]),
       }));
 
       return {
