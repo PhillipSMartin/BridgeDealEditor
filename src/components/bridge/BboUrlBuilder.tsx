@@ -172,7 +172,7 @@ export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }
             color: 'hsl(210 20% 75%)',
           }}
         >
-          Build BBO URL
+          Build Handviewer
         </Button>
       </DialogTrigger>
 
