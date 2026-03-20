@@ -192,7 +192,7 @@ export const BridgeEditor: React.FC = () => {
     }
 
     const mdParam = hands.join(',');
-    const mbEntries = (currentBoard.Auction ?? []).map(call => `mb|${call}|`).join('');
+    const auction = (currentBoard.Auction ?? []).join('');
 
     const playSequence = Array.from(currentPlayCards.entries())
       .sort((a, b) => a[1] - b[1])
@@ -202,7 +202,7 @@ export const BridgeEditor: React.FC = () => {
     const boardNum = currentBoard['Board number'];
     const boardPart = boardNum != null ? `Board%20${boardNum}|` : '';
 
-    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||md|${mdParam}|ah|${boardPart}${mbEntries}${playEntries}`;
+    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||md|${mdParam}|ah|${boardPart}mb|${auction}|${playEntries}`;
   }, []);
 
   const copyUrl = useCallback(() => {
