@@ -348,39 +348,15 @@ export const BridgeEditor: React.FC = () => {
           </div>
         </div>
 
-        {/* Row 2: Actions (only when a board is loaded) */}
+        {/* Row 2: Edit actions (only when a board is loaded) */}
         {board && (
           <div
             className="flex flex-wrap gap-2 items-center justify-center py-3 border-t"
             style={{ borderColor: 'hsl(220 18% 20%)' }}
           >
             <span className="text-xs font-semibold uppercase tracking-widest mr-2" style={{ color: 'hsl(43 70% 55%)' }}>
-              Actions
+              Edit
             </span>
-            <Button
-              onClick={exportJson}
-              className="px-4 text-sm font-semibold"
-              style={{
-                background: 'hsl(43 70% 42%)',
-                color: 'hsl(220 25% 8%)',
-                border: 'none',
-              }}
-            >
-              Export JSON
-            </Button>
-            <Button
-              onClick={copyUrl}
-              variant="outline"
-              className="px-4 text-sm font-semibold"
-              style={{
-                background: 'hsl(220 18% 18%)',
-                border: '1px solid hsl(43 50% 35%)',
-                color: 'hsl(43 70% 60%)',
-              }}
-            >
-              Copy URL
-            </Button>
-            <BboUrlBuilder board={board} playCards={playCards} />
             <Button
               onClick={clearPlaySequence}
               variant="outline"
@@ -406,6 +382,42 @@ export const BridgeEditor: React.FC = () => {
               <RefreshCw size={14} />
               Rotate
             </Button>
+          </div>
+        )}
+
+        {/* Row 3: Output actions (only when a board is loaded) */}
+        {board && (
+          <div
+            className="flex flex-wrap gap-2 items-center justify-center py-3 border-t"
+            style={{ borderColor: 'hsl(220 18% 20%)' }}
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest mr-2" style={{ color: 'hsl(43 70% 55%)' }}>
+              Output
+            </span>
+            <Button
+              onClick={exportJson}
+              className="px-4 text-sm font-semibold"
+              style={{
+                background: 'hsl(43 70% 42%)',
+                color: 'hsl(220 25% 8%)',
+                border: 'none',
+              }}
+            >
+              Export JSON
+            </Button>
+            <Button
+              onClick={copyUrl}
+              variant="outline"
+              className="px-4 text-sm font-semibold"
+              style={{
+                background: 'hsl(220 18% 18%)',
+                border: '1px solid hsl(43 50% 35%)',
+                color: 'hsl(43 70% 60%)',
+              }}
+            >
+              Copy URL
+            </Button>
+            <BboUrlBuilder board={board} playCards={playCards} />
           </div>
         )}
       </div>
