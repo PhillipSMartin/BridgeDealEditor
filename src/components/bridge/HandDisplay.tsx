@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { Hand, Suit, Direction } from '@/types/bridge';
 
 interface HandDisplayProps {
-  hand: Hand;
+  hand: Hand | undefined;
   direction: Direction;
   playerName: string;
   selectedCards: Set<string>;
@@ -51,8 +51,8 @@ export const HandDisplay: React.FC<HandDisplayProps> = ({
   onDrop,
   className,
 }) => {
-  const parseCards = (cardString: string): string[] =>
-    cardString.split('').filter(c => c !== '');
+  const parseCards = (cardString: string | undefined): string[] =>
+    (cardString ?? '').split('').filter(c => c !== '');
 
   const getCardKey = (suit: Suit, rank: string) => `${suit[0]}${rank}`;
 
@@ -96,7 +96,7 @@ export const HandDisplay: React.FC<HandDisplayProps> = ({
       {/* Cards by suit */}
       <div className="space-y-2">
         {SUIT_ORDER.map(suit => {
-          const cards = parseCards(hand[suit]);
+          const cards = parseCards(hand?.[suit]);
           return (
             <div key={suit} className="flex items-center gap-1.5 min-h-6">
               <span
