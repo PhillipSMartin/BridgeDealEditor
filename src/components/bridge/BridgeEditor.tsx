@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { BridgeTable } from './BridgeTable';
+import { AuctionDisplay } from './AuctionDisplay';
 import { BboUrlBuilder } from './BboUrlBuilder';
 import { BridgeBoard, Direction, Suit } from '@/types/bridge';
 import { LinParser } from '@/utils/linParser';
@@ -451,6 +452,19 @@ export const BridgeEditor: React.FC = () => {
               onCardDragStart={handleCardDragStart}
               onCardDrop={handleCardDrop}
             />
+
+            {/* Auction table */}
+            {board.Auction && board.Auction.length > 0 && (
+              <div className="w-full max-w-5xl mt-6">
+                <div
+                  className="text-xs font-semibold uppercase tracking-widest mb-2 text-center"
+                  style={{ color: 'hsl(43 70% 55%)' }}
+                >
+                  Auction
+                </div>
+                <AuctionDisplay board={board} />
+              </div>
+            )}
           </>
         ) : (
           <div className="flex flex-col items-center justify-center flex-1 gap-8 py-16">
