@@ -147,6 +147,15 @@ export const BridgeEditor: React.FC = () => {
     toast(`Moved ${rank}${suit[0]} from ${fromDirection} to ${targetDirection}`);
   }, [draggedCard, board]);
 
+  const handleEditAuctionCall = useCallback((index: number, rawCall: string) => {
+    setBoard(prev => {
+      if (!prev) return prev;
+      const newAuction = [...(prev.Auction ?? [])];
+      newAuction[index] = rawCall;
+      return { ...prev, Auction: newAuction };
+    });
+  }, []);
+
   const rotateDeal = useCallback(() => {
     if (!board) return;
     const rotated: BridgeBoard = {
@@ -462,7 +471,7 @@ export const BridgeEditor: React.FC = () => {
                 >
                   Auction
                 </div>
-                <AuctionDisplay board={board} />
+                <AuctionDisplay board={board} onEditCall={handleEditAuctionCall} />
               </div>
             )}
           </>
