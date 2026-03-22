@@ -9,6 +9,7 @@ interface BridgeTableProps {
   onCardClick: (direction: Direction, suit: Suit, rank: string) => void;
   onCardDragStart: (e: React.DragEvent, direction: Direction, suit: Suit, rank: string) => void;
   onCardDrop: (e: React.DragEvent, targetDirection: Direction) => void;
+  onNameChange?: (direction: Direction, newName: string) => void;
 }
 
 export const BridgeTable: React.FC<BridgeTableProps> = ({
@@ -17,7 +18,8 @@ export const BridgeTable: React.FC<BridgeTableProps> = ({
   playCards,
   onCardClick,
   onCardDragStart,
-  onCardDrop
+  onCardDrop,
+  onNameChange,
 }) => {
   const getSeatByDirection = (direction: Direction) =>
     board.Seats.find(seat => seat.Direction === direction);
@@ -52,6 +54,7 @@ export const BridgeTable: React.FC<BridgeTableProps> = ({
             onCardDragStart={(e, suit, rank) => onCardDragStart(e, 'North', suit, rank)}
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'North')}
+            onNameChange={onNameChange ? (name) => onNameChange('North', name) : undefined}
           />
         )}
       </div>
@@ -69,6 +72,7 @@ export const BridgeTable: React.FC<BridgeTableProps> = ({
             onCardDragStart={(e, suit, rank) => onCardDragStart(e, 'West', suit, rank)}
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'West')}
+            onNameChange={onNameChange ? (name) => onNameChange('West', name) : undefined}
           />
         )}
 
@@ -123,6 +127,7 @@ export const BridgeTable: React.FC<BridgeTableProps> = ({
             onCardDragStart={(e, suit, rank) => onCardDragStart(e, 'East', suit, rank)}
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'East')}
+            onNameChange={onNameChange ? (name) => onNameChange('East', name) : undefined}
           />
         )}
       </div>
@@ -140,6 +145,7 @@ export const BridgeTable: React.FC<BridgeTableProps> = ({
             onCardDragStart={(e, suit, rank) => onCardDragStart(e, 'South', suit, rank)}
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'South')}
+            onNameChange={onNameChange ? (name) => onNameChange('South', name) : undefined}
           />
         )}
       </div>

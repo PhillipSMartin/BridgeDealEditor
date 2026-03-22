@@ -321,22 +321,24 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
           ))}
         </div>
 
-        {/* Player names */}
-        <div
-          className="flex"
-          style={{ borderBottom: '1px solid hsl(220 18% 22%)' }}
-        >
-          {COL_ORDER.map(dir => (
-            <div
-              key={dir}
-              className={`${colW} text-center py-1 text-xs truncate px-1`}
-              style={{ color: 'hsl(215 15% 52%)' }}
-              title={playerMap[dir] ?? ''}
-            >
-              {playerMap[dir] ?? '—'}
-            </div>
-          ))}
-        </div>
+        {/* Player names — hidden when no seat has a name */}
+        {board.Seats.some(s => s.Player) && (
+          <div
+            className="flex"
+            style={{ borderBottom: '1px solid hsl(220 18% 22%)' }}
+          >
+            {COL_ORDER.map(dir => (
+              <div
+                key={dir}
+                className={`${colW} text-center py-1 text-xs truncate px-1`}
+                style={{ color: 'hsl(215 15% 52%)' }}
+                title={playerMap[dir] ?? ''}
+              >
+                {playerMap[dir] ?? ''}
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Auction rows */}
         {rows.map((row, ri) => (

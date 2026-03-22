@@ -9,7 +9,7 @@ export interface Hand {
 }
 
 export interface Seat {
-  Player: string;
+  Player?: string;
   Direction: Direction;
   Hand: Hand;
 }

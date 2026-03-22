@@ -180,6 +180,21 @@ export const BridgeEditor: React.FC = () => {
     });
   }, []);
 
+  const handleNameChange = useCallback((direction: Direction, newName: string) => {
+    setBoard(prev => {
+      if (!prev) return prev;
+      const newSeats = prev.Seats.map(seat => {
+        if (seat.Direction !== direction) return seat;
+        if (newName === '') {
+          const { Player: _removed, ...rest } = seat;
+          return rest as typeof seat;
+        }
+        return { ...seat, Player: newName };
+      });
+      return { ...prev, Seats: newSeats };
+    });
+  }, []);
+
   const handleAppendAuctionCall = useCallback((rawCall: string) => {
     setBoard(prev => {
       if (!prev) return prev;
@@ -491,6 +506,7 @@ export const BridgeEditor: React.FC = () => {
               onCardClick={handleCardClick}
               onCardDragStart={handleCardDragStart}
               onCardDrop={handleCardDrop}
+              onNameChange={handleNameChange}
             />
 
             {/* Auction table */}
