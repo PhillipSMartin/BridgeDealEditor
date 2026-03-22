@@ -11,6 +11,13 @@ const DIR_LABEL: Record<Direction, string> = {
   West: 'W', North: 'N', East: 'E', South: 'S',
 };
 
+const PIP_COLOR: Record<string, string> = {
+  '♠': 'hsl(210 20% 88%)',
+  '♥': 'hsl(0 80% 62%)',
+  '♦': 'hsl(0 80% 62%)',
+  '♣': 'hsl(210 20% 88%)',
+};
+
 function formatCall(call: string): string {
   if (call === 'P') return 'Pass';
   if (call === 'D') return 'Dbl';
@@ -23,12 +30,40 @@ function formatCall(call: string): string {
     .replace('N', 'NT');
 }
 
-function callColor(formatted: string): string {
-  if (formatted.includes('♥') || formatted.includes('♦')) return 'hsl(0 80% 62%)';
-  if (formatted === 'Pass') return 'hsl(215 15% 52%)';
-  if (formatted === 'Dbl') return 'hsl(20 90% 60%)';
-  if (formatted === 'Rdbl') return 'hsl(200 80% 60%)';
-  return 'hsl(210 20% 88%)';
+function renderCallContent(cell: string): React.ReactNode {
+  if (!cell) return null;
+
+  // Bids: level digit followed by a pip or "NT"
+  const pipMatch = cell.match(/^(\d)([\u2660\u2665\u2666\u2663])$/);
+  if (pipMatch) {
+    return (
+      <>
+        <span style={{ color: 'hsl(210 20% 95%)' }}>{pipMatch[1]}</span>
+        <span style={{ color: PIP_COLOR[pipMatch[2]] }}>{pipMatch[2]}</span>
+      </>
+    );
+  }
+
+  // No-trump bids like "3NT"
+  const ntMatch = cell.match(/^(\d)(NT)$/);
+  if (ntMatch) {
+    return <span style={{ color: 'hsl(210 20% 95%)' }}>{cell}</span>;
+  }
+
+  // Pass — muted italic
+  if (cell === 'Pass') {
+    return <span style={{ color: 'hsl(215 15% 52%)', fontStyle: 'italic' }}>{cell}</span>;
+  }
+
+  // Dbl / Rdbl
+  if (cell === 'Dbl') {
+    return <span style={{ color: 'hsl(20 90% 60%)' }}>{cell}</span>;
+  }
+  if (cell === 'Rdbl') {
+    return <span style={{ color: 'hsl(200 80% 60%)' }}>{cell}</span>;
+  }
+
+  return <span style={{ color: 'hsl(210 20% 88%)' }}>{cell}</span>;
 }
 
 function buildCells(auction: string[], dealer: Direction): string[] {
@@ -44,7 +79,6 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board }) => {
 
   const cells = buildCells(board.Auction ?? [], board.Dealer);
 
-  // Pad to multiple of 4
   const padded = [...cells];
   while (padded.length % 4 !== 0) padded.push('');
 
@@ -54,7 +88,7 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board }) => {
   }
 
   const colW = 'w-1/4';
-  const cellBase = `${colW} text-sm py-1.5 px-2`;
+  const cellBase = `${colW} text-sm py-1.5 px-2 text-center font-medium`;
 
   return (
     <div
@@ -106,19 +140,11 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board }) => {
             borderBottom: ri < rows.length - 1 ? '1px solid hsl(220 18% 18%)' : undefined,
           }}
         >
-          {row.map((cell, ci) => {
-            const color = cell ? callColor(cell) : 'transparent';
-            const isAllPass = cell === '(All pass)';
-            return (
-              <div
-                key={ci}
-                className={`${cellBase} ${isAllPass ? 'col-span-4' : ''} text-center font-medium`}
-                style={{ color, fontStyle: cell === 'Pass' || isAllPass ? 'italic' : 'normal' }}
-              >
-                {cell || ''}
-              </div>
-            );
-          })}
+          {row.map((cell, ci) => (
+            <div key={ci} className={cellBase}>
+              {renderCallContent(cell)}
+            </div>
+          ))}
         </div>
       ))}
     </div>
