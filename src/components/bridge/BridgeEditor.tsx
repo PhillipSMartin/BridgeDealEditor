@@ -9,6 +9,22 @@ import { LinParser } from '@/utils/linParser';
 import { toast } from 'sonner';
 import { RefreshCw } from 'lucide-react';
 
+function findTerminationPoint(auction: string[]): number | null {
+  let hasNonPass = false;
+  let passStreak = 0;
+  for (let i = 0; i < auction.length; i++) {
+    if (auction[i] === 'P') {
+      passStreak++;
+      if (!hasNonPass && passStreak === 4) return 4;
+      if (hasNonPass && passStreak === 3) return i + 1;
+    } else {
+      hasNonPass = true;
+      passStreak = 0;
+    }
+  }
+  return null;
+}
+
 const ROTATE_DIRECTION: Record<Direction, Direction> = {
   North: 'East',
   East: 'South',
@@ -152,7 +168,8 @@ export const BridgeEditor: React.FC = () => {
       if (!prev) return prev;
       const newAuction = [...(prev.Auction ?? [])];
       newAuction[index] = rawCall;
-      return { ...prev, Auction: newAuction };
+      const terminationPoint = findTerminationPoint(newAuction);
+      return { ...prev, Auction: terminationPoint != null ? newAuction.slice(0, terminationPoint) : newAuction };
     });
   }, []);
 

@@ -64,6 +64,23 @@ function renderCallContent(cell: string): React.ReactNode {
   return <span style={{ color: 'hsl(210 20% 88%)' }}>{cell}</span>;
 }
 
+function isAuctionTerminated(auction: string[]): boolean {
+  if (auction.length === 0) return false;
+  let hasNonPass = false;
+  let passStreak = 0;
+  for (const call of auction) {
+    if (call === 'P') {
+      passStreak++;
+      if (!hasNonPass && passStreak === 4) return true;
+      if (hasNonPass && passStreak === 3) return true;
+    } else {
+      hasNonPass = true;
+      passStreak = 0;
+    }
+  }
+  return false;
+}
+
 function buildCells(auction: string[], dealer: Direction): string[] {
   const formatted = auction.map(formatCall);
   const leadingBlanks = COL_ORDER.indexOf(dealer);
@@ -355,8 +372,8 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
         ))}
       </div>
 
-      {/* Add Call button */}
-      {onAppendCall && (
+      {/* Add Call button — hidden once the auction is terminated */}
+      {onAppendCall && !isAuctionTerminated(board.Auction ?? []) && (
         <div className="flex justify-center mt-3">
           <button
             onClick={handleAddCall}
