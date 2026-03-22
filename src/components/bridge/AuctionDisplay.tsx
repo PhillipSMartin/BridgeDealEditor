@@ -5,6 +5,7 @@ interface AuctionDisplayProps {
   board: BridgeBoard;
   onEditCall?: (auctionIndex: number, rawCall: string) => void;
   onDeleteCall?: (auctionIndex: number) => void;
+  onAppendCall?: (rawCall: string) => void;
 }
 
 const COL_ORDER: Direction[] = ['West', 'North', 'East', 'South'];
@@ -74,6 +75,7 @@ interface EditPopupProps {
   onSelect: (rawCall: string) => void;
   onDelete: () => void;
   onCancel: () => void;
+  showDelete?: boolean;
 }
 
 const SUITS_ROW = [
@@ -84,7 +86,7 @@ const SUITS_ROW = [
   { label: 'NT', raw: 'N', color: 'hsl(210 20% 95%)' },
 ];
 
-const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel }) => {
+const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, showDelete = true }) => {
   const [level, setLevel] = useState<string | null>(null);
 
   const btnBase: React.CSSProperties = {
@@ -196,17 +198,19 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel }) =
 
         {/* Row 4: Delete + Cancel */}
         <div style={{ display: 'flex', gap: 8, marginTop: 2 }}>
-          <button
-            onClick={onDelete}
-            style={{
-              ...btnBase,
-              flex: 1,
-              color: 'hsl(0 70% 60%)',
-              border: '1px solid hsl(0 50% 30%)',
-            }}
-          >
-            Delete
-          </button>
+          {showDelete && (
+            <button
+              onClick={onDelete}
+              style={{
+                ...btnBase,
+                flex: 1,
+                color: 'hsl(0 70% 60%)',
+                border: '1px solid hsl(0 50% 30%)',
+              }}
+            >
+              Delete
+            </button>
+          )}
           <button
             onClick={onCancel}
             style={{
@@ -224,8 +228,8 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel }) =
   );
 };
 
-export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCall, onDeleteCall }) => {
-  const [editState, setEditState] = useState<{ auctionIndex: number } | null>(null);
+export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCall, onDeleteCall, onAppendCall }) => {
+  const [editState, setEditState] = useState<{ auctionIndex: number; isAppend: boolean } | null>(null);
 
   const playerMap = Object.fromEntries(
     board.Seats.map(s => [s.Direction, s.Player])
@@ -246,21 +250,30 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
     if (!onEditCall) return;
     const auctionIndex = paddedIndex - leadingBlanks;
     if (auctionIndex < 0 || auctionIndex >= (board.Auction ?? []).length) return;
-    setEditState({ auctionIndex });
+    setEditState({ auctionIndex, isAppend: false });
   };
 
   const handleSelect = (rawCall: string) => {
-    if (editState && onEditCall) {
-      onEditCall(editState.auctionIndex, rawCall);
+    if (editState) {
+      if (editState.isAppend && onAppendCall) {
+        onAppendCall(rawCall);
+      } else if (!editState.isAppend && onEditCall) {
+        onEditCall(editState.auctionIndex, rawCall);
+      }
     }
     setEditState(null);
   };
 
   const handleDelete = () => {
-    if (editState && onDeleteCall) {
+    if (editState && !editState.isAppend && onDeleteCall) {
       onDeleteCall(editState.auctionIndex);
     }
     setEditState(null);
+  };
+
+  const handleAddCall = () => {
+    if (!onAppendCall) return;
+    setEditState({ auctionIndex: -1, isAppend: true });
   };
 
   const colW = 'w-1/4';
@@ -342,11 +355,45 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
         ))}
       </div>
 
+      {/* Add Call button */}
+      {onAppendCall && (
+        <div className="flex justify-center mt-3">
+          <button
+            onClick={handleAddCall}
+            style={{
+              background: 'hsl(220 22% 18%)',
+              border: '1px dashed hsl(220 18% 32%)',
+              borderRadius: 8,
+              color: 'hsl(43 70% 55%)',
+              cursor: 'pointer',
+              fontFamily: 'inherit',
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              padding: '6px 20px',
+              textTransform: 'uppercase',
+              transition: 'background 0.1s, border-color 0.1s',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 22%)';
+              (e.currentTarget as HTMLElement).style.borderColor = 'hsl(43 50% 40%)';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 18%)';
+              (e.currentTarget as HTMLElement).style.borderColor = 'hsl(220 18% 32%)';
+            }}
+          >
+            + Add Call
+          </button>
+        </div>
+      )}
+
       {editState && (
         <EditPopup
           onSelect={handleSelect}
           onDelete={handleDelete}
           onCancel={() => setEditState(null)}
+          showDelete={!editState.isAppend}
         />
       )}
     </>

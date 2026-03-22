@@ -163,6 +163,13 @@ export const BridgeEditor: React.FC = () => {
     });
   }, []);
 
+  const handleAppendAuctionCall = useCallback((rawCall: string) => {
+    setBoard(prev => {
+      if (!prev) return prev;
+      return { ...prev, Auction: [...(prev.Auction ?? []), rawCall] };
+    });
+  }, []);
+
   const rotateDeal = useCallback(() => {
     if (!board) return;
     const rotated: BridgeBoard = {
@@ -470,17 +477,20 @@ export const BridgeEditor: React.FC = () => {
             />
 
             {/* Auction table */}
-            {board.Auction && board.Auction.length > 0 && (
-              <div className="w-full max-w-5xl mt-6">
-                <div
-                  className="text-xs font-semibold uppercase tracking-widest mb-2 text-center"
-                  style={{ color: 'hsl(43 70% 55%)' }}
-                >
-                  Auction
-                </div>
-                <AuctionDisplay board={board} onEditCall={handleEditAuctionCall} onDeleteCall={handleDeleteAuctionCall} />
+            <div className="w-full max-w-5xl mt-6">
+              <div
+                className="text-xs font-semibold uppercase tracking-widest mb-2 text-center"
+                style={{ color: 'hsl(43 70% 55%)' }}
+              >
+                Auction
               </div>
-            )}
+              <AuctionDisplay
+                board={board}
+                onEditCall={handleEditAuctionCall}
+                onDeleteCall={handleDeleteAuctionCall}
+                onAppendCall={handleAppendAuctionCall}
+              />
+            </div>
           </>
         ) : (
           <div className="flex flex-col items-center justify-center flex-1 gap-8 py-16">
