@@ -156,6 +156,13 @@ export const BridgeEditor: React.FC = () => {
     });
   }, []);
 
+  const handleDeleteAuctionCall = useCallback((index: number) => {
+    setBoard(prev => {
+      if (!prev) return prev;
+      return { ...prev, Auction: (prev.Auction ?? []).slice(0, index) };
+    });
+  }, []);
+
   const rotateDeal = useCallback(() => {
     if (!board) return;
     const rotated: BridgeBoard = {
@@ -471,7 +478,7 @@ export const BridgeEditor: React.FC = () => {
                 >
                   Auction
                 </div>
-                <AuctionDisplay board={board} onEditCall={handleEditAuctionCall} />
+                <AuctionDisplay board={board} onEditCall={handleEditAuctionCall} onDeleteCall={handleDeleteAuctionCall} />
               </div>
             )}
           </>

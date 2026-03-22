@@ -4,6 +4,7 @@ import { BridgeBoard, Direction } from '@/types/bridge';
 interface AuctionDisplayProps {
   board: BridgeBoard;
   onEditCall?: (auctionIndex: number, rawCall: string) => void;
+  onDeleteCall?: (auctionIndex: number) => void;
 }
 
 const COL_ORDER: Direction[] = ['West', 'North', 'East', 'South'];
@@ -71,6 +72,7 @@ function buildCells(auction: string[], dealer: Direction): string[] {
 // Popup sub-component
 interface EditPopupProps {
   onSelect: (rawCall: string) => void;
+  onDelete: () => void;
   onCancel: () => void;
 }
 
@@ -82,7 +84,7 @@ const SUITS_ROW = [
   { label: 'NT', raw: 'N', color: 'hsl(210 20% 95%)' },
 ];
 
-const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onCancel }) => {
+const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel }) => {
   const [level, setLevel] = useState<string | null>(null);
 
   const btnBase: React.CSSProperties = {
@@ -192,24 +194,37 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onCancel }) => {
           ))}
         </div>
 
-        {/* Row 4: Cancel */}
-        <button
-          onClick={onCancel}
-          style={{
-            ...btnBase,
-            marginTop: 2,
-            color: 'hsl(215 15% 52%)',
-            border: '1px solid hsl(220 18% 24%)',
-          }}
-        >
-          Cancel
-        </button>
+        {/* Row 4: Delete + Cancel */}
+        <div style={{ display: 'flex', gap: 8, marginTop: 2 }}>
+          <button
+            onClick={onDelete}
+            style={{
+              ...btnBase,
+              flex: 1,
+              color: 'hsl(0 70% 60%)',
+              border: '1px solid hsl(0 50% 30%)',
+            }}
+          >
+            Delete
+          </button>
+          <button
+            onClick={onCancel}
+            style={{
+              ...btnBase,
+              flex: 1,
+              color: 'hsl(215 15% 52%)',
+              border: '1px solid hsl(220 18% 24%)',
+            }}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCall }) => {
+export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCall, onDeleteCall }) => {
   const [editState, setEditState] = useState<{ auctionIndex: number } | null>(null);
 
   const playerMap = Object.fromEntries(
@@ -237,6 +252,13 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
   const handleSelect = (rawCall: string) => {
     if (editState && onEditCall) {
       onEditCall(editState.auctionIndex, rawCall);
+    }
+    setEditState(null);
+  };
+
+  const handleDelete = () => {
+    if (editState && onDeleteCall) {
+      onDeleteCall(editState.auctionIndex);
     }
     setEditState(null);
   };
@@ -323,6 +345,7 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
       {editState && (
         <EditPopup
           onSelect={handleSelect}
+          onDelete={handleDelete}
           onCancel={() => setEditState(null)}
         />
       )}
