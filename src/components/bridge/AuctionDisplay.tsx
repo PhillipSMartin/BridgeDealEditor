@@ -33,12 +33,6 @@ function callColor(formatted: string): string {
 
 function buildCells(auction: string[], dealer: Direction): string[] {
   const formatted = auction.map(formatCall);
-
-  // Replace three (or four) trailing Passes with (All pass)
-  if (formatted.length >= 3 && formatted.slice(-3).every(c => c === 'Pass')) {
-    formatted.splice(formatted.length - 3, 3, '(All pass)');
-  }
-
   const leadingBlanks = COL_ORDER.indexOf(dealer);
   return [...Array(leadingBlanks).fill(''), ...formatted];
 }
