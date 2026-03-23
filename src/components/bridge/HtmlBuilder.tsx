@@ -124,20 +124,25 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   };
 
   const downloadZip = async () => {
-    const name = fileName.trim() || `board${board['Board number']}`;
-    const series = buildHtmlSeries(board, playCards, opts);
-    const zip = new JSZip();
-    for (const { filename, html } of series) {
-      zip.file(`${name}${filename}`, html);
+    try {
+      const rawName = fileName.trim() || `board${board['Board number']}`;
+      const name = rawName.replace(/\.(html?|zip)$/i, '');
+      const series = buildHtmlSeries(board, playCards, opts);
+      const zip = new JSZip();
+      for (const { filename, html } of series) {
+        zip.file(`${name}${filename}`, html);
+      }
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${name}.zip`;
+      a.click();
+      URL.revokeObjectURL(url);
+      toast(`ZIP downloaded (${series.length} files)`);
+    } catch {
+      toast('Failed to generate ZIP');
     }
-    const blob = await zip.generateAsync({ type: 'blob' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${name}.zip`;
-    a.click();
-    URL.revokeObjectURL(url);
-    toast(`ZIP downloaded (${series.length} files)`);
   };
 
   const copyHtml = () => {
