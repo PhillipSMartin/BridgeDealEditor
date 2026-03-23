@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { BridgeTable } from './BridgeTable';
 import { AuctionDisplay } from './AuctionDisplay';
 import { BboUrlBuilder } from './BboUrlBuilder';
+import { HtmlBuilder } from './HtmlBuilder';
 import { BridgeBoard, Direction, Suit } from '@/types/bridge';
 import { LinParser } from '@/utils/linParser';
 import { parsePbn } from '@/utils/pbnParser';
@@ -512,6 +513,7 @@ export const BridgeEditor: React.FC = () => {
               Copy BBO URL
             </Button>
             <BboUrlBuilder board={board} playCards={playCards} />
+            <HtmlBuilder board={board} playCards={playCards} />
           </div>
         )}
       </div>
