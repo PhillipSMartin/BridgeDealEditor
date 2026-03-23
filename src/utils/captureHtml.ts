@@ -1,6 +1,6 @@
 import html2canvas from 'html2canvas';
 
-function cropCanvas(src: HTMLCanvasElement, padding = 12): HTMLCanvasElement {
+function cropCanvas(src: HTMLCanvasElement, padding = 20): HTMLCanvasElement {
   const ctx = src.getContext('2d');
   if (!ctx) return src;
 
@@ -69,11 +69,26 @@ export async function captureHtmlToPng(htmlString: string): Promise<Blob> {
   try {
     await waitFrames(3);
 
+    // Measure actual rendered content size and set explicit dimensions so
+    // html2canvas captures the full layout including overflow (e.g. auction table).
+    const fullW = Math.max(container.scrollWidth, container.offsetWidth, 400);
+    const fullH = Math.max(container.scrollHeight, container.offsetHeight, 100);
+    container.style.width = `${fullW}px`;
+    container.style.height = `${fullH}px`;
+    container.style.overflow = 'hidden';
+
+    // One more frame so the browser reflows at the explicit size.
+    await waitFrames(1);
+
     const raw = await html2canvas(container, {
       backgroundColor: '#ffffff',
       logging: false,
       useCORS: false,
       allowTaint: false,
+      width: fullW,
+      height: fullH,
+      windowWidth: fullW,
+      windowHeight: fullH,
     });
 
     const cropped = cropCanvas(raw);
