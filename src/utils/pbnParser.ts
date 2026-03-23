@@ -100,6 +100,26 @@ export function parsePbn(rawContent: string): BridgeBoard {
     seats.push(seat);
   }
 
+  // Play: find [Play "X"] tag, then collect card tokens until * or next [tag]
+  // PBN card format (e.g. HT, SA, DK) is identical to the internal card key format.
+  const playTagRx = /\[Play\s+"[NESW]"\]/i;
+  const playTagMatch = playTagRx.exec(content);
+  const play: string[] = [];
+
+  if (playTagMatch) {
+    const afterPlay = content.slice(playTagMatch.index + playTagMatch[0].length);
+    const nextTagMatch = /^\[/m.exec(afterPlay);
+    const playSection = nextTagMatch ? afterPlay.slice(0, nextTagMatch.index) : afterPlay;
+    const cleaned = stripComments(playSection);
+    const tokens = cleaned.trim().split(/\s+/);
+    for (const token of tokens) {
+      if (!token) continue;
+      if (token === '*') break;          // incomplete play marker
+      if (token === '-') continue;       // seat had no card in this trick
+      if (/^[SHDC][A-Z0-9]$/.test(token)) play.push(token);
+    }
+  }
+
   // Auction: find [Auction "X"] tag, then read tokens until next [...] tag line
   const auctionTagRx = /\[Auction\s+"[NESW]"\]/i;
   const auctionTagMatch = auctionTagRx.exec(content);
@@ -132,6 +152,6 @@ export function parsePbn(rawContent: string): BridgeBoard {
     Dealer: dealer,
     Auction: auction,
     Seats: seats,
-    Play: [],
+    Play: play,
   };
 }
