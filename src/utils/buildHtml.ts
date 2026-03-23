@@ -5,6 +5,7 @@ export interface HtmlExportOptions {
   east: boolean;
   south: boolean;
   west: boolean;
+  vertical: boolean;
   auction: 'none' | 'with-headers' | 'no-header';
   played: number;
   playedStyle: 'grey' | 'white';
@@ -306,6 +307,27 @@ ${handHtml['South']}
 }
 
 function buildSingleHand(hand: Hand, opts: HtmlExportOptions, playedSet: Set<string>): string {
+  if (opts.vertical) {
+    const handHtml = formatHand(hand, opts, playedSet, true, 0);
+    return `<div align="center" class="bridge-diagram">
+  <table>
+    <colgroup>
+      <col class="col-left" />
+      <col class="col-center" />
+      <col class="col-right" />
+    </colgroup>
+    <tbody>
+      <tr>
+        <td></td>
+        <td class="hand center-hand">
+${handHtml}
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>\n`;
+  }
   const handHtml = formatHand(hand, opts, playedSet, false);
   return `<TABLE width="300" border="0" cellspacing="0" cellpadding="0" align="center"><TR><TD WIDTH="100%" Align="center">${handHtml}</TD></TR></TABLE>\n`;
 }

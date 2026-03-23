@@ -63,6 +63,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   const [south, setSouth] = useState(true);
   const [west, setWest] = useState(true);
 
+  const [vertical, setVertical] = useState(false);
   const [auction, setAuction] = useState<HtmlExportOptions['auction']>('with-headers');
   const [played, setPlayed] = useState(0);
   const [playedStyle, setPlayedStyle] = useState<HtmlExportOptions['playedStyle']>('white');
@@ -70,9 +71,11 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   const [excludeSuits, setExcludeSuits] = useState<Set<string>>(new Set());
 
   const maxPlayed = playCards.size;
+  const handsSelected = [north, east, south, west].filter(Boolean).length;
 
   const opts: HtmlExportOptions = {
     north, east, south, west,
+    vertical,
     auction,
     played,
     playedStyle,
@@ -86,7 +89,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
     } catch {
       return '<html><body><p style="color:red">Error generating HTML</p></body></html>';
     }
-  }, [board, playCards, north, east, south, west, auction, played, playedStyle, showOnFelt, excludeSuits]);
+  }, [board, playCards, north, east, south, west, vertical, auction, played, playedStyle, showOnFelt, excludeSuits]);
 
   const toggleSuit = (key: string) => {
     setExcludeSuits(prev => {
@@ -156,12 +159,23 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                 ))}
               </div>
               <div className="mt-1.5 text-xs" style={{ color: 'hsl(215 15% 45%)' }}>
-                {[north, east, south, west].filter(Boolean).length === 1
-                  ? 'Single-hand inline layout'
-                  : [north, east, south, west].filter(Boolean).length >= 2 && [north, east, south, west].filter(Boolean).length < 4
+                {handsSelected === 1
+                  ? (vertical ? 'Single-hand vertical layout' : 'Single-hand inline layout')
+                  : handsSelected >= 2 && handsSelected < 4
                     ? 'Partial diagram'
                     : 'Full four-hand diagram (default when none or all selected)'}
               </div>
+              {handsSelected === 1 && (
+                <label className="flex items-center gap-2 text-sm mt-2 cursor-pointer" style={{ color: 'hsl(210 20% 78%)' }}>
+                  <input
+                    type="checkbox"
+                    checked={vertical}
+                    onChange={e => setVertical(e.target.checked)}
+                    className="accent-amber-500"
+                  />
+                  Vertical layout (one suit per line)
+                </label>
+              )}
             </div>
 
             {/* Auction */}
