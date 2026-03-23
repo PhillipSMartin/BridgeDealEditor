@@ -336,11 +336,13 @@ export function buildHtmlSeries(
   board: BridgeBoard,
   playCards: Map<string, number>,
   opts: HtmlExportOptions,
-): { played: number; html: string }[] {
+): { filename: string; html: string }[] {
   const total = playCards.size;
-  const results: { played: number; html: string }[] = [];
+  const padLen = Math.max(2, String(total).length);
+  const results: { filename: string; html: string }[] = [];
   for (let n = 0; n <= total; n++) {
-    results.push({ played: n, html: buildHtml(board, playCards, { ...opts, played: n }) });
+    const suffix = String(n).padStart(padLen, '0');
+    results.push({ filename: `-${suffix}.html`, html: buildHtml(board, playCards, { ...opts, played: n }) });
   }
   return results;
 }

@@ -73,8 +73,8 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   }, [board['Board number']]);
 
   useEffect(() => {
-    if (maxPlayed === 0) setPerCard(false);
-  }, [maxPlayed]);
+    if (playCards.size === 0) setPerCard(false);
+  }, [playCards.size]);
 
   const [auction, setAuction] = useState<HtmlExportOptions['auction']>('with-headers');
   const [played, setPlayed] = useState(0);
@@ -126,12 +126,9 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   const downloadZip = async () => {
     const name = fileName.trim() || `board${board['Board number']}`;
     const series = buildHtmlSeries(board, playCards, opts);
-    const total = series.length - 1;
-    const padLen = String(total).length < 2 ? 2 : String(total).length;
     const zip = new JSZip();
-    for (const { played: n, html } of series) {
-      const suffix = String(n).padStart(padLen, '0');
-      zip.file(`${name}-${suffix}.html`, html);
+    for (const { filename, html } of series) {
+      zip.file(`${name}${filename}`, html);
     }
     const blob = await zip.generateAsync({ type: 'blob' });
     const url = URL.createObjectURL(blob);
