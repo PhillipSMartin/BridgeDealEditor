@@ -1,0 +1,4625 @@
+% PBN 2.1
+% Content-type: text/x-pbn; charset=UTF-8
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "1"]
+[West "Diana Styche#22803"]
+[North "Judith Chandler#9758"]
+[East "Gaynor Bradbury#2863"]
+[South "Paula McTaggart#52641"]
+[Dealer "N"]
+[Vulnerable "-"]
+[Deal "N:QJ4.AK7.543.Q965 A3.T985.KT86.AT4 KT765.62.AJ92.72 982.QJ43.Q7.KJ83"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "1NT"]
+[Result "7"]
+[Score "NS 90"]
+[Table "3"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "78476784765595755957"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  8
+N  H  4
+N  D  7
+N  C  6
+S NT  7
+S  S  8
+S  H  4
+S  D  7
+S  C  6
+E NT  5
+E  S  5
+E  H  9
+E  D  5
+E  C  7
+W NT  5
+W  S  5
+W  H  9
+W  D  5
+W  C  7
+[OptimumScore "NS -100"]
+[Competition "Pairs"]
+% RBDATA 4,4,5,203,74,21,107,29,31,224,159,82,103,12,24,21,65,21,10,10,26,35,98,34,27,19,10,28,18,27,12,22,22,17,45,26,108,25,74,34,27,13,12,24,13,17,12,28,20,15,18,17,35,11,21,14,19,11,15,11,15,11,11
+[Auction "N"]
+1C Pass 1S Pass 
+1NT Pass Pass Pass 
+[Play "E"]
+HT H2 H3 HA 
+SA S5 S2 SJ 
+H9 H6 H4 HK 
+S3 S6 S8 SQ 
+C4 SK S9 S4 
+D6 ST C3 D3 
+CT S7 C8 H7 
+D8 DA D7 D4 
+DT D2 DQ D5 
+H8 C2 HQ C5 
+H5 C7 HJ C6 
+CA D9 CK C9 
+DK DJ CJ CQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "1"]
+[West "Barb Robinson#38037"]
+[North "Dianne Evans#74554"]
+[East "John Seator#49186"]
+[South "Ray Crowe#4850"]
+[Dealer "N"]
+[Vulnerable "-"]
+[Deal "N:QJ4.AK7.543.Q965 A3.T985.KT86.AT4 KT765.62.AJ92.72 982.QJ43.Q7.KJ83"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "2S"]
+[Result "8"]
+[Score "NS 110"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "78476784765595755957"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  8
+N  H  4
+N  D  7
+N  C  6
+S NT  7
+S  S  8
+S  H  4
+S  D  7
+S  C  6
+E NT  5
+E  S  5
+E  H  9
+E  D  5
+E  C  7
+W NT  5
+W  S  5
+W  H  9
+W  D  5
+W  C  7
+[OptimumScore "NS -100"]
+[Competition "Pairs"]
+% RBDATA 8,0,1,167,71,50,73,31,28,39,19,43,58,35,29,40,26,17,17,26,26,24,22,29,22,15,69,77,40,9,27,92,23,34,24,61,34,50,15,139,21,10,20,298,267,21,28,121,17,19,27,25,52,19,47,10,33,12,23,14,16,15,10
+[Auction "N"]
+1NT Pass 2H =1= Pass 
+2S Pass Pass Pass 
+[Play "E"]
+HT H2 H3 HA 
+H5 H6 H4 HK 
+H8 S5 HJ H7 
+SA S6 S2 SJ 
+S3 S7 S8 SQ 
+D6 D9 DQ D5 
+CT C2 C3 C9 
+CA C7 C8 C5 
+C4 ST CJ C6 
+D8 DA D7 D3 
+DT D2 HQ D4 
+DK DJ CK S4 
+H9 SK S9 CQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "1"]
+[West "Rachel Aylett#2302"]
+[North "Sybil Cornell#4518"]
+[East "Wilma Zeedijk#56252"]
+[South "Cynthia Singh#27403"]
+[Dealer "N"]
+[Vulnerable "-"]
+[Deal "N:QJ4.AK7.543.Q965 A3.T985.KT86.AT4 KT765.62.AJ92.72 982.QJ43.Q7.KJ83"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "2S"]
+[Result "7"]
+[Score "NS -50"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "78476784765595755957"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  8
+N  H  4
+N  D  7
+N  C  6
+S NT  7
+S  S  8
+S  H  4
+S  D  7
+S  C  6
+E NT  5
+E  S  5
+E  H  9
+E  D  5
+E  C  7
+W NT  5
+W  S  5
+W  H  9
+W  D  5
+W  C  7
+[OptimumScore "NS -100"]
+[Competition "Pairs"]
+% RBDATA 8,2,3,184,34,284,159,34,23,36,37,114,208,252,52,368,101,8,32,44,69,49,35,63,70,39,38,37,48,48,15,15,31,56,24,25,36,163,25,63,39,14,17,35,37,19,18,28,15,21,61,76,22,36,42,17,43,24,22,6,17,30,6
+[Auction "N"]
+1NT Pass 2H =1= Pass 
+2S Pass Pass Pass 
+[Play "E"]
+C4 C7 CK C5 
+CA C2 C3 C9 
+D6 DA D7 D3 
+S3 ST S2 S4 
+SA S5 S8 SQ 
+DK D2 DQ D4 
+D8 DJ S9 D5 
+H8 H2 HQ HK 
+H5 S6 C8 SJ 
+H9 H6 H3 HA 
+HT S7 H4 H7 
+CT SK CJ C6 
+DT D9 HJ CQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "2"]
+[West "Diana Styche#22803"]
+[North "Judith Chandler#9758"]
+[East "Gaynor Bradbury#2863"]
+[South "Paula McTaggart#52641"]
+[Dealer "E"]
+[Vulnerable "NS"]
+[Deal "N:42.K8.T8653.8653 AQ9765.432.K2.A4 T3.AQ9765.9.KT97 KJ8.JT.AQJ74.QJ2"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "E"]
+[Contract "4S"]
+[Result "12"]
+[Score "NS -480"]
+[Table "3"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "22838228387b5957b595"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  2
+N  H  8
+N  D  3
+N  C  8
+S NT  2
+S  S  2
+S  H  8
+S  D  3
+S  C  8
+E NT  7
+E  S 11
+E  H  5
+E  D  9
+E  C  5
+W NT  7
+W  S 11
+W  H  5
+W  D  9
+W  C  5
+[OptimumScore "NS -450"]
+[Competition "Pairs"]
+% RBDATA 18,4,5,74,154,126,92,25,12,248,68,27,27,76,19,12,21,157,26,11,9,92,20,10,9,27,16,11,8,17,19,12,7,144,34,11,34,60,26,19,24
+[Auction "E"]
+1S 2H 4S Pass 
+Pass Pass 
+[Play "S"]
+D9 D4 D6 DK 
+S3 SK S2 S5 
+ST SJ S4 S6 
+H5 DA D3 D2 
+H6 DQ D5 H2 
+H7 DJ D8 H3 
+HQ HT H8 H4 
+C7 CJ C6 C4 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "2"]
+[West "Barb Robinson#38037"]
+[North "Dianne Evans#74554"]
+[East "John Seator#49186"]
+[South "Ray Crowe#4850"]
+[Dealer "E"]
+[Vulnerable "NS"]
+[Deal "N:42.K8.T8653.8653 AQ9765.432.K2.A4 T3.AQ9765.9.KT97 KJ8.JT.AQJ74.QJ2"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "E"]
+[Contract "4S"]
+[Result "11"]
+[Score "NS -450"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "22838228387b5957b595"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  2
+N  H  8
+N  D  3
+N  C  8
+S NT  2
+S  S  2
+S  H  8
+S  D  3
+S  C  8
+E NT  7
+E  S 11
+E  H  5
+E  D  9
+E  C  5
+W NT  7
+W  S 11
+W  H  5
+W  D  9
+W  C  5
+[OptimumScore "NS -450"]
+[Competition "Pairs"]
+% RBDATA 18,0,1,108,86,132,31,94,51,209,24,18,27,21,100,16,31,80,22,14,26,26,166,37,17,31,25,24,14,46,17,87,11,103,31,25,14,19,26,34,20,23,17,23,13,22,14,15,23
+[Auction "E"]
+1S 2H 3D Pass 
+3S Pass 4S Pass 
+Pass Pass 
+[Play "S"]
+HA HT H8 H2 
+HQ HJ HK H3 
+C7 C2 C8 CA 
+S3 SK S2 S5 
+ST SJ S4 S6 
+D9 D4 D3 DK 
+H5 DJ D5 D2 
+H6 DA D6 H4 
+H7 DQ D8 C4 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "2"]
+[West "Rachel Aylett#2302"]
+[North "Sybil Cornell#4518"]
+[East "Wilma Zeedijk#56252"]
+[South "Cynthia Singh#27403"]
+[Dealer "E"]
+[Vulnerable "NS"]
+[Deal "N:42.K8.T8653.8653 AQ9765.432.K2.A4 T3.AQ9765.9.KT97 KJ8.JT.AQJ74.QJ2"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "E"]
+[Contract "4S"]
+[Result "10"]
+[Score "NS -420"]
+[Table "2"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "22838228387b5957b595"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  2
+N  H  8
+N  D  3
+N  C  8
+S NT  2
+S  S  2
+S  H  8
+S  D  3
+S  C  8
+E NT  7
+E  S 11
+E  H  5
+E  D  9
+E  C  5
+W NT  7
+W  S 11
+W  H  5
+W  D  9
+W  C  5
+[OptimumScore "NS -450"]
+[Competition "Pairs"]
+% RBDATA 18,2,3,113,185,103,31,369,74,95,104,15,56,58,76,43,8,36,13,29,8,97,60,47,13,166,48,24,13,18,55,34,38,14,28,18,34,20,26,14,29,29,43,7,40,12,25,9,32,7,37,25,32,11,25
+[Auction "E"]
+1S 2H X Pass 
+2S Pass 4S Pass 
+Pass Pass 
+[Play "S"]
+HA HT H8 H2 
+H5 HJ HK H3 
+CK C2 C6 C4 
+D9 D4 D3 DK 
+H6 SJ C3 H4 
+S3 SK S2 S5 
+ST S8 S4 SQ 
+H7 D7 C5 SA 
+C7 CJ C8 CA 
+H9 DA D5 D2 
+-  DQ D6 -  
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "3"]
+[West "Diana Styche#22803"]
+[North "Judith Chandler#9758"]
+[East "Gaynor Bradbury#2863"]
+[South "Paula McTaggart#52641"]
+[Dealer "S"]
+[Vulnerable "EW"]
+[Deal "N:KQT97.6.AT.KT975 J86.KQJ943.K963. A54.AT52.Q85.J84 32.87.J742.AQ632"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "4S"]
+[Result "11"]
+[Score "NS 450"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "aa76aaa66a3267332673"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT 10
+N  S 10
+N  H  7
+N  D  6
+N  C 10
+S NT 10
+S  S 10
+S  H  6
+S  D  6
+S  C 10
+E NT  3
+E  S  2
+E  H  6
+E  D  7
+E  C  3
+W NT  3
+W  S  2
+W  H  6
+W  D  7
+W  C  3
+[OptimumScore "NS +430"]
+[Competition "Pairs"]
+% RBDATA 18,4,5,136,37,31,185,129,108,29,56,20,35,52,61,9,32,52,27,20,13,24,23,20,5,39,16,21,20,26,53,22,15,18,28,61,31,189,97,17,37,15,21,14,26,36,51,26,43,21,41,11,10,23,14,18,19,17,19,10,12,13,11,9,8
+[Auction "S"]
+Pass Pass 1S 2H 
+3S Pass 4S Pass 
+Pass Pass 
+[Play "E"]
+HK HA H7 H6 
+S6 S4 S2 SQ 
+S8 S5 S3 SK 
+SJ SA C2 S7 
+D3 CJ CA C5 
+H3 H2 H8 S9 
+H4 C4 CQ C9 
+DK D5 D2 DA 
+H9 C8 C3 CK 
+D6 H5 C6 CT 
+D9 DQ D4 DT 
+HJ D8 DJ ST 
+HQ HT D7 C7 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "3"]
+[West "Barb Robinson#38037"]
+[North "Dianne Evans#74554"]
+[East "John Seator#49186"]
+[South "Ray Crowe#4850"]
+[Dealer "S"]
+[Vulnerable "EW"]
+[Deal "N:KQT97.6.AT.KT975 J86.KQJ943.K963. A54.AT52.Q85.J84 32.87.J742.AQ632"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "3S"]
+[Result "10"]
+[Score "NS 170"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "aa76aaa66a3267332673"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT 10
+N  S 10
+N  H  7
+N  D  6
+N  C 10
+S NT 10
+S  S 10
+S  H  6
+S  D  6
+S  C 10
+E NT  3
+E  S  2
+E  H  6
+E  D  7
+E  C  3
+W NT  3
+W  S  2
+W  H  6
+W  D  7
+W  C  3
+[OptimumScore "NS +430"]
+[Competition "Pairs"]
+% RBDATA 13,0,1,188,48,81,46,128,29,33,182,55,27,54,44,29,42,75,15,45,30,15,21,14,17,29,24,67,26,20,11,221,144,63,29,80,122,32,15,26,41,24,26,12,38,40,28,36,48,14,9,18,139,18,12,23,34,16,9,16,101,17,8,18,14,25,7
+[Auction "S"]
+Pass Pass 1S 2H 
+2NT Pass 3C Pass 
+3S Pass Pass Pass 
+[Play "E"]
+HK HA H7 H6 
+S6 SA S2 S7 
+S8 S4 S3 SK 
+SJ S5 C2 SQ 
+D3 C8 CQ C5 
+D6 D5 D2 DA 
+H3 C4 CA C7 
+H4 H2 H8 S9 
+H9 CJ C3 CK 
+HJ D8 C6 CT 
+D9 DQ D4 C9 
+HQ H5 D7 ST 
+DK HT DJ DT 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "3"]
+[West "Rachel Aylett#2302"]
+[North "Sybil Cornell#4518"]
+[East "Wilma Zeedijk#56252"]
+[South "Cynthia Singh#27403"]
+[Dealer "S"]
+[Vulnerable "EW"]
+[Deal "N:KQT97.6.AT.KT975 J86.KQJ943.K963. A54.AT52.Q85.J84 32.87.J742.AQ632"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "3S"]
+[Result "9"]
+[Score "NS 140"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "aa76aaa66a3267332673"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT 10
+N  S 10
+N  H  7
+N  D  6
+N  C 10
+S NT 10
+S  S 10
+S  H  6
+S  D  6
+S  C 10
+E NT  3
+E  S  2
+E  H  6
+E  D  7
+E  C  3
+W NT  3
+W  S  2
+W  H  6
+W  D  7
+W  C  3
+[OptimumScore "NS +430"]
+[Competition "Pairs"]
+% RBDATA 13,2,3,70,157,75,47,131,153,47,48,88,120,19,29,80,66,33,17,30,14,55,27,116,36,69,55,19,34,112,28,102,69,23,49,101,113,31,22,80,96,20,64,16,39,19,62,51,18,22,11,38,43,25,16,121,13,44,23,15,60,13,7
+[Auction "S"]
+Pass Pass 1S 2H 
+3S Pass Pass Pass 
+[Play "E"]
+HK HA H7 H6 
+S6 S4 S2 SK 
+S8 S5 S3 SQ 
+SJ C4 C2 CT 
+HQ H2 H8 S7 
+H3 C8 CA CK 
+H4 CJ CQ C5 
+DK D5 D2 DT 
+HJ H5 DJ S9 
+D3 D8 D4 DA 
+H9 HT C3 C9 
+D6 SA C6 C7 
+D9 DQ D7 ST 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "4"]
+[West "Diana Styche#22803"]
+[North "Judith Chandler#9758"]
+[East "Gaynor Bradbury#2863"]
+[South "Paula McTaggart#52641"]
+[Dealer "W"]
+[Vulnerable "All"]
+[Deal "N:KJ82.T5.K76432.7 Q7.J8763.QT9.T94 954.A42.A8.AKJ63 AT63.KQ9.J5.Q852"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "W"]
+[Contract "2H"]
+[Result "6"]
+[Score "NS 200"]
+[Table "3"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "796a8796a74463544635"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  9
+N  H  6
+N  D 10
+N  C  8
+S NT  7
+S  S  9
+S  H  6
+S  D 10
+S  C  7
+E NT  4
+E  S  4
+E  H  6
+E  D  3
+E  C  5
+W NT  4
+W  S  4
+W  H  6
+W  D  3
+W  C  5
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA 7,4,5,221,41,72,223,41,22,24,102,37,111,6,40,7,19,20,25,68,46,27,29,67,22,24,10,160,49,21,12,39,20,7,54,22,23,12,13,68,39,24,19,20,18,6,19,14,14,16,13,68,34,15,6,9,7,11,12,11,5,19,13
+[Auction "W"]
+1NT Pass 2D =1= Pass 
+2H Pass Pass Pass 
+[Play "N"]
+D4 D9 DA D5 
+DK DT D8 DJ 
+C7 C9 CK C2 
+S2 C4 CA C5 
+H5 CT C3 C8 
+D6 DQ H2 H9 
+HT H3 HA HQ 
+SK S7 S4 S3 
+S8 SQ S5 S6 
+D2 H6 H4 HK 
+SJ H7 S9 ST 
+D3 HJ C6 CQ 
+D7 H8 CJ SA 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "4"]
+[West "Barb Robinson#38037"]
+[North "Dianne Evans#74554"]
+[East "John Seator#49186"]
+[South "Ray Crowe#4850"]
+[Dealer "W"]
+[Vulnerable "All"]
+[Deal "N:KJ82.T5.K76432.7 Q7.J8763.QT9.T94 954.A42.A8.AKJ63 AT63.KQ9.J5.Q852"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "W"]
+[Contract "2H"]
+[Result "5"]
+[Score "NS 300"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "796a8796a74463544635"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  9
+N  H  6
+N  D 10
+N  C  8
+S NT  7
+S  S  9
+S  H  6
+S  D 10
+S  C  7
+E NT  4
+E  S  4
+E  H  6
+E  D  3
+E  C  5
+W NT  4
+W  S  4
+W  H  6
+W  D  3
+W  C  5
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA 7,0,1,94,40,45,74,32,59,46,32,60,142,17,21,14,19,17,17,54,27,27,11,24,24,89,17,387,26,34,15,81,23,11,67,103,34,30,24,56,21,12,18,24,14,17,22,76,20,15,9,57,26,13,22,16,39,14,16,11,10,10,14
+[Auction "W"]
+1NT Pass 2D =1= Pass 
+2H Pass Pass Pass 
+[Play "N"]
+C7 C4 CK C2 
+S2 C9 CA C5 
+H5 CT C3 C8 
+D2 D9 DA DJ 
+DK DT D8 D5 
+D3 DQ H2 S3 
+SK S7 S5 S6 
+S8 SQ S4 ST 
+HT H3 H4 HQ 
+D4 H6 HA HK 
+SJ H7 S9 SA 
+D6 HJ C6 H9 
+D7 H8 CJ CQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "4"]
+[West "Rachel Aylett#2302"]
+[North "Sybil Cornell#4518"]
+[East "Wilma Zeedijk#56252"]
+[South "Cynthia Singh#27403"]
+[Dealer "W"]
+[Vulnerable "All"]
+[Deal "N:KJ82.T5.K76432.7 Q7.J8763.QT9.T94 954.A42.A8.AKJ63 AT63.KQ9.J5.Q852"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "W"]
+[Contract "3H"]
+[Result "7"]
+[Score "NS 200"]
+[Table "2"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "796a8796a74463544635"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  9
+N  H  6
+N  D 10
+N  C  8
+S NT  7
+S  S  9
+S  H  6
+S  D 10
+S  C  7
+E NT  4
+E  S  4
+E  H  6
+E  D  3
+E  C  5
+W NT  4
+W  S  4
+W  H  6
+W  D  3
+W  C  5
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA 12,2,3,1075,173,63,258,75,39,18,37,193,187,58,34,44,32,62,34,34,56,30,22,63,42,37,21,41,23,33,25,73,70,50,46,44,33,17,70,71,55,35,27,51,40,20,30,75,30,58,24,57,36,15,16,46,33,9,21,27,17,35,24
+[Auction "W"]
+1NT =1= Pass 2D 3C 
+3H Pass Pass Pass 
+[Play "N"]
+C7 C4 CA C2 
+S2 C9 CK C5 
+H5 CT C3 C8 
+D7 D9 DA D5 
+DK DT D8 DJ 
+S8 S7 S4 ST 
+HT H3 HA HK 
+SJ SQ S5 SA 
+D2 H6 H2 HQ 
+D3 H7 H4 H9 
+D4 DQ C6 CQ 
+SK H8 S9 S3 
+D6 HJ CJ S6 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "5"]
+[West "Diana Styche#22803"]
+[North "Judith Chandler#9758"]
+[East "Gaynor Bradbury#2863"]
+[South "Paula McTaggart#52641"]
+[Dealer "N"]
+[Vulnerable "NS"]
+[Deal "N:AT973.863.KT65.K K6542.KQT9.983.5 QJ.J74.A4.AQT943 8.A52.QJ72.J8762"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "2S"]
+[Result "8"]
+[Score "NS 110"]
+[Table "3"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "88778887785566555665"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  8
+N  S  8
+N  H  7
+N  D  7
+N  C  8
+S NT  8
+S  S  8
+S  H  7
+S  D  7
+S  C  8
+E NT  5
+E  S  5
+E  H  6
+E  D  6
+E  C  5
+W NT  5
+W  S  5
+W  H  6
+W  D  6
+W  C  5
+[OptimumScore "NS +120"]
+[Competition "Pairs"]
+% RBDATA 8,4,5,254,87,107,65,36,628,18,20,78,33,33,17,15,23,46,19,156,28,140,21,22,44,18,19,18,34,14,46,58,22,19,18,18,26,16,44,20,38,19,220,76,22,18,43,9,19,19,14
+[Auction "N"]
+2S Pass Pass Pass 
+[Play "E"]
+HK H4 H2 H3 
+HT HJ HA H6 
+H9 H7 H5 H8 
+C5 C3 C7 CK 
+D9 DA D2 D5 
+S2 CA C2 D6 
+D8 D4 DJ DK 
+D3 SJ D7 DT 
+S4 SQ S8 S3 
+SK CQ C6 S9 
+HQ C4 C8 S7 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "5"]
+[West "Barb Robinson#38037"]
+[North "Dianne Evans#74554"]
+[East "John Seator#49186"]
+[South "Ray Crowe#4850"]
+[Dealer "N"]
+[Vulnerable "NS"]
+[Deal "N:AT973.863.KT65.K K6542.KQT9.983.5 QJ.J74.A4.AQT943 8.A52.QJ72.J8762"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "S"]
+[Contract "3C"]
+[Result "8"]
+[Score "NS -100"]
+[Table "1"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "88778887785566555665"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  8
+N  S  8
+N  H  7
+N  D  7
+N  C  8
+S NT  8
+S  S  8
+S  H  7
+S  D  7
+S  C  8
+E NT  5
+E  S  5
+E  H  6
+E  D  6
+E  C  5
+W NT  5
+W  S  5
+W  H  6
+W  D  6
+W  C  5
+[OptimumScore "NS +120"]
+[Competition "Pairs"]
+% RBDATA 10,0,1,73,160,111,159,39,33,35,68,33,14,239,26,56,9,54,21,46,18,116,24,12,14,40,38,18,12,36,18,11,19,22,36,31,62,41,29,13,32,12,21,11,75,17
+[Auction "N"]
+Pass 2S =1= 3C Pass 
+Pass Pass 
+[Play "W"]
+S8 S3 SK SQ 
+H5 H3 HK H4 
+H2 H6 H9 H7 
+HA H8 HT HJ 
+C2 CK C5 C3 
+D2 D5 D3 DA 
+C6 D6 S6 CA 
+C7 DT D8 CQ 
+CJ S7 S5 CT 
+D7 -  -  -  
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "5"]
+[West "Rachel Aylett#2302"]
+[North "Sybil Cornell#4518"]
+[East "Wilma Zeedijk#56252"]
+[South "Cynthia Singh#27403"]
+[Dealer "N"]
+[Vulnerable "NS"]
+[Deal "N:AT973.863.KT65.K K6542.KQT9.983.5 QJ.J74.A4.AQT943 8.A52.QJ72.J8762"]
+[Scoring "MP;MP1"]
+[Round "1"]
+[Declarer "N"]
+[Contract "2S"]
+[Result "9"]
+[Score "NS 140"]
+[Table "2"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "88778887785566555665"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  8
+N  S  8
+N  H  7
+N  D  7
+N  C  8
+S NT  8
+S  S  8
+S  H  7
+S  D  7
+S  C  8
+E NT  5
+E  S  5
+E  H  6
+E  D  6
+E  C  5
+W NT  5
+W  S  5
+W  H  6
+W  D  6
+W  C  5
+[OptimumScore "NS +120"]
+[Competition "Pairs"]
+% RBDATA 8,2,3,180,34,115,40,61,35,75,33,106,23,185,32,23,20,50,67,22,30,141,33,27,21,84,76,28,8,58,12,42,15,39,28,32,14,16,32,43,34,15,22,41,32,12,25,12,31,60,21,28,103,29,21,19,50,66,18,21,14,28,14,17,9,8,23,10,16
+[Auction "N"]
+Pass Pass 1C Pass 
+1S Pass 2C Pass 
+2D Pass 2S Pass 
+Pass Pass 
+[Play "E"]
+C5 C3 CJ CK 
+D3 DA D2 D5 
+D8 D4 DJ DK 
+D9 SJ D7 D6 
+S2 CA C2 H3 
+HK H4 H2 H6 
+HQ H7 H5 H8 
+HT HJ HA S3 
+S4 SQ DQ DT 
+S5 CQ C6 S7 
+S6 C4 S8 SA 
+SK C9 C7 ST 
+H9 CT C8 S9 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "6"]
+[West "Ray Crowe#4850"]
+[North "Judith Chandler#9758"]
+[East "Dianne Evans#74554"]
+[South "Paula McTaggart#52641"]
+[Dealer "E"]
+[Vulnerable "EW"]
+[Deal "N:Q54.QJ65.75.AK54 KJT3.A84.QJT82.T 96.KT9.K6.QJ7632 A872.732.A943.98"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "N"]
+[Contract "4C"]
+[Result "8"]
+[Score "NS -100"]
+[Table "3"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "32638326387b6a57b6a5"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  3
+N  S  2
+N  H  6
+N  D  3
+N  C  8
+S NT  3
+S  S  2
+S  H  6
+S  D  3
+S  C  8
+E NT  7
+E  S 11
+E  H  6
+E  D 10
+E  C  5
+W NT  7
+W  S 11
+W  H  6
+W  D 10
+W  C  5
+[OptimumScore "NS -650"]
+[Competition "Pairs"]
+% RBDATA 15,4,0,227,49,29,36,62,100,39,87,37,20,46,21,28,57,66,25,69,43,29,23,21,23,28,17,17,25,19,43,25,92,24,9,21,27,85,15,19,25,28,12,17,19,18,17,8,25,25,10,24
+[Auction "E"]
+Pass Pass Pass 1C 
+X 2C 2S 3C 
+3S 4C Pass Pass 
+Pass 
+[Play "E"]
+S3 S6 SA S4 
+ST S9 S2 S5 
+DQ DK DA D5 
+D8 D6 D3 D7 
+HA H9 H7 H5 
+DJ CJ D4 SQ 
+CT C2 C8 CA 
+D2 C3 C9 CK 
+DT CQ S7 C4 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "6"]
+[West "Rachel Aylett#2302"]
+[North "Gaynor Bradbury#2863"]
+[East "Wilma Zeedijk#56252"]
+[South "Diana Styche#22803"]
+[Dealer "E"]
+[Vulnerable "EW"]
+[Deal "N:Q54.QJ65.75.AK54 KJT3.A84.QJT82.T 96.KT9.K6.QJ7632 A872.732.A943.98"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "N"]
+[Contract "3C"]
+[Result "9"]
+[Score "NS 110"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "32638326387b6a57b6a5"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  3
+N  S  2
+N  H  6
+N  D  3
+N  C  8
+S NT  3
+S  S  2
+S  H  6
+S  D  3
+S  C  8
+E NT  7
+E  S 11
+E  H  6
+E  D 10
+E  C  5
+W NT  7
+W  S 11
+W  H  6
+W  D 10
+W  C  5
+[OptimumScore "NS -650"]
+[Competition "Pairs"]
+% RBDATA 10,5,3,193,70,447,112,44,187,30,380,37,19,35,83,153,30,14,76,15,15,12,98,29,154,39,22,25,11,23,51,57,12,36,74,49,77,17,24,13,47,12,30,34,38,16
+[Auction "E"]
+Pass Pass Pass 1NT 
+Pass 2S =1= Pass 3C 
+Pass Pass Pass 
+[Play "E"]
+D2 DK DA D5 
+DQ D6 D9 D7 
+SJ S6 S8 SQ 
+CT C2 C8 CA 
+H4 C6 C9 CK 
+HA HK H2 H5 
+SK S9 S2 S4 
+S3 CQ S7 S5 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "6"]
+[West "Barb Robinson#38037"]
+[North "Sybil Cornell#4518"]
+[East "John Seator#49186"]
+[South "Cynthia Singh#27403"]
+[Dealer "E"]
+[Vulnerable "EW"]
+[Deal "N:Q54.QJ65.75.AK54 KJT3.A84.QJT82.T 96.KT9.K6.QJ7632 A872.732.A943.98"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "W"]
+[Contract "2S"]
+[Result "10"]
+[Score "NS -170"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "32638326387b6a57b6a5"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  3
+N  S  2
+N  H  6
+N  D  3
+N  C  8
+S NT  3
+S  S  2
+S  H  6
+S  D  3
+S  C  8
+E NT  7
+E  S 11
+E  H  6
+E  D 10
+E  C  5
+W NT  7
+W  S 11
+W  H  6
+W  D 10
+W  C  5
+[OptimumScore "NS -650"]
+[Competition "Pairs"]
+% RBDATA 8,2,1,163,401,46,138,285,73,41,47,35,123,35,10,48,54,27,23,163,37,21,29,75,47,27,43,60,118,28,18,107,52,31,30,155,56,18,54,25,40,16,41,21,81,24,20,76,76,27,87,84,21,78,10
+[Auction "E"]
+1D =1= Pass 1S Pass 
+2S Pass Pass Pass 
+[Play "N"]
+CA CT C2 C9 
+D7 D2 DK DA 
+S4 SK S6 S2 
+SQ SJ S9 S7 
+D5 DQ D6 D3 
+S5 S3 C3 SA 
+C4 D8 C6 D9 
+C5 DT C7 D4 
+CK DJ CJ H2 
+H5 H4 H9 H3 
+H6 HA HT H7 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "7"]
+[West "Ray Crowe#4850"]
+[North "Judith Chandler#9758"]
+[East "Dianne Evans#74554"]
+[South "Paula McTaggart#52641"]
+[Dealer "S"]
+[Vulnerable "All"]
+[Deal "N:K2.K87.A8632.AKQ AJ876.A93.KJT7.4 T94.QJT52.Q9.963 Q53.64.54.JT8752"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "N"]
+[Contract "1NT"]
+[Result "8"]
+[Score "NS 120"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "75985659755834858348"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  5
+N  H  9
+N  D  8
+N  C  5
+S NT  6
+S  S  5
+S  H  9
+S  D  7
+S  C  5
+E NT  5
+E  S  8
+E  H  3
+E  D  4
+E  C  8
+W NT  5
+W  S  8
+W  H  3
+W  D  4
+W  C  8
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA 4,4,0,175,40,33,41,41,37,38,36,102,68,56,79,12,38,168,46,20,14,53,22,21,54,54,23,10,25,20,18,11,17,21,24,12,21,22,38,12,22,20,25,36,20,23,17,26,19,24,18,15,15
+[Auction "S"]
+Pass Pass 1D 1S 
+Pass Pass 1NT Pass 
+Pass Pass 
+[Play "E"]
+S8 S9 SQ SK 
+H3 HT H4 H7 
+HA H2 H6 HK 
+SA S4 S5 S2 
+SJ ST S3 D2 
+S7 D9 C2 D3 
+S6 C3 D5 D6 
+C4 C6 C7 CA 
+H9 HQ C5 H8 
+D7 HJ D4 D8 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "7"]
+[West "Rachel Aylett#2302"]
+[North "Gaynor Bradbury#2863"]
+[East "Wilma Zeedijk#56252"]
+[South "Diana Styche#22803"]
+[Dealer "S"]
+[Vulnerable "All"]
+[Deal "N:K2.K87.A8632.AKQ AJ876.A93.KJT7.4 T94.QJT52.Q9.963 Q53.64.54.JT8752"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "N"]
+[Contract "2S"]
+[Result "7"]
+[Score "NS -100"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "75985659755834858348"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  5
+N  H  9
+N  D  8
+N  C  5
+S NT  6
+S  S  5
+S  H  9
+S  D  7
+S  C  5
+E NT  5
+E  S  8
+E  H  3
+E  D  4
+E  C  8
+W NT  5
+W  S  8
+W  H  3
+W  D  4
+W  C  8
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA 8,5,3,201,43,27,91,177,45,135,51,216,23,58,72,24,15,125,17,14,22,31,37,4,27,59,24,12,8,14,129,30,14,57,16,11,13,11,16,15,72,64,29,21,12,57,30,19,23,86,23,11,29,33,17,37,22,19,13,10,13,8,18,12,10
+[Auction "S"]
+Pass Pass 1D 1S 
+X Pass 2S Pass 
+Pass Pass 
+[Play "E"]
+C4 C3 CT CA 
+HA H2 H4 HK 
+DT DQ D5 D2 
+H3 HQ H6 H7 
+H9 HJ CJ H8 
+D7 D9 D4 DA 
+DJ S4 SQ D3 
+S6 C6 C7 CK 
+DK S9 C2 D6 
+S7 C9 C5 CQ 
+SJ ST S3 SK 
+S8 H5 C8 D8 
+SA HT S5 S2 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "7"]
+[West "Barb Robinson#38037"]
+[North "Sybil Cornell#4518"]
+[East "John Seator#49186"]
+[South "Cynthia Singh#27403"]
+[Dealer "S"]
+[Vulnerable "All"]
+[Deal "N:K2.K87.A8632.AKQ AJ876.A93.KJT7.4 T94.QJT52.Q9.963 Q53.64.54.JT8752"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "E"]
+[Contract "3S"]
+[Result "9"]
+[Score "NS -140"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "75985659755834858348"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  5
+N  H  9
+N  D  8
+N  C  5
+S NT  6
+S  S  5
+S  H  9
+S  D  7
+S  C  5
+E NT  5
+E  S  8
+E  H  3
+E  D  4
+E  C  8
+W NT  5
+W  S  8
+W  H  3
+W  D  4
+W  C  8
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA 13,2,1,136,267,119,62,114,188,54,79,38,29,34,48,116,41,27,41,540,72,18,29,65,21,49,241,58,25,33,73,27,33,19,23,50,36,62,25,103,75,18,94,58,23,38,90,30,80,32,22,36,18,21
+[Auction "S"]
+Pass Pass 1D 1S 
+Pass 2S 3D 3S 
+Pass Pass Pass 
+[Play "S"]
+DQ D4 DA D7 
+H2 H4 H7 HA 
+S4 S3 S2 SA 
+S9 SQ SK S6 
+C3 C2 CA C4 
+H5 H6 HK H3 
+C6 C5 CK S7 
+HT S5 H8 H9 
+C9 CJ CQ S8 
+ST C7 D2 SJ 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "8"]
+[West "Ray Crowe#4850"]
+[North "Judith Chandler#9758"]
+[East "Dianne Evans#74554"]
+[South "Paula McTaggart#52641"]
+[Dealer "W"]
+[Vulnerable "-"]
+[Deal "N:AT73.K7.T.QT9643 QJ862.A9.8763.K7 K9.QJ542.KQ94.85 54.T863.AJ52.AJ2"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "S"]
+[Contract "2H"]
+[Result "7"]
+[Score "NS -50"]
+[Table "3"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "66758667586768567685"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  6
+N  H  7
+N  D  5
+N  C  8
+S NT  6
+S  S  6
+S  H  7
+S  D  5
+S  C  8
+E NT  6
+E  S  7
+E  H  6
+E  D  8
+E  C  5
+W NT  6
+W  S  7
+W  H  6
+W  D  8
+W  C  5
+[OptimumScore "NS -90"]
+[Competition "Pairs"]
+% RBDATA 7,4,0,142,36,31,119,29,32,26,71,26,26,27,9,36,94,117,31,11,280,50,42,20,15,22,12,9,144,23,8,17,123,26,12,22,27,25,21,41,122,26,18,31,73,53,22,8,30,36,31,10,34,38,19,36,88,23,8,15,69,20,6,19,26,9,18,7
+[Auction "W"]
+Pass Pass Pass 1H 
+Pass 1S Pass 2D 
+Pass 2H Pass Pass 
+Pass 
+[Play "W"]
+CA C3 C7 C5 
+H3 H7 HA H2 
+H6 HK H9 H4 
+S5 S3 S2 SK 
+H8 C4 S6 HQ 
+S4 SA S8 S9 
+DA DT D3 DQ 
+C2 CT CK C8 
+HT S7 SQ H5 
+D2 ST D8 D9 
+D5 C6 D7 DK 
+DJ C9 D6 D4 
+CJ CQ SJ HJ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "8"]
+[West "Rachel Aylett#2302"]
+[North "Gaynor Bradbury#2863"]
+[East "Wilma Zeedijk#56252"]
+[South "Diana Styche#22803"]
+[Dealer "W"]
+[Vulnerable "-"]
+[Deal "N:AT73.K7.T.QT9643 QJ862.A9.8763.K7 K9.QJ542.KQ94.85 54.T863.AJ52.AJ2"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "W"]
+[Contract "2NT"]
+[Result "6"]
+[Score "NS 100"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "66758667586768567685"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  6
+N  H  7
+N  D  5
+N  C  8
+S NT  6
+S  S  6
+S  H  7
+S  D  5
+S  C  8
+E NT  6
+E  S  7
+E  H  6
+E  D  8
+E  C  5
+W NT  6
+W  S  7
+W  H  6
+W  D  8
+W  C  5
+[OptimumScore "NS -90"]
+[Competition "Pairs"]
+% RBDATA 9,5,3,210,292,112,225,438,34,28,66,60,262,12,30,114,92,22,11,80,24,17,23,102,22,15,17,15,26,17,12,10,33,15,39,37,23,16,15,8,25,46,16,31,22,20,9,70,14,19,17,25,32,17,8,12,64,14,9,14,21,9,9
+[Auction "W"]
+Pass Pass 1S 2H 
+2NT Pass Pass Pass 
+[Play "N"]
+HK HA H2 H3 
+DT D3 D4 DJ 
+C3 D6 DQ DA 
+C4 D7 D9 D2 
+C6 D8 DK D5 
+H7 H9 HQ H6 
+S3 S2 HJ H8 
+S7 S6 H5 HT 
+C9 CK C5 C2 
+CT C7 C8 CA 
+SA S8 S9 S4 
+CQ SJ H4 CJ 
+ST SQ SK S5 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "8"]
+[West "Barb Robinson#38037"]
+[North "Sybil Cornell#4518"]
+[East "John Seator#49186"]
+[South "Cynthia Singh#27403"]
+[Dealer "W"]
+[Vulnerable "-"]
+[Deal "N:AT73.K7.T.QT9643 QJ862.A9.8763.K7 K9.QJ542.KQ94.85 54.T863.AJ52.AJ2"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "E"]
+[Contract "2S"]
+[Result "4"]
+[Score "NS 200"]
+[Table "2"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "66758667586768567685"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  6
+N  H  7
+N  D  5
+N  C  8
+S NT  6
+S  S  6
+S  H  7
+S  D  5
+S  C  8
+E NT  6
+E  S  7
+E  H  6
+E  D  8
+E  C  5
+W NT  6
+W  S  7
+W  H  6
+W  D  8
+W  C  5
+[OptimumScore "NS -90"]
+[Competition "Pairs"]
+% RBDATA 8,2,1,92,65,136,331,173,63,120,368,37,13,259,35,29,22,126,46,65,86,44,51,23,39,25,40,492,41,41,20,64,22,19,71,97,55,80,22,41,55,22,49,17,27,32,24,27,45,31,43,31,31,17,20,25,21,17,14,33,17
+[Auction "W"]
+Pass Pass 2S =1= Pass 
+Pass Pass 
+[Play "S"]
+DK D2 DT D3 
+D4 DJ S3 D6 
+H2 H3 H7 HA 
+C5 C2 C3 CK 
+C8 CJ CQ C7 
+H4 H6 HK H9 
+S9 CA C4 D7 
+HQ H8 C6 S2 
+SK S4 S7 SJ 
+HJ HT C9 S6 
+H5 S5 ST S8 
+D9 D5 SA SQ 
+DQ DA CT D8 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "9"]
+[West "Ray Crowe#4850"]
+[North "Judith Chandler#9758"]
+[East "Dianne Evans#74554"]
+[South "Paula McTaggart#52641"]
+[Dealer "N"]
+[Vulnerable "EW"]
+[Deal "N:AT6542.K843.Q.85 3.AT97.KJ965.QT7 J87.QJ.A84.K9643 KQ9.652.T732.AJ2"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer ""]
+[Contract "Pass"]
+[Result ""]
+[Score "NS 0"]
+[Table "3"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "49546495467479774897"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  9
+N  H  5
+N  D  4
+N  C  6
+S NT  4
+S  S  9
+S  H  5
+S  D  4
+S  C  6
+E NT  7
+E  S  4
+E  H  7
+E  D  9
+E  C  7
+W NT  7
+W  S  4
+W  H  8
+W  D  9
+W  C  7
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA -2,4,0,164,30,67,126
+[Auction "N"]
+Pass Pass Pass Pass 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "9"]
+[West "Barb Robinson#38037"]
+[North "Sybil Cornell#4518"]
+[East "John Seator#49186"]
+[South "Cynthia Singh#27403"]
+[Dealer "N"]
+[Vulnerable "EW"]
+[Deal "N:AT6542.K843.Q.85 3.AT97.KJ965.QT7 J87.QJ.A84.K9643 KQ9.652.T732.AJ2"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer ""]
+[Contract "Pass"]
+[Result ""]
+[Score "NS 0"]
+[Table "2"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "49546495467479774897"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  9
+N  H  5
+N  D  4
+N  C  6
+S NT  4
+S  S  9
+S  H  5
+S  D  4
+S  C  6
+E NT  7
+E  S  4
+E  H  7
+E  D  9
+E  C  7
+W NT  7
+W  S  4
+W  H  8
+W  D  9
+W  C  7
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA -2,2,1,101,153,169,77
+[Auction "N"]
+Pass Pass Pass Pass 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "9"]
+[West "Rachel Aylett#2302"]
+[North "Gaynor Bradbury#2863"]
+[East "Wilma Zeedijk#56252"]
+[South "Diana Styche#22803"]
+[Dealer "N"]
+[Vulnerable "EW"]
+[Deal "N:AT6542.K843.Q.85 3.AT97.KJ965.QT7 J87.QJ.A84.K9643 KQ9.652.T732.AJ2"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "N"]
+[Contract "3S"]
+[Result "9"]
+[Score "NS 140"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "49546495467479774897"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  9
+N  H  5
+N  D  4
+N  C  6
+S NT  4
+S  S  9
+S  H  5
+S  D  4
+S  C  6
+E NT  7
+E  S  4
+E  H  7
+E  D  9
+E  C  7
+W NT  7
+W  S  4
+W  H  8
+W  D  9
+W  C  7
+[OptimumScore "NS +140"]
+[Competition "Pairs"]
+% RBDATA 13,5,3,142,38,155,103,201,111,188,272,885,20,22,107,177,41,82,46,128,31,98,8,22,39,23,20,53,39,17,17,44,18,19,12,43,46,23,17,130,23,12,12,57,18,15,15,41,26,19,12,24,30,13,7,33,49,7,14,12,8,10,33,25,11,7,10
+[Auction "N"]
+Pass Pass 1C Pass 
+1S 2D Pass 3D 
+3S Pass Pass Pass 
+[Play "E"]
+D5 DA D2 DQ 
+S3 S7 S9 SA 
+H7 SJ SQ S2 
+D6 D4 DT S4 
+HA HJ H2 H3 
+CT CK CJ C5 
+H9 HQ H5 H4 
+D9 D8 D3 S5 
+HT S8 H6 H8 
+C7 C3 CA C8 
+CQ C4 C2 S6 
+DJ C6 SK HK 
+DK C9 D7 ST 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "10"]
+[West "Ray Crowe#4850"]
+[North "Judith Chandler#9758"]
+[East "Dianne Evans#74554"]
+[South "Paula McTaggart#52641"]
+[Dealer "E"]
+[Vulnerable "All"]
+[Deal "N:AJ7.6.KQ98.T9742 Q652.T94.T4.K853 .KQ853.A7652.QJ6 KT9843.AJ72.J3.A"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "W"]
+[Contract "2S"]
+[Result "8"]
+[Score "NS -110"]
+[Table "3"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "646a9646a96853368533"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  6
+N  D 10
+N  C  9
+S NT  6
+S  S  4
+S  H  6
+S  D 10
+S  C  9
+E NT  6
+E  S  8
+E  H  5
+E  D  3
+E  C  3
+W NT  6
+W  S  8
+W  H  5
+W  D  3
+W  C  3
+[OptimumScore "NS +130"]
+[Competition "Pairs"]
+% RBDATA 8,4,0,80,190,143,94,32,124,37,267,7,26,40,30,14,6,253,28,10,6,42,33,7,8,21,20,8,12,120,23,23,11,49,26,23,18,36,126,8,17,20,21,37,26,42,71,12,51,21,60,10,42
+[Auction "E"]
+Pass 1H 2S Pass 
+Pass Pass 
+[Play "N"]
+H6 HT HQ HA 
+C2 C3 C6 CA 
+SA S2 D2 SK 
+DK D4 D5 DJ 
+D8 DT DA D3 
+C4 H4 HK H2 
+S7 H9 H3 H7 
+CT C5 CJ S3 
+SJ SQ H5 ST 
+D9 S5 H8 S9 
+C7 S6 CQ HJ 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "10"]
+[West "Barb Robinson#38037"]
+[North "Sybil Cornell#4518"]
+[East "John Seator#49186"]
+[South "Cynthia Singh#27403"]
+[Dealer "E"]
+[Vulnerable "All"]
+[Deal "N:AJ7.6.KQ98.T9742 Q652.T94.T4.K853 .KQ853.A7652.QJ6 KT9843.AJ72.J3.A"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "W"]
+[Contract "3S"]
+[Result "9"]
+[Score "NS -140"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "646a9646a96853368533"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  6
+N  D 10
+N  C  9
+S NT  6
+S  S  4
+S  H  6
+S  D 10
+S  C  9
+E NT  6
+E  S  8
+E  H  5
+E  D  3
+E  C  3
+W NT  6
+W  S  8
+W  H  5
+W  D  3
+W  C  3
+[OptimumScore "NS +130"]
+[Competition "Pairs"]
+% RBDATA 13,2,1,55,235,68,73,64,415,83,32,23,118,87,159,61,27,89,54,13,33,22,138,25,22,196,41,18,62,31,25,16,10,47,24,13,11,101,68,38,32,35,69,14,58,31,90,13,26
+[Auction "E"]
+Pass 1H 1S 2D 
+2S 3D 3S Pass 
+Pass Pass 
+[Play "N"]
+H6 H4 HQ HA 
+C2 C3 C6 CA 
+S7 S2 D2 SK 
+SA S5 D5 S8 
+DK D4 D6 DJ 
+DQ DT D7 D3 
+CT CK CQ H2 
+SJ SQ H3 S3 
+D8 H9 HK H7 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "10"]
+[West "Rachel Aylett#2302"]
+[North "Gaynor Bradbury#2863"]
+[East "Wilma Zeedijk#56252"]
+[South "Diana Styche#22803"]
+[Dealer "E"]
+[Vulnerable "All"]
+[Deal "N:AJ7.6.KQ98.T9742 Q652.T94.T4.K853 .KQ853.A7652.QJ6 KT9843.AJ72.J3.A"]
+[Scoring "MP;MP1"]
+[Round "2"]
+[Declarer "S"]
+[Contract "5D"]
+[Result "10"]
+[Score "NS -100"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "646a9646a96853368533"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  6
+N  D 10
+N  C  9
+S NT  6
+S  S  4
+S  H  6
+S  D 10
+S  C  9
+E NT  6
+E  S  8
+E  H  5
+E  D  3
+E  C  3
+W NT  6
+W  S  8
+W  H  5
+W  D  3
+W  C  3
+[OptimumScore "NS +130"]
+[Competition "Pairs"]
+% RBDATA 21,5,3,69,184,132,136,54,43,54,88,31,97,165,83,20,59,30,22,20,146,89,10,19,48,52,7,20,47,34,17,74,36,30,8,19,107,12,19,18,86,29,10,7,30,16,10,7,67,13,10,33,54,45,16,13,21,16,17,6,16,11,18,13,17,11,14,6,16,11,10,5
+[Auction "E"]
+Pass 1H X 2C 
+2S 3D 3S 4D 
+Pass Pass 4S Pass 
+Pass 5D Pass Pass 
+Pass 
+[Play "W"]
+CA C2 C3 C6 
+HA H6 H4 H3 
+S3 SA S2 CJ 
+D3 DK D4 D2 
+DJ D8 DT DA 
+H2 C4 H9 HK 
+H7 C7 HT HQ 
+HJ D9 C5 H5 
+S4 S7 S5 D5 
+S8 DQ S6 H8 
+S9 SJ SQ D6 
+ST C9 C8 D7 
+SK CT CK CQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "11"]
+[West "Barb Robinson#38037"]
+[North "Judith Chandler#9758"]
+[East "John Seator#49186"]
+[South "Paula McTaggart#52641"]
+[Dealer "S"]
+[Vulnerable "-"]
+[Deal "N:AT9542.QJ8.T2.AT 87.T753.K63.9852 J6.A642.J85.J764 KQ3.K9.AQ974.KQ3"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "W"]
+[Contract "3D"]
+[Result "9"]
+[Score "NS -110"]
+[Table "3"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "57655586556568865688"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  5
+N  S  7
+N  H  6
+N  D  5
+N  C  5
+S NT  5
+S  S  8
+S  H  6
+S  D  5
+S  C  5
+E NT  6
+E  S  5
+E  H  6
+E  D  8
+E  C  8
+W NT  6
+W  S  5
+W  H  6
+W  D  8
+W  C  8
+[OptimumScore "NS +100"]
+[Competition "Pairs"]
+% RBDATA 11,4,1,84,94,59,56,111,58,48,71,133,33,29,70,96,18,17,6,29,7,15,117,27,19,8,63,21,17,6,46,22,22,16,45,16,20,23,32,88,7,24,134,21,18,6,27,23,19,28,62,21,15,11,33
+[Auction "S"]
+Pass 1C =1= 1S Pass 
+Pass 2D 2S 3D 
+Pass Pass Pass 
+[Play "N"]
+SA S7 S6 S3 
+S9 S8 SJ SK 
+D2 D3 D5 DA 
+DT D6 D8 DQ 
+S2 DK DJ D4 
+CA C2 C4 CQ 
+S4 H3 H2 SQ 
+CT C5 C6 CK 
+S5 C8 CJ C3 
+H8 H5 HA H9 
+-  -  C7 -  
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "11"]
+[West "Ray Crowe#4850"]
+[North "Wilma Zeedijk#56252"]
+[East "Dianne Evans#74554"]
+[South "Rachel Aylett#2302"]
+[Dealer "S"]
+[Vulnerable "-"]
+[Deal "N:AT9542.QJ8.T2.AT 87.T753.K63.9852 J6.A642.J85.J764 KQ3.K9.AQ974.KQ3"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "W"]
+[Contract "1D"]
+[Result "10"]
+[Score "NS -130"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "57655586556568865688"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  5
+N  S  7
+N  H  6
+N  D  5
+N  C  5
+S NT  5
+S  S  8
+S  H  6
+S  D  5
+S  C  5
+E NT  6
+E  S  5
+E  H  6
+E  D  8
+E  C  8
+W NT  6
+W  S  5
+W  H  6
+W  D  8
+W  C  8
+[OptimumScore "NS +100"]
+[Competition "Pairs"]
+% RBDATA 1,3,0,518,62,121,119,45,85,88,17,28,6,45,14,24,275,35,13,19,12,23,10,6,59,30,12,13,106,30,14,12,88,22,17,28,8,23,106,30,34,23,14,11,34,23,19,44,30,18,12,73,13,18,11,11,15,6,12,6
+[Auction "S"]
+Pass 1D Pass Pass 
+Pass 
+[Play "N"]
+CA C2 C4 C3 
+CT C5 C6 CQ 
+D2 DK D5 D4 
+DT D3 D8 DA 
+S2 D6 DJ DQ 
+S4 C8 C7 CK 
+SA S7 S6 SK 
+HQ H3 HA H9 
+H8 H5 H2 HK 
+S5 S8 H4 D9 
+S9 C9 H6 D7 
+ST H7 SJ SQ 
+HJ HT CJ S3 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "11"]
+[West "Cynthia Singh#27403"]
+[North "Gaynor Bradbury#2863"]
+[East "Sybil Cornell#4518"]
+[South "Diana Styche#22803"]
+[Dealer "S"]
+[Vulnerable "-"]
+[Deal "N:AT9542.QJ8.T2.AT 87.T753.K63.9852 J6.A642.J85.J764 KQ3.K9.AQ974.KQ3"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "W"]
+[Contract "3D"]
+[Result "9"]
+[Score "NS -110"]
+[Table "1"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "57655586556568865688"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  5
+N  S  7
+N  H  6
+N  D  5
+N  C  5
+S NT  5
+S  S  8
+S  H  6
+S  D  5
+S  C  5
+E NT  6
+E  S  5
+E  H  6
+E  D  8
+E  C  8
+W NT  6
+W  S  5
+W  H  6
+W  D  8
+W  C  8
+[OptimumScore "NS +100"]
+[Competition "Pairs"]
+% RBDATA 11,5,2,142,152,117,114,32,378,60,30,25,32,64,33,34,108,43,11,42,74,28,16,9,92,41,23,24,36,62,35,19,25,22,40,19,74,53,15,46,21,39,16,19,219,19,29,13,20,40,9,32,68,18,28,18,40,13,38,12,17,13,27,11
+[Auction "S"]
+Pass 1D 2S Pass 
+Pass 3D Pass Pass 
+Pass 
+[Play "N"]
+SA S7 S6 S3 
+ST S8 SJ SK 
+D2 D3 D5 DA 
+DT D6 D8 DQ 
+S2 DK DJ D4 
+CA C2 C4 CQ 
+HQ H3 HA H9 
+H8 H5 H2 HK 
+CT C5 C6 C3 
+HJ H7 H4 D7 
+S4 C8 H6 SQ 
+S5 C9 C7 D9 
+S9 HT CJ CK 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "12"]
+[West "Ray Crowe#4850"]
+[North "Wilma Zeedijk#56252"]
+[East "Dianne Evans#74554"]
+[South "Rachel Aylett#2302"]
+[Dealer "W"]
+[Vulnerable "NS"]
+[Deal "N:T4.J73.532.KQ543 A73.A4.AK97.A876 QJ.KQT852.64.JT2 K98652.96.QJT8.9"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "W"]
+[Contract "5S"]
+[Result "12"]
+[Score "NS -480"]
+[Table "2"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "1150611506cc7d7cc7d7"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  1
+N  S  1
+N  H  5
+N  D  0
+N  C  6
+S NT  1
+S  S  1
+S  H  5
+S  D  0
+S  C  6
+E NT 12
+E  S 12
+E  H  7
+E  D 13
+E  C  7
+W NT 12
+W  S 12
+W  H  7
+W  D 13
+W  C  7
+[OptimumScore "NS -1440"]
+[Competition "Pairs"]
+% RBDATA 23,3,0,124,104,237,97,46,11,62,116,468,31,37,167,21,8,21,30,14,7,431,32,11,19,45,20,9,7,52,16,11,6,16,39,9,8,79,46,10,17,12,18,10,37,10,15,16,22,17,13,13,7,22,5,13,7,15,7,21,7
+[Auction "W"]
+2S Pass 5S Pass 
+Pass Pass 
+[Play "N"]
+C3 CA C2 C9 
+S4 SA SJ S2 
+ST S3 SQ SK 
+H3 HA H2 H6 
+D2 DA D4 D8 
+D3 DK D6 DT 
+D5 D7 H5 DQ 
+C4 S7 CJ S9 
+C5 H4 H8 S8 
+H7 D9 CT S6 
+HJ C6 HT S5 
+CQ C7 HQ DJ 
+CK C8 HK H9 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "12"]
+[West "Cynthia Singh#27403"]
+[North "Gaynor Bradbury#2863"]
+[East "Sybil Cornell#4518"]
+[South "Diana Styche#22803"]
+[Dealer "W"]
+[Vulnerable "NS"]
+[Deal "N:T4.J73.532.KQ543 A73.A4.AK97.A876 QJ.KQT852.64.JT2 K98652.96.QJT8.9"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "E"]
+[Contract "3NT"]
+[Result "9"]
+[Score "NS -400"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "1150611506cc7d7cc7d7"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  1
+N  S  1
+N  H  5
+N  D  0
+N  C  6
+S NT  1
+S  S  1
+S  H  5
+S  D  0
+S  C  6
+E NT 12
+E  S 12
+E  H  7
+E  D 13
+E  C  7
+W NT 12
+W  S 12
+W  H  7
+W  D 13
+W  C  7
+[OptimumScore "NS -1440"]
+[Competition "Pairs"]
+% RBDATA 14,5,2,202,86,43,94,24,119,45,95,13,24,184,33,10,39,63,38,30,10,63,15,25,12,45,187,33,8,117,55,29,10,76,14,35,31,42,20,46,33,29,49,55,14,177,22,20,12,33,17,26,14,10,23,9,24,10,19,11,20
+[Auction "W"]
+2S Pass 3NT Pass 
+Pass Pass 
+[Play "S"]
+HK H6 H3 H4 
+H2 H9 HJ HA 
+D6 DQ D5 D7 
+D4 D8 D3 DA 
+H5 DT D2 DK 
+SJ SK S4 S3 
+H8 DJ C3 D9 
+SQ S9 ST SA 
+HT S2 C4 S7 
+C2 C9 C5 CA 
+CT S5 CK C8 
+CJ S6 CQ C6 
+HQ S8 H7 C7 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "12"]
+[West "Barb Robinson#38037"]
+[North "Judith Chandler#9758"]
+[East "John Seator#49186"]
+[South "Paula McTaggart#52641"]
+[Dealer "W"]
+[Vulnerable "NS"]
+[Deal "N:T4.J73.532.KQ543 A73.A4.AK97.A876 QJ.KQT852.64.JT2 K98652.96.QJT8.9"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "E"]
+[Contract "4S"]
+[Result "12"]
+[Score "NS -480"]
+[Table "3"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "1150611506cc7d7cc7d7"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  1
+N  S  1
+N  H  5
+N  D  0
+N  C  6
+S NT  1
+S  S  1
+S  H  5
+S  D  0
+S  C  6
+E NT 12
+E  S 12
+E  H  7
+E  D 13
+E  C  7
+W NT 12
+W  S 12
+W  H  7
+W  D 13
+W  C  7
+[OptimumScore "NS -1440"]
+[Competition "Pairs"]
+% RBDATA 18,4,1,194,92,106,240,201,42,385,83,19,19,57,109,23,71,71,11,47,17,67,14,21,13,461,30,32,8,165,22,44,12,154,16,42,12,151,21,17,13,140,24,99,13,55,10,19,17,29,18,15,21,29,12,79,31,21
+[Auction "W"]
+2D =1= Pass 2NT =2= Pass 
+3D =3= Pass 4S Pass 
+Pass Pass 
+[Play "S"]
+HK H6 H7 HA 
+SJ S2 S4 SA 
+SQ SK ST S7 
+D4 DQ D3 D7 
+C2 C9 CQ CA 
+D6 DT D2 DA 
+CT S5 C3 C6 
+H2 DJ D5 DK 
+CJ S6 C4 C7 
+H5 D8 H3 D9 
+H8 H9 CK C8 
+-  -  HJ -  
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "13"]
+[West "Ray Crowe#4850"]
+[North "Wilma Zeedijk#56252"]
+[East "Dianne Evans#74554"]
+[South "Rachel Aylett#2302"]
+[Dealer "N"]
+[Vulnerable "All"]
+[Deal "N:3.QT543.K732.Q97 JT7652.KJ8.T4.54 AQ84.A9.985.JT63 K9.762.AQJ6.AK82"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "E"]
+[Contract "2S"]
+[Result "9"]
+[Score "NS -140"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "64667646677967678675"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  6
+N  D  6
+N  C  7
+S NT  6
+S  S  4
+S  H  6
+S  D  6
+S  C  7
+E NT  7
+E  S  9
+E  H  6
+E  D  7
+E  C  6
+W NT  7
+W  S  8
+W  H  6
+W  D  7
+W  C  5
+[OptimumScore "NS -140"]
+[Competition "Pairs"]
+% RBDATA 8,3,0,63,71,164,135,39,91,125,24,13,365,42,7,38,60,29,19,27,28,63,23,7,114,14,16,18,98,50,18,29,24,34,44,170,12,26,28,14,29,34,15,5,35,34,12,26,26,7,17,40,18,19,18,5,23,20,31,5,25,8,13,8
+[Auction "N"]
+Pass Pass Pass 1C 
+Pass 2S =1= Pass Pass 
+Pass 
+[Play "S"]
+HA H2 H3 H8 
+H9 H6 HQ HK 
+S4 S9 S3 S2 
+SA SK H4 S5 
+CT CA C7 C4 
+D5 D6 DK DT 
+D9 H7 HT HJ 
+SQ C2 H5 SJ 
+CJ CK C9 C5 
+C3 C8 CQ S6 
+S8 DJ D2 ST 
+D8 DQ D3 D4 
+C6 DA D7 S7 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "13"]
+[West "Cynthia Singh#27403"]
+[North "Gaynor Bradbury#2863"]
+[East "Sybil Cornell#4518"]
+[South "Diana Styche#22803"]
+[Dealer "N"]
+[Vulnerable "All"]
+[Deal "N:3.QT543.K732.Q97 JT7652.KJ8.T4.54 AQ84.A9.985.JT63 K9.762.AQJ6.AK82"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "E"]
+[Contract "3S"]
+[Result "8"]
+[Score "NS 100"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "64667646677967678675"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  6
+N  D  6
+N  C  7
+S NT  6
+S  S  4
+S  H  6
+S  D  6
+S  C  7
+E NT  7
+E  S  9
+E  H  6
+E  D  7
+E  C  6
+W NT  7
+W  S  8
+W  H  6
+W  D  7
+W  C  5
+[OptimumScore "NS -140"]
+[Competition "Pairs"]
+% RBDATA 13,5,2,70,47,188,125,26,111,758,105,89,169,29,79,31,104,142,22,46,124,17,25,42,34,24,110,28,20,57,221,54,73,77,21,22,11,37,18,28,21,38,31,55,61,35,48,12,25,20,25,21,36,10,20,56,19,32,17,24,29,22,19,10,24,18,24,11
+[Auction "N"]
+Pass Pass Pass 1C 
+Pass 1S Pass 2NT 
+Pass 3S Pass Pass 
+Pass 
+[Play "S"]
+D8 DA D2 D4 
+SQ S9 S3 S2 
+SA SK HT S5 
+D9 D6 DK DT 
+HA H2 H3 HJ 
+H9 H6 HQ HK 
+S4 H7 H4 ST 
+C3 CA C7 C4 
+D5 DJ D7 H8 
+S8 DQ D3 C5 
+CJ CK C9 S6 
+C6 C2 H5 SJ 
+CT C8 CQ S7 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "13"]
+[West "Barb Robinson#38037"]
+[North "Judith Chandler#9758"]
+[East "John Seator#49186"]
+[South "Paula McTaggart#52641"]
+[Dealer "N"]
+[Vulnerable "All"]
+[Deal "N:3.QT543.K732.Q97 JT7652.KJ8.T4.54 AQ84.A9.985.JT63 K9.762.AQJ6.AK82"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "W"]
+[Contract "4S"]
+[Result "7"]
+[Score "NS 300"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "64667646677967678675"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  6
+N  D  6
+N  C  7
+S NT  6
+S  S  4
+S  H  6
+S  D  6
+S  C  7
+E NT  7
+E  S  9
+E  H  6
+E  D  7
+E  C  6
+W NT  7
+W  S  8
+W  H  6
+W  D  7
+W  C  5
+[OptimumScore "NS -140"]
+[Competition "Pairs"]
+% RBDATA 18,4,1,73,156,145,73,28,94,317,258,97,31,116,34,206,111,29,60,37,19,16,192,38,21,6,228,16,21,26,65,35,67,17,122,44,6,35,143,22,29,11,134,10,53,15,107,23,144,32,17,46,17,18,58,32,11,7,72,17,9,13,7,10,18,11
+[Auction "N"]
+Pass 2D =1= Pass 2NT =2= 
+Pass 3D =3= Pass 4S 
+Pass Pass Pass 
+[Play "N"]
+H4 HJ HA H2 
+C7 C4 CJ CA 
+HT HK H9 H6 
+DK D4 D5 DJ 
+HQ H8 C3 H7 
+C9 C5 C6 CK 
+CQ ST CT C2 
+S3 S2 S4 SK 
+H3 S5 SQ S9 
+D2 DT D8 DA 
+D7 S6 D9 D6 
+H5 SJ SA C8 
+D3 S7 S8 DQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "14"]
+[West "Ray Crowe#4850"]
+[North "Wilma Zeedijk#56252"]
+[East "Dianne Evans#74554"]
+[South "Rachel Aylett#2302"]
+[Dealer "E"]
+[Vulnerable "-"]
+[Deal "N:A85.Q4.753.QJ965 K76.JT9.KQJ4.A87 J94.A653.AT62.KT QT32.K872.98.432"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "E"]
+[Contract "1NT"]
+[Result "9"]
+[Score "NS -150"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "76577766776765567656"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  6
+N  H  5
+N  D  7
+N  C  7
+S NT  7
+S  S  6
+S  H  6
+S  D  7
+S  C  7
+E NT  6
+E  S  7
+E  H  6
+E  D  5
+E  C  5
+W NT  6
+W  S  7
+W  H  6
+W  D  5
+W  C  6
+[OptimumScore "NS +90"]
+[Competition "Pairs"]
+% RBDATA 4,3,0,106,58,28,14,219,90,44,24,15,19,20,21,48,47,9,21,29,51,27,5,69,91,13,44,81,34,36,37,15,42,32,19,24,17,33,6,27,21,18,10,21,11,17,14,20,8,16,13,17,15,14,5,18,12,31,5
+[Auction "E"]
+1NT Pass Pass Pass 
+[Play "S"]
+H3 H2 HQ H9 
+HA H7 H4 HT 
+H5 H8 D3 HJ 
+DA D8 D5 DK 
+S4 S2 S8 SK 
+S9 ST SA S7 
+CT C2 CQ CA 
+SJ SQ S5 S6 
+D2 S3 D7 C7 
+H6 HK C5 C8 
+D6 D9 C6 DQ 
+DT C3 C9 DJ 
+CK C4 CJ D4 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "14"]
+[West "Cynthia Singh#27403"]
+[North "Gaynor Bradbury#2863"]
+[East "Sybil Cornell#4518"]
+[South "Diana Styche#22803"]
+[Dealer "E"]
+[Vulnerable "-"]
+[Deal "N:A85.Q4.753.QJ965 K76.JT9.KQJ4.A87 J94.A653.AT62.KT QT32.K872.98.432"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "E"]
+[Contract "1NT"]
+[Result "7"]
+[Score "NS -90"]
+[Table "1"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "76577766776765567656"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  6
+N  H  5
+N  D  7
+N  C  7
+S NT  7
+S  S  6
+S  H  6
+S  D  7
+S  C  7
+E NT  6
+E  S  7
+E  H  6
+E  D  5
+E  C  5
+W NT  6
+W  S  7
+W  H  6
+W  D  5
+W  C  6
+[OptimumScore "NS +90"]
+[Competition "Pairs"]
+% RBDATA 4,5,2,145,47,62,54,401,168,9,62,162,22,30,67,106,64,62,32,93,60,26,23,13,31,10,25,173,28,10,30,63,60,19,10,13,79,64,27,31,42,26,276,37,16,25,10,11,26,9,24,18,17,24,14,21,15,21,21
+[Auction "E"]
+1NT Pass Pass Pass 
+[Play "S"]
+D2 D8 D7 D4 
+H3 H2 H4 H9 
+H5 H7 HQ HJ 
+CT C2 C5 C7 
+CK C3 C6 C8 
+D6 D9 D5 DJ 
+DA S2 D3 DQ 
+DT S3 S5 DK 
+S4 SQ S8 S6 
+S9 ST SA S7 
+H6 C4 CQ CA 
+SJ H8 C9 SK 
+HA HK CJ HT 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "14"]
+[West "Barb Robinson#38037"]
+[North "Judith Chandler#9758"]
+[East "John Seator#49186"]
+[South "Paula McTaggart#52641"]
+[Dealer "E"]
+[Vulnerable "-"]
+[Deal "N:A85.Q4.753.QJ965 K76.JT9.KQJ4.A87 J94.A653.AT62.KT QT32.K872.98.432"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "E"]
+[Contract "1NT"]
+[Result "7"]
+[Score "NS -90"]
+[Table "3"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "76577766776765567656"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  6
+N  H  5
+N  D  7
+N  C  7
+S NT  7
+S  S  6
+S  H  6
+S  D  7
+S  C  7
+E NT  6
+E  S  7
+E  H  6
+E  D  5
+E  C  5
+W NT  6
+W  S  7
+W  H  6
+W  D  5
+W  C  6
+[OptimumScore "NS +90"]
+[Competition "Pairs"]
+% RBDATA 4,4,1,130,85,51,38,114,71,22,29,72,120,177,34,19,89,10,19,144,30,11,77,267,22,28,69,64,33,289,25,137,16,14,83,82,20,22,62,9,40,122,89,205,52,22,22,20,29,64,16,11,16,34,12,20,5,19,12
+[Auction "E"]
+1NT Pass Pass Pass 
+[Play "S"]
+H3 H2 HQ H9 
+CT C2 CQ C7 
+CK C3 C5 C8 
+D2 D8 D5 D4 
+H5 H7 H4 HJ 
+H6 HK D7 HT 
+D6 D9 D3 DJ 
+DA S2 S5 DK 
+HA H8 C6 S6 
+S4 S3 SA S7 
+S9 C4 C9 CA 
+SJ ST S8 SK 
+DT SQ CJ DQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "15"]
+[West "Ray Crowe#4850"]
+[North "Wilma Zeedijk#56252"]
+[East "Dianne Evans#74554"]
+[South "Rachel Aylett#2302"]
+[Dealer "S"]
+[Vulnerable "NS"]
+[Deal "N:T9.KQT6.AQ32.AQ9 AK6.52.T98.T7654 QJ42.A43.KJ65.J2 8753.J987.74.K83"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "S"]
+[Contract "6H"]
+[Result "8"]
+[Score "NS -400"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "babb8babb82222522225"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT 11
+N  S 10
+N  H 11
+N  D 11
+N  C  8
+S NT 11
+S  S 10
+S  H 11
+S  D 11
+S  C  8
+E NT  2
+E  S  2
+E  H  2
+E  D  2
+E  C  5
+W NT  2
+W  S  2
+W  H  2
+W  D  2
+W  C  5
+[OptimumScore "NS +660"]
+[Competition "Pairs"]
+% RBDATA 27,3,0,493,41,39,47,222,24,237,94,51,35,144,37,100,25,70,230,109,19,43,24,17,15,17,27,25,17,27,18,15,18,264,27,19,12,146,23,22,23,84,25,14,11,243,31,74,15,43,27,25,15,13,59,14,19,20,45,16,32,17,463,18,23,18,12,11,8
+[Auction "S"]
+1NT Pass 2C Pass 
+2S Pass 4NT Pass 
+5H Pass 6H Pass 
+Pass Pass 
+[Play "W"]
+D7 D2 D8 DK 
+H7 H6 H2 HA 
+H8 HK H5 H3 
+H9 HQ S6 H4 
+D4 D3 D9 DJ 
+C3 CQ C5 C2 
+C8 CA C4 CJ 
+CK C9 CT D5 
+HJ HT C6 S2 
+S3 S9 SA S4 
+S5 ST SK SJ 
+S7 DQ C7 D6 
+S8 DA DT SQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "15"]
+[West "Cynthia Singh#27403"]
+[North "Gaynor Bradbury#2863"]
+[East "Sybil Cornell#4518"]
+[South "Diana Styche#22803"]
+[Dealer "S"]
+[Vulnerable "NS"]
+[Deal "N:T9.KQT6.AQ32.AQ9 AK6.52.T98.T7654 QJ42.A43.KJ65.J2 8753.J987.74.K83"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "S"]
+[Contract "3NT"]
+[Result "11"]
+[Score "NS 660"]
+[Table "1"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "babb8babb82222522225"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT 11
+N  S 10
+N  H 11
+N  D 11
+N  C  8
+S NT 11
+S  S 10
+S  H 11
+S  D 11
+S  C  8
+E NT  2
+E  S  2
+E  H  2
+E  D  2
+E  C  5
+W NT  2
+W  S  2
+W  H  2
+W  D  2
+W  C  5
+[OptimumScore "NS +660"]
+[Competition "Pairs"]
+% RBDATA 14,5,2,118,56,62,31,105,81,26,92,26,51,62,191,35,44,170,38,11,36,24,27,16,44,27,38,44,31,33,45,10,42,93,24,61,19,18,81,15,32,8,26,12,32,9,24,27,71
+[Auction "S"]
+1NT Pass 2C Pass 
+2S Pass 3NT Pass 
+Pass Pass 
+[Play "W"]
+H9 HT H5 H3 
+S3 ST S6 S2 
+S5 S9 SK S4 
+H7 H6 H2 HA 
+S7 C9 SA SQ 
+CK CA C4 CJ 
+H8 HK C5 H4 
+C3 CQ C6 C2 
+D4 D2 D8 DK 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "15"]
+[West "Barb Robinson#38037"]
+[North "Judith Chandler#9758"]
+[East "John Seator#49186"]
+[South "Paula McTaggart#52641"]
+[Dealer "S"]
+[Vulnerable "NS"]
+[Deal "N:T9.KQT6.AQ32.AQ9 AK6.52.T98.T7654 QJ42.A43.KJ65.J2 8753.J987.74.K83"]
+[Scoring "MP;MP1"]
+[Round "3"]
+[Declarer "S"]
+[Contract "3NT"]
+[Result "11"]
+[Score "NS 660"]
+[Table "3"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "babb8babb82222522225"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT 11
+N  S 10
+N  H 11
+N  D 11
+N  C  8
+S NT 11
+S  S 10
+S  H 11
+S  D 11
+S  C  8
+E NT  2
+E  S  2
+E  H  2
+E  D  2
+E  C  5
+W NT  2
+W  S  2
+W  H  2
+W  D  2
+W  C  5
+[OptimumScore "NS +660"]
+[Competition "Pairs"]
+% RBDATA 14,4,1,246,81,38,50,182,24,74,93,13,19,30,151,35,10,27,14,26,7,36,31,11,53,168,26,10,21,28,11,9,29,13,49,13,17,85,25,6,11,20,17,11,8,13,18,13,13,14,51,14,29,163,59,68,24,7,15,6,14,5,16,7,8
+[Auction "S"]
+1D Pass 1H Pass 
+1NT Pass 3NT Pass 
+Pass Pass 
+[Play "W"]
+S3 S9 SA S2 
+S5 ST SK S4 
+S7 C9 S6 SJ 
+H7 H6 H2 HA 
+H8 HK H5 H3 
+H9 HQ C7 H4 
+D7 DA D8 D5 
+D4 DQ D9 D6 
+C3 D2 DT DK 
+S8 D3 C6 DJ 
+HJ CQ C4 SQ 
+C8 CA C5 C2 
+CK HT CT CJ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "16"]
+[West "Barb Robinson#38037"]
+[North "Gaynor Bradbury#2863"]
+[East "John Seator#49186"]
+[South "Diana Styche#22803"]
+[Dealer "W"]
+[Vulnerable "EW"]
+[Deal "N:JT6.A3.QJT53.863 743.T764.6.K7542 A95.J8.A972.QJT9 KQ82.KQ952.K84.A"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "W"]
+[Contract "3H"]
+[Result "10"]
+[Score "NS -170"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "643866438678a5778a57"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  3
+N  D  8
+N  C  6
+S NT  6
+S  S  4
+S  H  3
+S  D  8
+S  C  6
+E NT  7
+E  S  8
+E  H 10
+E  D  5
+E  C  7
+W NT  7
+W  S  8
+W  H 10
+W  D  5
+W  C  7
+[OptimumScore "NS -500"]
+[Competition "Pairs"]
+% RBDATA 12,5,1,221,119,36,277,45,93,99,148,60,184,371,35,34,40,82,137,13,30,41,42,76,19,197,36,9,19,10,30,13,28,89,18,21,10,41,32,24,10,40,29,26,4,36,27,18,11,17,21,12,11
+[Auction "W"]
+1C =1= Pass 1D =2= Pass 
+2H Pass Pass X 
+Pass 3D 3H Pass 
+Pass Pass 
+[Play "N"]
+DQ D6 DA D4 
+HA H4 HJ HQ 
+SJ S3 SA S2 
+S6 S4 S5 SQ 
+H3 H6 H8 HK 
+C6 C2 C9 CA 
+ST S7 S9 SK 
+D3 H7 D2 S8 
+C3 CK CT D8 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "16"]
+[West "Paula McTaggart#52641"]
+[North "Wilma Zeedijk#56252"]
+[East "Judith Chandler#9758"]
+[South "Rachel Aylett#2302"]
+[Dealer "W"]
+[Vulnerable "EW"]
+[Deal "N:JT6.A3.QJT53.863 743.T764.6.K7542 A95.J8.A972.QJT9 KQ82.KQ952.K84.A"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "W"]
+[Contract "4H"]
+[Result "10"]
+[Score "NS -620"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "643866438678a5778a57"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  3
+N  D  8
+N  C  6
+S NT  6
+S  S  4
+S  H  3
+S  D  8
+S  C  6
+E NT  7
+E  S  8
+E  H 10
+E  D  5
+E  C  7
+W NT  7
+W  S  8
+W  H 10
+W  D  5
+W  C  7
+[OptimumScore "NS -500"]
+[Competition "Pairs"]
+% RBDATA 17,3,4,628,69,37,130,438,36,27,69,17,18,48,85,47,18,69,25,30,10,87,28,6,18,8,17,10,11,107,29,8,9,99,24,190,23,22,20,75,10,72,86,11,7,22,14,6,18,100,36,8,54,22,16,7,15,5,13,6,24,7,8,8,9
+[Auction "W"]
+1H 2D Pass 4D 
+Pass Pass 4H Pass 
+Pass Pass 
+[Play "N"]
+DQ D6 DA D4 
+C6 C2 CJ CA 
+D3 C4 D2 DK 
+DT H4 D7 D8 
+C3 CK C9 S2 
+HA HT H8 HK 
+SJ S3 SA S8 
+C8 C5 CT H5 
+H3 H6 HJ HQ 
+D5 H7 S5 H9 
+S6 S4 S9 SK 
+ST S7 D9 SQ 
+DJ C7 CQ H2 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "16"]
+[West "Cynthia Singh#27403"]
+[North "Dianne Evans#74554"]
+[East "Sybil Cornell#4518"]
+[South "Ray Crowe#4850"]
+[Dealer "W"]
+[Vulnerable "EW"]
+[Deal "N:JT6.A3.QJT53.863 743.T764.6.K7542 A95.J8.A972.QJT9 KQ82.KQ952.K84.A"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "N"]
+[Contract "3D"]
+[Result "9"]
+[Score "NS 110"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "643866438678a5778a57"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  4
+N  H  3
+N  D  8
+N  C  6
+S NT  6
+S  S  4
+S  H  3
+S  D  8
+S  C  6
+E NT  7
+E  S  8
+E  H 10
+E  D  5
+E  C  7
+W NT  7
+W  S  8
+W  H 10
+W  D  5
+W  C  7
+[OptimumScore "NS -500"]
+[Competition "Pairs"]
+% RBDATA 11,0,2,281,104,28,176,243,73,45,46,33,28,61,21,50,87,44,68,22,31,52,30,116,120,24,106,18,131,76,20,25,198,55,31,24,106,53,37,31,16,60,15,20,16,27,13,19,22,35,14,25,20,216,20,28,51,20,29,32
+[Auction "W"]
+1H Pass Pass X 
+1S Pass 2H Pass 
+Pass 3D Pass Pass 
+Pass 
+[Play "E"]
+H4 H8 HQ HA 
+D6 D9 DK D3 
+H6 HJ HK H3 
+C2 D2 D8 DT 
+CK C9 CA C3 
+C4 D7 D4 D5 
+C5 CQ S2 C6 
+C7 CJ H2 C8 
+H7 CT H5 S6 
+S3 S5 SQ ST 
+S4 SA S8 SJ 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "17"]
+[West "Paula McTaggart#52641"]
+[North "Wilma Zeedijk#56252"]
+[East "Judith Chandler#9758"]
+[South "Rachel Aylett#2302"]
+[Dealer "N"]
+[Vulnerable "-"]
+[Deal "N:Q4.K2.KQ8743.KJ9 T73.3.AJ965.Q543 K96.QJT9865..AT2 AJ852.A74.T2.876"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "S"]
+[Contract "3NT"]
+[Result "7"]
+[Score "NS -100"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "76b7776b773626636266"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  6
+N  H 11
+N  D  7
+N  C  7
+S NT  7
+S  S  6
+S  H 11
+S  D  7
+S  C  7
+E NT  3
+E  S  6
+E  H  2
+E  D  6
+E  C  6
+W NT  3
+W  S  6
+W  H  2
+W  D  6
+W  C  6
+[OptimumScore "NS +450"]
+[Competition "Pairs"]
+% RBDATA 14,3,4,155,36,46,87,44,48,43,84,17,27,301,208,19,37,64,189,24,154,85,34,18,13,8,17,18,18,23,33,13,23,31,30,19,16,21,18,21,46,33,47,38,20,54,20,12,17,15,33,11,6,14,22,11,5,23,18,9,26,11,4,21,14,11,5,13,10
+[Auction "N"]
+1D Pass 1H 1S 
+2D Pass 3H Pass 
+Pass 3S 3NT Pass 
+Pass Pass 
+[Play "W"]
+S5 S4 ST SK 
+HA H2 H3 H5 
+SA SQ S7 S6 
+SJ D3 S3 S9 
+S8 D4 D5 C2 
+S2 D7 D6 CT 
+D2 DK DA H6 
+DT DQ DJ H8 
+H4 HK C3 H9 
+C6 C9 C4 CA 
+H7 D8 D9 HT 
+C7 CJ C5 HJ 
+C8 CK CQ HQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "17"]
+[West "Barb Robinson#38037"]
+[North "Gaynor Bradbury#2863"]
+[East "John Seator#49186"]
+[South "Diana Styche#22803"]
+[Dealer "N"]
+[Vulnerable "-"]
+[Deal "N:Q4.K2.KQ8743.KJ9 T73.3.AJ965.Q543 K96.QJT9865..AT2 AJ852.A74.T2.876"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "S"]
+[Contract "4H"]
+[Result "10"]
+[Score "NS 420"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "76b7776b773626636266"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  6
+N  H 11
+N  D  7
+N  C  7
+S NT  7
+S  S  6
+S  H 11
+S  D  7
+S  C  7
+E NT  3
+E  S  6
+E  H  2
+E  D  6
+E  C  6
+W NT  3
+W  S  6
+W  H  2
+W  D  6
+W  C  6
+[OptimumScore "NS +450"]
+[Competition "Pairs"]
+% RBDATA 17,5,1,100,57,39,59,69,53,40,93,31,26,257,80,56,27,42,40,28,17,12,20,38,14,157,27,31,14,163,24,33,54,54,24,10,255,23,26,11,263,91,32,12,18,55,29,16,30,17,45,32,14,18,23,28,13,10,16,9,15,10,10,9,14
+[Auction "N"]
+1D Pass 1H 1S 
+2D 2S 4H Pass 
+Pass Pass 
+[Play "W"]
+S2 S4 ST SK 
+HA H2 H3 H5 
+SA SQ S7 S6 
+H4 HK D5 H6 
+D2 DK DA H8 
+H7 D3 S3 HQ 
+S5 D4 D6 HJ 
+S8 D7 C3 HT 
+C7 CK C4 C2 
+DT DQ D9 S9 
+C6 D8 DJ H9 
+C8 C9 C5 CA 
+SJ CJ CQ CT 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "17"]
+[West "Cynthia Singh#27403"]
+[North "Dianne Evans#74554"]
+[East "Sybil Cornell#4518"]
+[South "Ray Crowe#4850"]
+[Dealer "N"]
+[Vulnerable "-"]
+[Deal "N:Q4.K2.KQ8743.KJ9 T73.3.AJ965.Q543 K96.QJT9865..AT2 AJ852.A74.T2.876"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "S"]
+[Contract "4H"]
+[Result "11"]
+[Score "NS 450"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "76b7776b773626636266"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  7
+N  S  6
+N  H 11
+N  D  7
+N  C  7
+S NT  7
+S  S  6
+S  H 11
+S  D  7
+S  C  7
+E NT  3
+E  S  6
+E  H  2
+E  D  6
+E  C  6
+W NT  3
+W  S  6
+W  H  2
+W  D  6
+W  C  6
+[OptimumScore "NS +450"]
+[Competition "Pairs"]
+% RBDATA 17,0,2,100,44,34,77,33,43,29,146,99,41,144,72,18,23,77,37,57,11,49,31,29,25,100,61,12,43,79,26,64,20,65,41,13,50,11,66,15,19,49,58,66,32,28,115,15,81,18,61,15,19,28,94,17,21,15,23,14,22,15,19,11,18,12,18,11,19
+[Auction "N"]
+1D Pass 1H 1S 
+2D Pass 3H Pass 
+3S Pass 4H Pass 
+Pass Pass 
+[Play "W"]
+SA S4 S7 S6 
+S2 SQ S3 S9 
+HA HK H3 H5 
+H7 H2 D5 H8 
+H4 D3 D6 HQ 
+S5 D4 C3 HJ 
+S8 C9 ST SK 
+C6 D7 D9 HT 
+C7 D8 C4 H9 
+SJ DQ DJ H6 
+C8 CK C5 C2 
+D2 CJ CQ CA 
+DT DK DA CT 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "18"]
+[West "Paula McTaggart#52641"]
+[North "Wilma Zeedijk#56252"]
+[East "Judith Chandler#9758"]
+[South "Rachel Aylett#2302"]
+[Dealer "E"]
+[Vulnerable "NS"]
+[Deal "N:T976.JT7654.K.Q9 K43.K.AT6543.AT2 A852.92.Q72.7643 QJ.AQ83.J98.KJ85"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "E"]
+[Contract "3NT"]
+[Result "11"]
+[Score "NS -460"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "2452224522b98bbb98bb"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  4
+N  H  5
+N  D  2
+N  C  2
+S NT  2
+S  S  4
+S  H  5
+S  D  2
+S  C  2
+E NT 11
+E  S  9
+E  H  8
+E  D 11
+E  C 11
+W NT 11
+W  S  9
+W  H  8
+W  D 11
+W  C 11
+[OptimumScore "NS -460"]
+[Competition "Pairs"]
+% RBDATA 14,3,4,120,55,110,23,32,14,134,25,76,19,13,12,273,59,40,23,54,43,28,22,52,17,16,6,26,52,30,12,51,15,17,263,74,26,10,28,40,35,15,23,28,16,15,14,31,23,13,224,28,17,12,11,19,10,14,22
+[Auction "E"]
+1D Pass 1H Pass 
+2D Pass 3C Pass 
+3NT Pass Pass Pass 
+[Play "S"]
+S2 SJ S7 S3 
+H2 H3 H4 HK 
+D2 D8 DK DA 
+D7 DJ S6 D3 
+DQ D9 S9 D4 
+SA SQ ST S4 
+S8 H8 H5 SK 
+C3 CK C9 C2 
+H9 HA H6 CT 
+C4 HQ H7 D5 
+C6 C5 CQ CA 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "18"]
+[West "Barb Robinson#38037"]
+[North "Gaynor Bradbury#2863"]
+[East "John Seator#49186"]
+[South "Diana Styche#22803"]
+[Dealer "E"]
+[Vulnerable "NS"]
+[Deal "N:T976.JT7654.K.Q9 K43.K.AT6543.AT2 A852.92.Q72.7643 QJ.AQ83.J98.KJ85"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "E"]
+[Contract "5D"]
+[Result "11"]
+[Score "NS -400"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "2452224522b98bbb98bb"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  4
+N  H  5
+N  D  2
+N  C  2
+S NT  2
+S  S  4
+S  H  5
+S  D  2
+S  C  2
+E NT 11
+E  S  9
+E  H  8
+E  D 11
+E  C 11
+W NT 11
+W  S  9
+W  H  8
+W  D 11
+W  C 11
+[OptimumScore "NS -460"]
+[Competition "Pairs"]
+% RBDATA 21,5,1,165,135,52,115,26,99,212,89,19,39,33,146,54,27,32,50,11,364,44,15,32,20,185,43,20,9,42,27,41,30,137,40,17,11,21,21,15,9,94,14,23,53
+[Auction "E"]
+1D =1= Pass 1H Pass 
+3D Pass 5D Pass 
+Pass Pass 
+[Play "S"]
+SA SJ S6 S3 
+S2 SQ S7 S4 
+D2 DJ DK DA 
+DQ D8 H7 D3 
+H9 H3 H4 HK 
+D7 D9 H5 D4 
+H2 HA H6 C2 
+S5 HQ HT CT 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "18"]
+[West "Cynthia Singh#27403"]
+[North "Dianne Evans#74554"]
+[East "Sybil Cornell#4518"]
+[South "Ray Crowe#4850"]
+[Dealer "E"]
+[Vulnerable "NS"]
+[Deal "N:T976.JT7654.K.Q9 K43.K.AT6543.AT2 A852.92.Q72.7643 QJ.AQ83.J98.KJ85"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "E"]
+[Contract "3D"]
+[Result "10"]
+[Score "NS -130"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "2452224522b98bbb98bb"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  4
+N  H  5
+N  D  2
+N  C  2
+S NT  2
+S  S  4
+S  H  5
+S  D  2
+S  C  2
+E NT 11
+E  S  9
+E  H  8
+E  D 11
+E  C 11
+W NT 11
+W  S  9
+W  H  8
+W  D 11
+W  C 11
+[OptimumScore "NS -460"]
+[Competition "Pairs"]
+% RBDATA 11,0,2,90,36,114,36,115,29,601,30,112,35,24,18,56,202,40,37,90,45,23,15,172,50,25,17,60,190,26,36,97,294,24,43,62,29,27,16,27,23,16,10,29,16,37,15,102,88,19,69,66,32,20,15,45,25,22,11
+[Auction "E"]
+1D Pass 1H Pass 
+2D Pass 2NT Pass 
+3D Pass Pass Pass 
+[Play "S"]
+C6 C8 CQ CA 
+H2 H3 H4 HK 
+DQ D8 DK D3 
+SA SJ ST S4 
+D2 D9 H5 D4 
+S2 SQ S6 S3 
+H9 HA H6 C2 
+D7 HQ H7 CT 
+C3 C5 C9 D5 
+S5 CJ S7 SK 
+S8 DJ HT DA 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "19"]
+[West "Paula McTaggart#52641"]
+[North "Wilma Zeedijk#56252"]
+[East "Judith Chandler#9758"]
+[South "Rachel Aylett#2302"]
+[Dealer "S"]
+[Vulnerable "EW"]
+[Deal "N:T642.AK7.AQ4.K52 K75.95.KT72.AQ64 J983.T6.J83.JT97 AQ.QJ8432.965.83"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "W"]
+[Contract "3H"]
+[Result "10"]
+[Score "NS -170"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "473564735676a8776a87"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  7
+N  H  3
+N  D  5
+N  C  6
+S NT  4
+S  S  7
+S  H  3
+S  D  5
+S  C  6
+E NT  7
+E  S  6
+E  H 10
+E  D  8
+E  C  7
+W NT  7
+W  S  6
+W  H 10
+W  D  8
+W  C  7
+[OptimumScore "NS -500"]
+[Competition "Pairs"]
+% RBDATA 12,3,4,74,64,144,26,186,55,47,39,26,16,60,90,240,29,9,174,18,6,57,109,28,56,18,48,38,8,14,10,19,7,6,143,445,48,16,18,20,10,11,148,39,22,71,115,20,19,33,18,16,33,6,50,24,19,15,13,14,5,22,6,7,7,7
+[Auction "S"]
+Pass 2H X Pass 
+2S Pass Pass 3H 
+Pass Pass Pass 
+[Play "N"]
+S2 S5 SJ SA 
+S4 S7 S3 SQ 
+C2 CQ C7 C3 
+S6 SK S8 D5 
+C5 CA C9 C8 
+HK H5 H6 HJ 
+CK C4 CT H2 
+DQ DK D3 D6 
+HA H9 HT HQ 
+DA D2 D8 D9 
+D4 DT DJ H3 
+H7 D7 CJ H8 
+ST C6 S9 H4 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "19"]
+[West "Barb Robinson#38037"]
+[North "Gaynor Bradbury#2863"]
+[East "John Seator#49186"]
+[South "Diana Styche#22803"]
+[Dealer "S"]
+[Vulnerable "EW"]
+[Deal "N:T642.AK7.AQ4.K52 K75.95.KT72.AQ64 J983.T6.J83.JT97 AQ.QJ8432.965.83"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "N"]
+[Contract "2NT"]
+[Result "6"]
+[Score "NS -100"]
+[Table "1"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "473564735676a8776a87"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  7
+N  H  3
+N  D  5
+N  C  6
+S NT  4
+S  S  7
+S  H  3
+S  D  5
+S  C  6
+E NT  7
+E  S  6
+E  H 10
+E  D  8
+E  C  7
+W NT  7
+W  S  6
+W  H 10
+W  D  8
+W  C  7
+[OptimumScore "NS -500"]
+[Competition "Pairs"]
+% RBDATA 9,5,1,60,92,235,334,38,39,68,200,37,132,102,30,25,16,73,48,22,23,40,14,558,117,45,24,25,13,83,27,31,68,239,38,9,137,145,33,12,10,135,208,28,18,16,17,9,11,26,14,18,12,61,16,18,15,13,17,15,11
+[Auction "S"]
+Pass 2D =1= 2NT Pass 
+Pass Pass 
+[Play "E"]
+H9 HT HJ HA 
+S5 S8 SQ S2 
+H5 H6 HQ H7 
+D2 S3 H8 HK 
+D7 DJ D6 D4 
+CQ CJ C3 C2 
+C4 C7 C8 CK 
+DT D3 D5 DA 
+CA C9 D9 C5 
+DK D8 H2 DQ 
+C6 CT H3 S4 
+S7 S9 SA S6 
+SK SJ H4 ST 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "19"]
+[West "Cynthia Singh#27403"]
+[North "Dianne Evans#74554"]
+[East "Sybil Cornell#4518"]
+[South "Ray Crowe#4850"]
+[Dealer "S"]
+[Vulnerable "EW"]
+[Deal "N:T642.AK7.AQ4.K52 K75.95.KT72.AQ64 J983.T6.J83.JT97 AQ.QJ8432.965.83"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "S"]
+[Contract "3S"]
+[Result "7"]
+[Score "NS -100"]
+[Table "3"]
+[ScorePercentage "NS 75.00 EW 25.00"]
+[DoubleDummyTricks "473564735676a8776a87"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  7
+N  H  3
+N  D  5
+N  C  6
+S NT  4
+S  S  7
+S  H  3
+S  D  5
+S  C  6
+E NT  7
+E  S  6
+E  H 10
+E  D  8
+E  C  7
+W NT  7
+W  S  6
+W  H 10
+W  D  8
+W  C  7
+[OptimumScore "NS -500"]
+[Competition "Pairs"]
+% RBDATA 13,0,2,87,146,123,95,52,32,31,25,25,51,51,89,247,35,99,86,13,84,36,24,25,13,303,44,11,48,102,43,11,31,23,25,40,146,46,27,20,11,31,30,35,14,57,105,28,10,28,56,16,35,12,25,74,62,52,21,4,14,15,16,8,19
+[Auction "S"]
+Pass 2H X Pass 
+2S Pass 3S Pass 
+Pass Pass 
+[Play "W"]
+H4 HA H9 H6 
+SQ S2 S5 S8 
+HQ HK H5 HT 
+D5 DA D2 D3 
+SA ST S7 S3 
+HJ H7 SK D8 
+D6 D4 DK DJ 
+C3 C2 CA C7 
+D9 DQ D7 C9 
+H2 S4 C4 SJ 
+C8 C5 CQ CJ 
+H3 CK C6 CT 
+H8 S6 DT S9 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "20"]
+[West "Paula McTaggart#52641"]
+[North "Wilma Zeedijk#56252"]
+[East "Judith Chandler#9758"]
+[South "Rachel Aylett#2302"]
+[Dealer "W"]
+[Vulnerable "All"]
+[Deal "N:632.KJ84.Q73.985 KT.T75.AK96.KQJT A85.Q63.J854.A43 QJ974.A92.T2.762"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "E"]
+[Contract "2S"]
+[Result "10"]
+[Score "NS -170"]
+[Table "2"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "44554445548977989779"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  4
+N  H  5
+N  D  5
+N  C  4
+S NT  4
+S  S  4
+S  H  5
+S  D  5
+S  C  4
+E NT  8
+E  S  9
+E  H  7
+E  D  7
+E  C  9
+W NT  8
+W  S  9
+W  H  7
+W  D  7
+W  C  9
+[OptimumScore "NS -140"]
+[Competition "Pairs"]
+% RBDATA 8,3,4,95,23,71,69,200,28,41,28,11,16,195,79,14,20,47,28,8,35,40,21,22,6,25,11,19,6,30,30,36,7,58,8,27,42,75,25,26,6,38,28,20,40,27,17,21,23,65,27,20,77,17,11,13,58,16,17,11,4,18,10,11,7
+[Auction "W"]
+Pass Pass 1NT Pass 
+2H =1= Pass 2S Pass 
+Pass Pass 
+[Play "S"]
+CA C2 C8 CT 
+C4 C6 C9 CK 
+D4 D2 D3 DA 
+D5 DT D7 DK 
+D8 S4 DQ D6 
+S5 S7 S6 ST 
+SA S9 S3 SK 
+H3 HA H4 H5 
+S8 SQ S2 H7 
+C3 SJ C5 D9 
+DJ C7 H8 CJ 
+H6 H2 HJ CQ 
+HQ H9 HK HT 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "20"]
+[West "Barb Robinson#38037"]
+[North "Gaynor Bradbury#2863"]
+[East "John Seator#49186"]
+[South "Diana Styche#22803"]
+[Dealer "W"]
+[Vulnerable "All"]
+[Deal "N:632.KJ84.Q73.985 KT.T75.AK96.KQJT A85.Q63.J854.A43 QJ974.A92.T2.762"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "E"]
+[Contract "2S"]
+[Result "11"]
+[Score "NS -200"]
+[Table "1"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "44554445548977989779"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  4
+N  H  5
+N  D  5
+N  C  4
+S NT  4
+S  S  4
+S  H  5
+S  D  5
+S  C  4
+E NT  8
+E  S  9
+E  H  7
+E  D  7
+E  C  9
+W NT  8
+W  S  9
+W  H  7
+W  D  7
+W  C  9
+[OptimumScore "NS -140"]
+[Competition "Pairs"]
+% RBDATA 8,5,1,119,51,78,161,53,33,98,71,62,33,30,38,213,109,86,110,20,28,88,58,26,12,11,163,10,173,106,30,16,11,57,15,249,31,94,23,20,54,36,23,19,28,43,18,16,9,48,78,18,31,19,26,12,9
+[Auction "W"]
+Pass Pass 1C Pass 
+1D =1= Pass 1NT Pass 
+2H =2= Pass 2S Pass 
+Pass Pass 
+[Play "S"]
+D4 D2 DQ DA 
+SA S4 S6 SK 
+D5 DT D7 D6 
+S5 SQ S3 ST 
+S8 SJ S2 H5 
+CA C2 C9 CK 
+C4 C6 C8 CQ 
+C3 C7 C5 CJ 
+H3 H2 H4 CT 
+D8 H9 D3 DK 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "20"]
+[West "Cynthia Singh#27403"]
+[North "Dianne Evans#74554"]
+[East "Sybil Cornell#4518"]
+[South "Ray Crowe#4850"]
+[Dealer "W"]
+[Vulnerable "All"]
+[Deal "N:632.KJ84.Q73.985 KT.T75.AK96.KQJT A85.Q63.J854.A43 QJ974.A92.T2.762"]
+[Scoring "MP;MP1"]
+[Round "4"]
+[Declarer "W"]
+[Contract "2S"]
+[Result "8"]
+[Score "NS -110"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "44554445548977989779"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  4
+N  S  4
+N  H  5
+N  D  5
+N  C  4
+S NT  4
+S  S  4
+S  H  5
+S  D  5
+S  C  4
+E NT  8
+E  S  9
+E  H  7
+E  D  7
+E  C  9
+W NT  8
+W  S  9
+W  H  7
+W  D  7
+W  C  9
+[OptimumScore "NS -140"]
+[Competition "Pairs"]
+% RBDATA 8,0,2,112,64,38,41,127,27,40,46,207,47,159,25,112,178,53,39,13,110,38,17,71,37,30,46,32,50,34,19,17,25,8,34,70,367,33,80,52,36,32,8,175,23,14,15,21,12,14,13,45,29,15,14,24,10,35,18,45,22,14,23,15,18,46,8
+[Auction "W"]
+Pass Pass 1C Pass 
+1S Pass 2D Pass 
+2S Pass Pass Pass 
+[Play "N"]
+S2 ST SA S4 
+H4 H5 H3 HA 
+C5 CT CA C2 
+HJ H7 H6 H2 
+HK HT HQ H9 
+H8 D6 C4 S7 
+S3 SK S5 S9 
+D3 DA D4 D2 
+D7 DK D5 DT 
+C8 CK C3 C6 
+C9 CQ S8 C7 
+DQ D9 DJ SJ 
+S6 CJ D8 SQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "21"]
+[West "Paula McTaggart#52641"]
+[North "Sybil Cornell#4518"]
+[East "Judith Chandler#9758"]
+[South "Cynthia Singh#27403"]
+[Dealer "N"]
+[Vulnerable "NS"]
+[Deal "N:64.Q83.K9.AK8732 Q.JT9.T86532.T65 T53.K754.AQJ4.J9 AKJ9872.A62.7.Q4"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "W"]
+[Contract "3S"]
+[Result "9"]
+[Score "NS -140"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "54879558797856378563"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  5
+N  S  4
+N  H  8
+N  D  7
+N  C  9
+S NT  5
+S  S  5
+S  H  8
+S  D  7
+S  C  9
+E NT  7
+E  S  8
+E  H  5
+E  D  6
+E  C  3
+W NT  7
+W  S  8
+W  H  5
+W  D  6
+W  C  3
+[OptimumScore "NS +100"]
+[Competition "Pairs"]
+% RBDATA 13,2,4,176,59,112,45,31,31,132,21,117,27,26,25,24,28,39,46,111,43,10,33,9,35,7,164,40,32,45,30,33,16,27,58,72,11,49,78,10,15,7,28,10,24,5,11,43,6,23,12,55,6,24,11,62,8,34
+[Auction "N"]
+1C Pass 1D 1S 
+2C Pass Pass 2S 
+3C Pass Pass 3S 
+Pass Pass Pass 
+[Play "N"]
+CA C5 C9 C4 
+CK C6 CJ CQ 
+HQ H9 H4 HA 
+S4 SQ S3 S2 
+H8 HT HK H2 
+D9 D2 DA D7 
+DK D3 DQ S7 
+S6 D5 S5 SA 
+C2 D6 ST SK 
+H3 D8 H7 SJ 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "21"]
+[West "Diana Styche#22803"]
+[North "Dianne Evans#74554"]
+[East "Gaynor Bradbury#2863"]
+[South "Ray Crowe#4850"]
+[Dealer "N"]
+[Vulnerable "NS"]
+[Deal "N:64.Q83.K9.AK8732 Q.JT9.T86532.T65 T53.K754.AQJ4.J9 AKJ9872.A62.7.Q4"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "W"]
+[Contract "3S"]
+[Result "8"]
+[Score "NS 50"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "54879558797856378563"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  5
+N  S  4
+N  H  8
+N  D  7
+N  C  9
+S NT  5
+S  S  5
+S  H  8
+S  D  7
+S  C  9
+E NT  7
+E  S  8
+E  H  5
+E  D  6
+E  C  3
+W NT  7
+W  S  8
+W  H  5
+W  D  6
+W  C  3
+[OptimumScore "NS +100"]
+[Competition "Pairs"]
+% RBDATA 13,0,5,138,32,38,46,32,24,225,110,30,24,38,36,28,16,21,61,86,31,13,104,16,10,15,58,28,77,15,107,367,30,9,62,54,42,16,175,15,14,10,16,17,8,20,8,20,5,11,10,15,9,12,21,17,7,15
+[Auction "N"]
+1C Pass 1D 1S 
+2C Pass Pass 2S 
+Pass Pass 3C 3S 
+Pass Pass Pass 
+[Play "N"]
+CK C5 C9 C4 
+CA C6 CJ CQ 
+DK D2 DA D7 
+D9 D3 DQ H2 
+S4 D5 D4 H6 
+S6 SQ S3 S2 
+H3 H9 H4 HA 
+C2 D6 S5 SA 
+C3 D8 ST SK 
+C7 DT H5 SJ 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "21"]
+[West "Barb Robinson#38037"]
+[North "Wilma Zeedijk#56252"]
+[East "John Seator#49186"]
+[South "Rachel Aylett#2302"]
+[Dealer "N"]
+[Vulnerable "NS"]
+[Deal "N:64.Q83.K9.AK8732 Q.JT9.T86532.T65 T53.K754.AQJ4.J9 AKJ9872.A62.7.Q4"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "S"]
+[Contract "3NT"]
+[Result "5"]
+[Score "NS -400"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "54879558797856378563"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  5
+N  S  4
+N  H  8
+N  D  7
+N  C  9
+S NT  5
+S  S  5
+S  H  8
+S  D  7
+S  C  9
+E NT  7
+E  S  8
+E  H  5
+E  D  6
+E  C  3
+W NT  7
+W  S  8
+W  H  5
+W  D  6
+W  C  3
+[OptimumScore "NS +100"]
+[Competition "Pairs"]
+% RBDATA 14,3,1,362,129,93,127,30,29,162,43,154,39,16,38,50,128,26,29,102,27,235,21,62,19,152,19,31,45,75,297,31,62,108,19,26,19,45,13,30,26,55,16,44,19,20,17,47,121,24,13,14,21,11,18,15,25,11,11,27,12,8,13,13,12,11,10
+[Auction "N"]
+1C Pass 1D 1S 
+2C Pass 2NT 3S 
+3NT Pass Pass Pass 
+[Play "W"]
+SK S4 SQ S3 
+SA S6 D6 S5 
+SJ H3 D2 ST 
+S9 H8 D8 H4 
+S8 HQ C5 H5 
+S7 C2 C6 D4 
+S2 C3 D3 DJ 
+HA C7 H9 H7 
+D7 D9 DT DQ 
+H2 C8 HT HK 
+H6 DK D5 DA 
+C4 CK CT C9 
+CQ CA HJ CJ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "22"]
+[West "Diana Styche#22803"]
+[North "Dianne Evans#74554"]
+[East "Gaynor Bradbury#2863"]
+[South "Ray Crowe#4850"]
+[Dealer "E"]
+[Vulnerable "EW"]
+[Deal "N:K9.KT97654.T5.98 T62.A2.J98743.Q6 QJ3.QJ.K62.T7543 A8754.83.AQ.AKJ2"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "N"]
+[Contract "5H"]
+[Result "7"]
+[Score "NS -200"]
+[Table "3"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "22725227258b6b88b6b8"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  2
+N  H  7
+N  D  2
+N  C  5
+S NT  2
+S  S  2
+S  H  7
+S  D  2
+S  C  5
+E NT  8
+E  S 11
+E  H  6
+E  D 11
+E  C  8
+W NT  8
+W  S 11
+W  H  6
+W  D 11
+W  C  8
+[OptimumScore "NS -650"]
+[Competition "Pairs"]
+% RBDATA 22,0,5,171,25,50,119,204,141,35,44,63,20,32,151,87,48,24,56,25,28,34,67,19,8,20,52,22,57,24,57,39,20,18,18,25,17,10,18,31,29,30,10,121,21,13,42,17,22,11,74,21,14,10,14,36,14,9
+[Auction "E"]
+Pass Pass 1S 3H 
+3S 4H 4S 5H 
+Pass Pass Pass 
+[Play "E"]
+D7 D2 DQ D5 
+C6 C3 CA C8 
+CQ C4 CK C9 
+H2 C5 C2 DT 
+DJ D6 DA H4 
+HA HJ H3 H5 
+S6 S3 SA S9 
+D3 C7 CJ HK 
+D4 HQ H8 H6 
+S2 SJ S8 SK 
+ST CT S4 HT 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "22"]
+[West "Paula McTaggart#52641"]
+[North "Sybil Cornell#4518"]
+[East "Judith Chandler#9758"]
+[South "Cynthia Singh#27403"]
+[Dealer "E"]
+[Vulnerable "EW"]
+[Deal "N:K9.KT97654.T5.98 T62.A2.J98743.Q6 QJ3.QJ.K62.T7543 A8754.83.AQ.AKJ2"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "W"]
+[Contract "3S"]
+[Result "10"]
+[Score "NS -170"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "22725227258b6b88b6b8"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  2
+N  H  7
+N  D  2
+N  C  5
+S NT  2
+S  S  2
+S  H  7
+S  D  2
+S  C  5
+E NT  8
+E  S 11
+E  H  6
+E  D 11
+E  C  8
+W NT  8
+W  S 11
+W  H  6
+W  D 11
+W  C  8
+[OptimumScore "NS -650"]
+[Competition "Pairs"]
+% RBDATA 13,2,4,57,45,49,134,30,71,281,26,26,52,132,90,44,9,146,49,140,36,107,44,6,43,70,11,39,7,46,29,20,77,74,49,7,66,136,32,30,7,10,53,7,31,14,51,6,33,12,21,8,23,10,19,8,31,8,34,7,14,5,42,5,19
+[Auction "E"]
+Pass Pass 1S Pass 
+2S Pass 3S Pass 
+Pass Pass 
+[Play "N"]
+H6 HA HQ H3 
+S9 ST SJ SA 
+SK S2 S3 S8 
+HK H2 HJ H8 
+DT D3 D2 DQ 
+H5 S6 SQ S4 
+C8 CQ C4 C2 
+C9 C6 C3 CA 
+D5 D4 C5 CK 
+H4 D7 C7 CJ 
+H7 D8 CT S7 
+H9 D9 D6 S5 
+HT DJ DK DA 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "22"]
+[West "Barb Robinson#38037"]
+[North "Wilma Zeedijk#56252"]
+[East "John Seator#49186"]
+[South "Rachel Aylett#2302"]
+[Dealer "E"]
+[Vulnerable "EW"]
+[Deal "N:K9.KT97654.T5.98 T62.A2.J98743.Q6 QJ3.QJ.K62.T7543 A8754.83.AQ.AKJ2"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "W"]
+[Contract "3S"]
+[Result "12"]
+[Score "NS -230"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "22725227258b6b88b6b8"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  2
+N  S  2
+N  H  7
+N  D  2
+N  C  5
+S NT  2
+S  S  2
+S  H  7
+S  D  2
+S  C  5
+E NT  8
+E  S 11
+E  H  6
+E  D 11
+E  C  8
+W NT  8
+W  S 11
+W  H  6
+W  D 11
+W  C  8
+[OptimumScore "NS -650"]
+[Competition "Pairs"]
+% RBDATA 13,3,1,100,42,54,38,161,16,181,25,170,45,342,22,63,494,347,20,82,399,28,23,106,32,17,9,30,51,27,13,187,21,14,12,18,17,19,5,65,31,15,16,41,80,19,13,9,28,13,17,15,12,10,25
+[Auction "E"]
+Pass Pass 1C =1= 1H 
+2D Pass 2S Pass 
+3S Pass Pass Pass 
+[Play "N"]
+C9 CQ C5 C2 
+S9 S2 SQ SA 
+C8 C6 C3 CK 
+D5 H2 C4 CJ 
+H4 HA HJ H3 
+DT D3 D2 DQ 
+H9 S6 HQ H8 
+SK ST SJ S4 
+HK D4 C7 S5 
+H5 D7 S3 S7 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "23"]
+[West "Diana Styche#22803"]
+[North "Dianne Evans#74554"]
+[East "Gaynor Bradbury#2863"]
+[South "Ray Crowe#4850"]
+[Dealer "S"]
+[Vulnerable "All"]
+[Deal "N:KT8.QT8.K2.98654 AQ4.974.975.K732 J7652.632.Q643.A 93.AKJ5.AJT8.QJT"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "E"]
+[Contract "1NT"]
+[Result "8"]
+[Score "NS -120"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "36334363349799997999"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  3
+N  S  6
+N  H  3
+N  D  3
+N  C  4
+S NT  3
+S  S  6
+S  H  3
+S  D  3
+S  C  4
+E NT  9
+E  S  7
+E  H  9
+E  D  9
+E  C  9
+W NT  9
+W  S  7
+W  H  9
+W  D  9
+W  C  9
+[OptimumScore "NS -600"]
+[Competition "Pairs"]
+% RBDATA 4,0,5,215,73,47,81,48,29,26,16,131,14,118,21,32,24,9,80,26,28,35,18,27,19,39,103,41,18,19,36,111,19,56,37,63,22,99,16,23,15,12,41,28,112,34,48,14,34,11,14,16,11,11
+[Auction "S"]
+Pass 1D Pass 1NT 
+Pass Pass Pass 
+[Play "S"]
+S2 S3 SK S4 
+S5 S9 ST SA 
+D3 D8 DK D9 
+S6 H5 S8 SQ 
+CA CT C4 C2 
+SJ DT C5 H4 
+S7 HJ C6 D5 
+H2 HK H8 H7 
+D4 CJ C8 C3 
+H3 CQ C9 CK 
+D6 DJ D2 D7 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "23"]
+[West "Paula McTaggart#52641"]
+[North "Sybil Cornell#4518"]
+[East "Judith Chandler#9758"]
+[South "Cynthia Singh#27403"]
+[Dealer "S"]
+[Vulnerable "All"]
+[Deal "N:KT8.QT8.K2.98654 AQ4.974.975.K732 J7652.632.Q643.A 93.AKJ5.AJT8.QJT"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "W"]
+[Contract "3NT"]
+[Result "9"]
+[Score "NS -600"]
+[Table "1"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "36334363349799997999"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  3
+N  S  6
+N  H  3
+N  D  3
+N  C  4
+S NT  3
+S  S  6
+S  H  3
+S  D  3
+S  C  4
+E NT  9
+E  S  7
+E  H  9
+E  D  9
+E  C  9
+W NT  9
+W  S  7
+W  H  9
+W  D  9
+W  C  9
+[OptimumScore "NS -600"]
+[Competition "Pairs"]
+% RBDATA 14,2,4,162,75,42,55,139,121,35,16,155,50,60,16,166,44,10,110,33,48,26,284,28,11,78,90,22,52,7,509,33,9,48,136,124,14,44,60,18,53,17,121,44,7,16,37,33,9,16,64,68,5,17,6,33,6,27,7,15,5,20
+[Auction "S"]
+Pass 1NT Pass 3NT 
+Pass Pass Pass 
+[Play "N"]
+C9 C2 CA CT 
+DK D5 D3 DT 
+HT H4 H2 HJ 
+D2 D7 DQ D8 
+C4 D9 D4 DJ 
+ST SQ S2 S3 
+HQ H9 H3 H5 
+H8 H7 H6 HK 
+C5 S4 D6 DA 
+C6 C3 S5 CQ 
+S8 C7 S6 HA 
+C8 CK S7 CJ 
+SK SA SJ S9 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "23"]
+[West "Barb Robinson#38037"]
+[North "Wilma Zeedijk#56252"]
+[East "John Seator#49186"]
+[South "Rachel Aylett#2302"]
+[Dealer "S"]
+[Vulnerable "All"]
+[Deal "N:KT8.QT8.K2.98654 AQ4.974.975.K732 J7652.632.Q643.A 93.AKJ5.AJT8.QJT"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "E"]
+[Contract "3NT"]
+[Result "9"]
+[Score "NS -600"]
+[Table "2"]
+[ScorePercentage "NS 25.00 EW 75.00"]
+[DoubleDummyTricks "36334363349799997999"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  3
+N  S  6
+N  H  3
+N  D  3
+N  C  4
+S NT  3
+S  S  6
+S  H  3
+S  D  3
+S  C  4
+E NT  9
+E  S  7
+E  H  9
+E  D  9
+E  C  9
+W NT  9
+W  S  7
+W  H  9
+W  D  9
+W  C  9
+[OptimumScore "NS -600"]
+[Competition "Pairs"]
+% RBDATA 14,3,1,305,77,13,134,31,278,27,26,27,23,18,450,191,35,32,179,26,125,13,21,22,12,43,14,94,55,684,161,35,40,26,125,37,15,60,360,21,41,17,55,30,15,20,17,14,21,14,31,14,21,3,34,9,17,11,14,7,14,9,15,6,14,10
+[Auction "S"]
+Pass 1C =1= Pass 1NT =2= 
+Pass 2NT Pass 3NT 
+Pass Pass Pass 
+[Play "S"]
+S2 S3 SK SA 
+CA CT C6 C2 
+S5 S9 ST S4 
+S6 H5 S8 SQ 
+D3 DT DK D7 
+D4 CJ C9 C3 
+H3 CQ C4 CK 
+D6 D8 D2 D9 
+DQ DA C5 D5 
+S7 DJ C8 C7 
+H2 HA H8 H4 
+H6 HK HT H7 
+SJ HJ HQ H9 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "24"]
+[West "Diana Styche#22803"]
+[North "Dianne Evans#74554"]
+[East "Gaynor Bradbury#2863"]
+[South "Ray Crowe#4850"]
+[Dealer "W"]
+[Vulnerable "-"]
+[Deal "N:Q.KQT.J98754.432 864.AJ763.62.AT6 KT952.985.AQT.KQ AJ73.42.K3.J9875"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "S"]
+[Contract "2S"]
+[Result "6"]
+[Score "NS -100"]
+[Table "3"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "66484664847784877848"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  6
+N  H  4
+N  D  8
+N  C  4
+S NT  6
+S  S  6
+S  H  4
+S  D  8
+S  C  4
+E NT  7
+E  S  7
+E  H  8
+E  D  4
+E  C  8
+W NT  7
+W  S  7
+W  H  8
+W  D  4
+W  C  8
+[OptimumScore "NS -100"]
+[Competition "Pairs"]
+% RBDATA 8,0,5,327,33,229,32,51,66,56,25,22,37,191,34,100,49,30,5,25,16,18,62,42,13,14,73,19,12,47,24,31,10,30,21,50,13,41,42,38,29,14,34,30,16,14,34,25,115,12,12,28,14,16,15,53,12,11,11,19,57,20,14,15,12,9
+[Auction "W"]
+Pass Pass Pass 1S 
+Pass 1NT Pass 2S 
+Pass Pass Pass 
+[Play "W"]
+C5 C2 CA CK 
+C7 C3 CT CQ 
+S3 SQ S8 S2 
+DK DJ D6 DT 
+CJ C4 C6 S5 
+H4 HT HJ H9 
+D3 D4 D2 DQ 
+H2 HQ HA H8 
+S7 HK H7 H5 
+C9 D5 S6 S9 
+SJ D7 H3 DA 
+C8 D8 H6 ST 
+SA D9 S4 SK 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "24"]
+[West "Paula McTaggart#52641"]
+[North "Sybil Cornell#4518"]
+[East "Judith Chandler#9758"]
+[South "Cynthia Singh#27403"]
+[Dealer "W"]
+[Vulnerable "-"]
+[Deal "N:Q.KQT.J98754.432 864.AJ763.62.AT6 KT952.985.AQT.KQ AJ73.42.K3.J9875"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "N"]
+[Contract "2D"]
+[Result "9"]
+[Score "NS 110"]
+[Table "1"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "66484664847784877848"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  6
+N  H  4
+N  D  8
+N  C  4
+S NT  6
+S  S  6
+S  H  4
+S  D  8
+S  C  4
+E NT  7
+E  S  7
+E  H  8
+E  D  4
+E  C  8
+W NT  7
+W  S  7
+W  H  8
+W  D  4
+W  C  8
+[OptimumScore "NS -100"]
+[Competition "Pairs"]
+% RBDATA 6,2,4,112,30,29,114,43,273,27,124,56,122,115,21,38,11,64,23,62,120,25,42,24,27,21,8,23,19,38,5,25,102,21,25,21,55,28,20,17,102,70,15,33,34,15,18,12,24,32,21,13,13,12,21,24,43,19,18,40,17,11,31,8
+[Auction "W"]
+Pass Pass Pass 1S 
+Pass 2D Pass Pass 
+Pass 
+[Play "E"]
+S8 S2 SA SQ 
+S4 S5 S3 C2 
+HA H5 H2 HQ 
+CA CQ C8 C3 
+C6 CK C5 C4 
+H3 H8 H4 HK 
+D2 DT DK D5 
+S6 SK S7 HT 
+D6 DQ D3 D4 
+H6 DA C7 D7 
+H7 H9 C9 D8 
+HJ S9 SJ DJ 
+CT ST CJ D9 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "24"]
+[West "Barb Robinson#38037"]
+[North "Wilma Zeedijk#56252"]
+[East "John Seator#49186"]
+[South "Rachel Aylett#2302"]
+[Dealer "W"]
+[Vulnerable "-"]
+[Deal "N:Q.KQT.J98754.432 864.AJ763.62.AT6 KT952.985.AQT.KQ AJ73.42.K3.J9875"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "S"]
+[Contract "2S"]
+[Result "5"]
+[Score "NS -150"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "66484664847784877848"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  6
+N  S  6
+N  H  4
+N  D  8
+N  C  4
+S NT  6
+S  S  6
+S  H  4
+S  D  8
+S  C  4
+E NT  7
+E  S  7
+E  H  8
+E  D  4
+E  C  8
+W NT  7
+W  S  7
+W  H  8
+W  D  4
+W  C  8
+[OptimumScore "NS -100"]
+[Competition "Pairs"]
+% RBDATA 8,3,1,153,21,48,264,52,61,75,131,28,12,36,42,160,24,29,270,30,10,29,440,25,39,17,39,32,30,22,530,31,25,20,21,34,16,18,24,20,18,18,64,34,202,30,34,22,12,23,17,19,11,18,14,17,29,17,11,25,14,16,11,11,10,24
+[Auction "W"]
+Pass Pass Pass 1S 
+Pass 1NT 2H 2S 
+Pass Pass Pass 
+[Play "W"]
+H4 HT HJ H5 
+H2 HQ HA H8 
+S3 HK H3 H9 
+C7 C2 CA CQ 
+C5 C3 C6 CK 
+SA SQ S4 S2 
+CJ C4 CT DA 
+C9 D4 H6 S5 
+S7 D5 S6 SK 
+SJ D7 S8 ST 
+C8 D8 D2 S9 
+DK D9 D6 DT 
+D3 DJ H7 DQ 
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "25"]
+[West "Diana Styche#22803"]
+[North "Dianne Evans#74554"]
+[East "Gaynor Bradbury#2863"]
+[South "Ray Crowe#4850"]
+[Dealer "N"]
+[Vulnerable "EW"]
+[Deal "N:T9863.5.J85.Q764 K.T732.T64.JT853 AJ752.AK96.AQ7.K Q4.QJ84.K932.A92"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "S"]
+[Contract "4S"]
+[Result "11"]
+[Score "NS 450"]
+[Table "3"]
+[ScorePercentage "NS 100.00 EW 0.00"]
+[DoubleDummyTricks "8a6878a6874265542655"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  8
+N  S 10
+N  H  6
+N  D  8
+N  C  7
+S NT  8
+S  S 10
+S  H  6
+S  D  8
+S  C  7
+E NT  4
+E  S  2
+E  H  6
+E  D  5
+E  C  5
+W NT  4
+W  S  2
+W  H  6
+W  D  5
+W  C  5
+[OptimumScore "NS +420"]
+[Competition "Pairs"]
+% RBDATA 18,0,5,59,26,116,72,58,46,151,94,42,13,13,103,15,30,164,70,12,11,67,43,11,96,310,77,15,19,36,28,17,20,192,36,18,10,27,22,13,12,13,35,11,11,12,25,9,16,11,27,10,11
+[Auction "N"]
+Pass Pass 1S X 
+2S Pass 4S Pass 
+Pass Pass 
+[Play "W"]
+S4 S3 SK SA 
+CA C4 C3 CK 
+C9 CQ C5 D7 
+SQ S6 C8 S2 
+D2 D5 DT DQ 
+H4 H5 H3 HA 
+H8 C6 H2 HK 
+HJ S8 H7 H6 
+C2 C7 CT S5 
+HQ S9 HT H9 
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "25"]
+[West "Paula McTaggart#52641"]
+[North "Sybil Cornell#4518"]
+[East "Judith Chandler#9758"]
+[South "Cynthia Singh#27403"]
+[Dealer "N"]
+[Vulnerable "EW"]
+[Deal "N:T9863.5.J85.Q764 K.T732.T64.JT853 AJ752.AK96.AQ7.K Q4.QJ84.K932.A92"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "S"]
+[Contract "4S"]
+[Result "10"]
+[Score "NS 420"]
+[Table "1"]
+[ScorePercentage "NS 50.00 EW 50.00"]
+[DoubleDummyTricks "8a6878a6874265542655"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  8
+N  S 10
+N  H  6
+N  D  8
+N  C  7
+S NT  8
+S  S 10
+S  H  6
+S  D  8
+S  C  7
+E NT  4
+E  S  2
+E  H  6
+E  D  5
+E  C  5
+W NT  4
+W  S  2
+W  H  6
+W  D  5
+W  C  5
+[OptimumScore "NS +420"]
+[Competition "Pairs"]
+% RBDATA 18,2,4,79,26,193,51,64,31,52,86,23,19,26,147,16,62,185,11,17,17,188,27,22,12,39,20,46,13,60,26,32,58,114,41,19,42,18,22,17,28,225
+[Auction "N"]
+Pass Pass 1S X 
+2S Pass 4S Pass 
+Pass Pass 
+[Play "W"]
+HQ H5 H2 HA 
+S4 S3 SK SA 
+H4 D5 H7 HK 
+H8 ST H3 H6 
+DK DJ D6 D7 
+SQ S6 C3 S2 
+CA C4 C5 CK 
+D2 -  -  -  
+*
+
+[Event "AKBC - Open - Fri 18 Jul - 1pm"]
+[Site "RealBridge"]
+[Date "2025.07.18"]
+[Board "25"]
+[West "Barb Robinson#38037"]
+[North "Wilma Zeedijk#56252"]
+[East "John Seator#49186"]
+[South "Rachel Aylett#2302"]
+[Dealer "N"]
+[Vulnerable "EW"]
+[Deal "N:T9863.5.J85.Q764 K.T732.T64.JT853 AJ752.AK96.AQ7.K Q4.QJ84.K932.A92"]
+[Scoring "MP;MP1"]
+[Round "5"]
+[Declarer "S"]
+[Contract "2S"]
+[Result "11"]
+[Score "NS 200"]
+[Table "2"]
+[ScorePercentage "NS 0.00 EW 100.00"]
+[DoubleDummyTricks "8a6878a6874265542655"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N NT  8
+N  S 10
+N  H  6
+N  D  8
+N  C  7
+S NT  8
+S  S 10
+S  H  6
+S  D  8
+S  C  7
+E NT  4
+E  S  2
+E  H  6
+E  D  5
+E  C  5
+W NT  4
+W  S  2
+W  H  6
+W  D  5
+W  C  5
+[OptimumScore "NS +420"]
+[Competition "Pairs"]
+% RBDATA 8,3,1,76,41,85,85,116,43,207,41,103,30,427,25,195,112,41,15,158,35,22,24,42,23,16,22,233,27,21,15,41,21,17,84,56,23,15,19,22,17,28,40,16,26,11,16,16,82,16,28,18,19,11,30,16,14,10,10,21,17,9,39,11,8,12,9
+[Auction "N"]
+Pass Pass 1S X 
+Pass 2C 2H Pass 
+2S Pass Pass Pass 
+[Play "W"]
+CA C4 C8 CK 
+D2 D5 DT DQ 
+SQ S3 SK SJ 
+D3 D8 D6 DA 
+S4 S6 CT SA 
+H4 H5 H2 HA 
+H8 DJ H3 HK 
+D9 S8 D4 D7 
+C2 C6 C3 S2 
+HJ S9 H7 H6 
+C9 C7 C5 S5 
+HQ ST HT H9 
+DK CQ CJ S7 

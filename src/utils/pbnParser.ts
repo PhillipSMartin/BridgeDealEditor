@@ -33,12 +33,19 @@ function pbnCallToInternal(token: string): string | null {
 }
 
 function extractFirstDeal(content: string): string {
-  // PBN files separate deals with blank lines; each new deal starts with [Event or [Board.
-  // Find where the second deal begins and clip the content.
-  const dealStartRegex = /^(?:\[Event|\[Board)/gm;
-  dealStartRegex.exec(content); // first match — skip it
-  const secondMatch = dealStartRegex.exec(content);
-  return secondMatch ? content.slice(0, secondMatch.index) : content;
+  // Each game record starts with [Event. Find the second occurrence and clip there.
+  // We intentionally do NOT split on [Board because [Board appears inside every game.
+  const eventRegex = /^\[Event\b/gm;
+  eventRegex.exec(content); // first deal's [Event] — skip it
+  const secondDeal = eventRegex.exec(content);
+  if (secondDeal) return content.slice(0, secondDeal.index);
+  // No [Event tags (or only one) — return entire content
+  return content;
+}
+
+function cleanPlayerName(raw: string): string {
+  // Strip RealBridge-style "#number" suffix: "Diana Styche#22803" → "Diana Styche"
+  return raw.replace(/#\d+$/, '').trim();
 }
 
 function stripComments(text: string): string {
@@ -65,12 +72,12 @@ export function parsePbn(rawContent: string): BridgeBoard {
   const dealerLetter = (tags['Dealer'] ?? 'N').trim().toUpperCase();
   const dealer: Direction = SEAT_LETTER[dealerLetter] ?? 'North';
 
-  // Player names (optional)
+  // Player names (optional); strip platform-specific suffixes like "#22803"
   const playerNames: Partial<Record<Direction, string>> = {
-    North: tags['North'] || undefined,
-    East:  tags['East']  || undefined,
-    South: tags['South'] || undefined,
-    West:  tags['West']  || undefined,
+    North: tags['North'] ? cleanPlayerName(tags['North']) : undefined,
+    East:  tags['East']  ? cleanPlayerName(tags['East'])  : undefined,
+    South: tags['South'] ? cleanPlayerName(tags['South']) : undefined,
+    West:  tags['West']  ? cleanPlayerName(tags['West'])  : undefined,
   };
 
   // Deal: "N:.63.AKQ987.A9732 A8654.KQ5.T.QJT6 J973.J98742.3.K4 KQT2.AT.J6542.85"
