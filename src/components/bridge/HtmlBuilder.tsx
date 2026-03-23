@@ -72,6 +72,10 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
     setFileName(`board${board['Board number']}`);
   }, [board['Board number']]);
 
+  useEffect(() => {
+    if (maxPlayed === 0) setPerCard(false);
+  }, [maxPlayed]);
+
   const [auction, setAuction] = useState<HtmlExportOptions['auction']>('with-headers');
   const [played, setPlayed] = useState(0);
   const [playedStyle, setPlayedStyle] = useState<HtmlExportOptions['playedStyle']>('white');
@@ -121,10 +125,13 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
 
   const downloadZip = async () => {
     const name = fileName.trim() || `board${board['Board number']}`;
-    const series = buildHtmlSeries(board, playCards, opts, name);
+    const series = buildHtmlSeries(board, playCards, opts);
+    const total = series.length - 1;
+    const padLen = String(total).length < 2 ? 2 : String(total).length;
     const zip = new JSZip();
-    for (const { filename, html } of series) {
-      zip.file(filename, html);
+    for (const { played: n, html } of series) {
+      const suffix = String(n).padStart(padLen, '0');
+      zip.file(`${name}-${suffix}.html`, html);
     }
     const blob = await zip.generateAsync({ type: 'blob' });
     const url = URL.createObjectURL(blob);
@@ -272,17 +279,28 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                     </label>
                   </div>
                 )}
-                <label className="flex items-center gap-2 text-sm mt-2 cursor-pointer" style={{ color: 'hsl(210 20% 78%)' }}>
-                  <input
-                    type="checkbox"
-                    checked={perCard}
-                    onChange={e => setPerCard(e.target.checked)}
-                    className="accent-amber-500"
-                  />
-                  One file per played card (downloads as ZIP)
-                </label>
               </div>
             )}
+
+            {/* Per-card ZIP export */}
+            <div>
+              <label
+                className="flex items-center gap-2 text-sm cursor-pointer"
+                style={{ color: maxPlayed === 0 ? 'hsl(215 15% 38%)' : 'hsl(210 20% 78%)', userSelect: 'none' }}
+              >
+                <input
+                  type="checkbox"
+                  checked={perCard}
+                  disabled={maxPlayed === 0}
+                  onChange={e => setPerCard(e.target.checked)}
+                  className="accent-amber-500"
+                />
+                One file per played card (downloads as ZIP)
+              </label>
+              {maxPlayed === 0 && (
+                <div className="mt-1 text-xs" style={{ color: 'hsl(215 15% 38%)' }}>Available once cards are played</div>
+              )}
+            </div>
 
             {/* Suits to exclude */}
             <div>

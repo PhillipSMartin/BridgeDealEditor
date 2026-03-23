@@ -336,16 +336,11 @@ export function buildHtmlSeries(
   board: BridgeBoard,
   playCards: Map<string, number>,
   opts: HtmlExportOptions,
-  baseName: string,
-): { filename: string; html: string }[] {
+): { played: number; html: string }[] {
   const total = playCards.size;
-  const pad = 2;
-  const results: { filename: string; html: string }[] = [];
+  const results: { played: number; html: string }[] = [];
   for (let n = 0; n <= total; n++) {
-    const suffix = String(n).padStart(pad, '0');
-    const filename = `${baseName}-${suffix}.html`;
-    const html = buildHtml(board, playCards, { ...opts, played: n });
-    results.push({ filename, html });
+    results.push({ played: n, html: buildHtml(board, playCards, { ...opts, played: n }) });
   }
   return results;
 }
