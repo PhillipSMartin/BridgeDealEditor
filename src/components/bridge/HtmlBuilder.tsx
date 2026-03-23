@@ -65,10 +65,9 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
 
   const [auction, setAuction] = useState<HtmlExportOptions['auction']>('with-headers');
   const [played, setPlayed] = useState(0);
-  const [playedStyle, setPlayedStyle] = useState<HtmlExportOptions['playedStyle']>('grey');
+  const [playedStyle, setPlayedStyle] = useState<HtmlExportOptions['playedStyle']>('white');
   const [showOnFelt, setShowOnFelt] = useState(true);
   const [excludeSuits, setExcludeSuits] = useState<Set<string>>(new Set());
-  const [title, setTitle] = useState('');
 
   const maxPlayed = playCards.size;
 
@@ -79,7 +78,6 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
     playedStyle,
     showOnFelt,
     excludeSuits,
-    title,
   };
 
   const html = useMemo(() => {
@@ -88,7 +86,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
     } catch {
       return '<html><body><p style="color:red">Error generating HTML</p></body></html>';
     }
-  }, [board, playCards, north, east, south, west, auction, played, playedStyle, showOnFelt, excludeSuits, title]);
+  }, [board, playCards, north, east, south, west, auction, played, playedStyle, showOnFelt, excludeSuits]);
 
   const toggleSuit = (key: string) => {
     setExcludeSuits(prev => {
@@ -145,27 +143,6 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
 
           {/* Left: options panel */}
           <div className="flex flex-col gap-5 overflow-y-auto pr-2" style={{ minWidth: '300px', maxWidth: '300px' }}>
-
-            {/* Title */}
-            <div>
-              <div style={sectionLabel}>Title</div>
-              <input
-                type="text"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                placeholder="Optional title..."
-                style={{
-                  width: '100%',
-                  background: 'hsl(220 18% 16%)',
-                  border: '1px solid hsl(220 18% 28%)',
-                  color: 'hsl(210 20% 85%)',
-                  borderRadius: '6px',
-                  padding: '7px 10px',
-                  fontSize: '13px',
-                  outline: 'none',
-                }}
-              />
-            </div>
 
             {/* Hands */}
             <div>
@@ -237,7 +214,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                   <div className="flex flex-col gap-2">
                     <div className="text-xs mb-1" style={{ color: 'hsl(215 15% 50%)' }}>Display played cards as:</div>
                     <div className="flex gap-2 flex-wrap">
-                      {([['remove', 'Remove'], ['grey', 'Greyed'], ['white', 'Invisible']] as [HtmlExportOptions['playedStyle'], string][]).map(([val, label]) => (
+                      {([['grey', 'Greyed'], ['white', 'Invisible']] as [HtmlExportOptions['playedStyle'], string][]).map(([val, label]) => (
                         <label key={val} style={radioStyle(playedStyle === val)}>
                           <input type="radio" name="playedStyle" value={val} checked={playedStyle === val} onChange={() => setPlayedStyle(val)} className="accent-amber-500" />
                           {label}

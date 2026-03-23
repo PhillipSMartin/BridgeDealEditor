@@ -7,10 +7,9 @@ export interface HtmlExportOptions {
   west: boolean;
   auction: 'none' | 'with-headers' | 'no-header';
   played: number;
-  playedStyle: 'remove' | 'grey' | 'white';
+  playedStyle: 'grey' | 'white';
   showOnFelt: boolean;
   excludeSuits: Set<string>;
-  title: string;
 }
 
 const AUCTION_DIRECTIONS: Direction[] = ['West', 'North', 'East', 'South'];
@@ -98,9 +97,7 @@ function formatHand(
       const rankStr = formatRank(card);
 
       if (played) {
-        if (opts.playedStyle === 'remove') {
-          continue;
-        } else if (opts.playedStyle === 'white') {
+        if (opts.playedStyle === 'white') {
           whiteDisplay.push(`<span style="color:#fff;">${rankStr}</span>`);
         } else {
           display.push(`<span style="color:#aaa;">${rankStr}</span>`);
@@ -325,14 +322,6 @@ export function buildHtml(
   const playedSet = new Set(playSequence.slice(0, opts.played));
 
   let body = CSS;
-
-  if (opts.title.trim()) {
-    const titleHtml = opts.title
-      .split(/\\n|\n/)
-      .map(escapeHtml)
-      .join('<br>');
-    body += `<div style="text-align:left;font-family:sans-serif;font-size:1.2em;margin-bottom:0.5em;">${titleHtml}</div>\n`;
-  }
 
   const seatsToShow = [
     opts.north ? 'N' : '',
