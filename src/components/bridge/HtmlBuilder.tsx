@@ -321,6 +321,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                 height="100%"
                 style={{ display: 'block', border: 'none', minHeight: '400px' }}
                 title="HTML Preview"
+                sandbox=""
               />
             </div>
           </div>

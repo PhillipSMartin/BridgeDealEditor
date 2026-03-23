@@ -59,6 +59,15 @@ const CSS = `<style>
 </style>
 `;
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function formatRank(r: string): string {
   return r === 'T' ? '10' : r;
 }
@@ -118,7 +127,7 @@ function formatHandDiagram(
 ): string {
   let html = `          <div class="hand-title">${seat.Direction.toUpperCase()}</div>\n`;
   if (seat.Player) {
-    html += `          <div class="name">${seat.Player}</div>\n`;
+    html += `          <div class="name">${escapeHtml(seat.Player)}</div>\n`;
   }
   html += formatHand(seat.Hand, opts, playedSet, true, 10);
   return html;
@@ -183,7 +192,7 @@ function buildAuctionTable(board: BridgeBoard, includeDirections: boolean): stri
 
   header += '    <tr>\n';
   for (const dir of AUCTION_DIRECTIONS) {
-    header += `      <td align="left" width="25%"><i>${players[dir] ?? ''}</i></td>\n`;
+    header += `      <td align="left" width="25%"><i>${escapeHtml(players[dir] ?? '')}</i></td>\n`;
   }
   header += '    </tr>';
 
@@ -318,7 +327,10 @@ export function buildHtml(
   let body = CSS;
 
   if (opts.title.trim()) {
-    const titleHtml = opts.title.replace(/\\n/g, '<br>');
+    const titleHtml = opts.title
+      .split(/\\n|\n/)
+      .map(escapeHtml)
+      .join('<br>');
     body += `<div style="text-align:left;font-family:sans-serif;font-size:1.2em;margin-bottom:0.5em;">${titleHtml}</div>\n`;
   }
 
@@ -331,13 +343,16 @@ export function buildHtml(
 
   const dirMap: Record<string, Direction> = { N: 'North', E: 'East', S: 'South', W: 'West' };
 
-  if (seatsToShow.length === 1) {
+  if (seatsToShow.length === 0 || seatsToShow.length >= 4) {
+    const allFourOpts = { ...opts, north: true, east: true, south: true, west: true };
+    body += buildDiagram(board, allFourOpts, playedSet, playSequence);
+  } else if (seatsToShow.length === 1) {
     const dir = dirMap[seatsToShow];
     const seat = board.Seats.find(s => s.Direction === dir);
     if (seat) {
       body += buildSingleHand(seat.Hand, opts, playedSet);
     }
-  } else if (seatsToShow.length > 1) {
+  } else {
     body += buildDiagram(board, opts, playedSet, playSequence);
   }
 
