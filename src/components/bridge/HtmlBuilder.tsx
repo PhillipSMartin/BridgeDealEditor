@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { BridgeBoard } from '@/types/bridge';
@@ -63,7 +63,13 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   const [south, setSouth] = useState(true);
   const [west, setWest] = useState(true);
 
+  const [fileName, setFileName] = useState(`board${board['Board number']}`);
   const [vertical, setVertical] = useState(false);
+
+  useEffect(() => {
+    setFileName(`board${board['Board number']}`);
+  }, [board['Board number']]);
+
   const [auction, setAuction] = useState<HtmlExportOptions['auction']>('with-headers');
   const [played, setPlayed] = useState(0);
   const [playedStyle, setPlayedStyle] = useState<HtmlExportOptions['playedStyle']>('white');
@@ -104,7 +110,8 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `board${board['Board number']}.html`;
+    const name = fileName.trim() || `board${board['Board number']}`;
+    a.download = name.endsWith('.html') ? name : `${name}.html`;
     a.click();
     URL.revokeObjectURL(url);
     toast('HTML file downloaded!');
@@ -276,6 +283,22 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
               </div>
               <div className="mt-1 text-xs" style={{ color: 'hsl(215 15% 45%)' }}>
                 {excludeSuits.size > 0 ? `Hiding: ${[...excludeSuits].map(k => SUIT_SYMBOLS.find(s => s.key === k)?.symbol).join(' ')}` : 'All suits shown'}
+              </div>
+            </div>
+
+            {/* File name */}
+            <div>
+              <div style={sectionLabel}>File name</div>
+              <div className="flex items-center gap-1.5">
+                <input
+                  type="text"
+                  value={fileName}
+                  onChange={e => setFileName(e.target.value)}
+                  placeholder={`board${board['Board number']}`}
+                  className="flex-1 rounded px-2 py-1 text-sm"
+                  style={{ background: 'hsl(220 18% 15%)', border: '1px solid hsl(220 18% 30%)', color: 'hsl(210 20% 85%)', outline: 'none' }}
+                />
+                <span className="text-xs" style={{ color: 'hsl(215 15% 45%)' }}>.html</span>
               </div>
             </div>
 
