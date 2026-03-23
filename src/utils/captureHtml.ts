@@ -53,42 +53,37 @@ export async function captureHtmlToPng(htmlString: string): Promise<Blob> {
   const bodyContent = bodyMatch ? bodyMatch[1] : htmlString;
 
   const container = document.createElement('div');
+  // Use a large fixed height so content is never clipped. The cropCanvas step
+  // will trim all the surplus whitespace back down to the actual content bounds.
+  const CAPTURE_W = 900;
+  const CAPTURE_H = 4000;
+
   container.style.cssText = [
     'position:absolute',
-    'top:-10000px',
+    'top:-20000px',
     'left:-10000px',
-    'width:900px',
+    `width:${CAPTURE_W}px`,
+    `height:${CAPTURE_H}px`,
     'background:#ffffff',
     'color:#000000',
     'color-scheme:light',
-    'overflow:visible',
+    'overflow:hidden',
   ].join(';');
   container.innerHTML = bodyContent;
   document.body.appendChild(container);
 
   try {
-    await waitFrames(3);
-
-    // Measure actual rendered content size and set explicit dimensions so
-    // html2canvas captures the full layout including overflow (e.g. auction table).
-    const fullW = Math.max(container.scrollWidth, container.offsetWidth, 400);
-    const fullH = Math.max(container.scrollHeight, container.offsetHeight, 100);
-    container.style.width = `${fullW}px`;
-    container.style.height = `${fullH}px`;
-    container.style.overflow = 'hidden';
-
-    // One more frame so the browser reflows at the explicit size.
-    await waitFrames(1);
+    await waitFrames(4);
 
     const raw = await html2canvas(container, {
       backgroundColor: '#ffffff',
       logging: false,
       useCORS: false,
       allowTaint: false,
-      width: fullW,
-      height: fullH,
-      windowWidth: fullW,
-      windowHeight: fullH,
+      width: CAPTURE_W,
+      height: CAPTURE_H,
+      windowWidth: CAPTURE_W,
+      windowHeight: CAPTURE_H,
     });
 
     const cropped = cropCanvas(raw);
