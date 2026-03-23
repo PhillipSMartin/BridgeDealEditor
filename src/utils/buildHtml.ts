@@ -332,6 +332,24 @@ ${handHtml}
   return `<TABLE width="300" border="0" cellspacing="0" cellpadding="0" align="center"><TR><TD WIDTH="100%" Align="center">${handHtml}</TD></TR></TABLE>\n`;
 }
 
+export function buildHtmlSeries(
+  board: BridgeBoard,
+  playCards: Map<string, number>,
+  opts: HtmlExportOptions,
+  baseName: string,
+): { filename: string; html: string }[] {
+  const total = playCards.size;
+  const pad = 2;
+  const results: { filename: string; html: string }[] = [];
+  for (let n = 0; n <= total; n++) {
+    const suffix = String(n).padStart(pad, '0');
+    const filename = `${baseName}-${suffix}.html`;
+    const html = buildHtml(board, playCards, { ...opts, played: n });
+    results.push({ filename, html });
+  }
+  return results;
+}
+
 export function buildHtml(
   board: BridgeBoard,
   playCards: Map<string, number>,

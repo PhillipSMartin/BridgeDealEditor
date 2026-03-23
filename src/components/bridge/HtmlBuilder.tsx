@@ -2,7 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { BridgeBoard } from '@/types/bridge';
-import { buildHtml, HtmlExportOptions } from '@/utils/buildHtml';
+import JSZip from 'jszip';
+import { buildHtml, buildHtmlSeries, HtmlExportOptions } from '@/utils/buildHtml';
 import { toast } from 'sonner';
 
 interface HtmlBuilderProps {
@@ -65,6 +66,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
 
   const [fileName, setFileName] = useState(`board${board['Board number']}`);
   const [vertical, setVertical] = useState(false);
+  const [perCard, setPerCard] = useState(false);
 
   useEffect(() => {
     setFileName(`board${board['Board number']}`);
@@ -115,6 +117,23 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
     a.click();
     URL.revokeObjectURL(url);
     toast('HTML file downloaded!');
+  };
+
+  const downloadZip = async () => {
+    const name = fileName.trim() || `board${board['Board number']}`;
+    const series = buildHtmlSeries(board, playCards, opts, name);
+    const zip = new JSZip();
+    for (const { filename, html } of series) {
+      zip.file(filename, html);
+    }
+    const blob = await zip.generateAsync({ type: 'blob' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${name}.zip`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast(`ZIP downloaded (${series.length} files)`);
   };
 
   const copyHtml = () => {
@@ -253,6 +272,15 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                     </label>
                   </div>
                 )}
+                <label className="flex items-center gap-2 text-sm mt-2 cursor-pointer" style={{ color: 'hsl(210 20% 78%)' }}>
+                  <input
+                    type="checkbox"
+                    checked={perCard}
+                    onChange={e => setPerCard(e.target.checked)}
+                    className="accent-amber-500"
+                  />
+                  One file per played card (downloads as ZIP)
+                </label>
               </div>
             )}
 
@@ -298,18 +326,18 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                   className="flex-1 rounded px-2 py-1 text-sm"
                   style={{ background: 'hsl(220 18% 15%)', border: '1px solid hsl(220 18% 30%)', color: 'hsl(210 20% 85%)', outline: 'none' }}
                 />
-                <span className="text-xs" style={{ color: 'hsl(215 15% 45%)' }}>.html</span>
+                <span className="text-xs" style={{ color: 'hsl(215 15% 45%)' }}>{perCard ? '.zip' : '.html'}</span>
               </div>
             </div>
 
             {/* Action buttons */}
             <div className="flex gap-2 pt-1">
               <Button
-                onClick={downloadHtml}
+                onClick={perCard ? downloadZip : downloadHtml}
                 className="flex-1 font-semibold text-sm"
                 style={{ background: 'hsl(43 70% 42%)', color: 'hsl(220 25% 8%)', border: 'none' }}
               >
-                Download
+                {perCard ? 'Download ZIP' : 'Download'}
               </Button>
               <Button
                 onClick={copyHtml}
