@@ -181,9 +181,9 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
               <div className="mt-1.5 text-xs" style={{ color: 'hsl(215 15% 45%)' }}>
                 {[north, east, south, west].filter(Boolean).length === 1
                   ? 'Single-hand inline layout'
-                  : [north, east, south, west].filter(Boolean).length === 0
-                    ? 'No hands — auction only'
-                    : 'Four-hand diagram'}
+                  : [north, east, south, west].filter(Boolean).length >= 2 && [north, east, south, west].filter(Boolean).length < 4
+                    ? 'Partial diagram'
+                    : 'Full four-hand diagram (default when none or all selected)'}
               </div>
             </div>
 
