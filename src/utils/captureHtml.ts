@@ -59,6 +59,8 @@ export async function captureHtmlToPng(htmlString: string): Promise<Blob> {
     'left:-10000px',
     'width:900px',
     'background:#ffffff',
+    'color:#000000',
+    'color-scheme:light',
     'overflow:visible',
   ].join(';');
   container.innerHTML = bodyContent;

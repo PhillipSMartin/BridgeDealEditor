@@ -25,6 +25,7 @@ const PIPS: Record<string, string> = {
 };
 
 const CSS = `<style>
+    body { color: #000000; background: #ffffff; color-scheme: light; }
     .bridge-diagram {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Color Emoji", "Segoe UI Emoji";
       --col-center: 145px;
