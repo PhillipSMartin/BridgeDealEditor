@@ -399,7 +399,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                   className="flex-1 rounded px-2 py-1 text-sm"
                   style={{ background: 'hsl(220 18% 15%)', border: '1px solid hsl(220 18% 30%)', color: 'hsl(210 20% 85%)', outline: 'none' }}
                 />
-                <span className="text-xs" style={{ color: 'hsl(215 15% 45%)' }}>{perCard ? '.zip' : ''}</span>
+                <span className="text-xs" style={{ color: 'hsl(215 15% 45%)' }}>{perCard ? '.zip' : '.html / .png'}</span>
               </div>
             </div>
 
