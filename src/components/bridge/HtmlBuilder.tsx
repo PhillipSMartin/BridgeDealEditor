@@ -221,7 +221,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
       </DialogTrigger>
 
       <DialogContent
-        className="max-w-4xl"
+        className="max-w-5xl"
         style={{ background: 'hsl(220 22% 11%)', border: '1px solid hsl(220 18% 24%)', color: 'hsl(210 20% 88%)' }}
       >
         <DialogHeader>
@@ -233,7 +233,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
         <div className="flex gap-4 mt-1 overflow-hidden" style={{ maxHeight: '82vh' }}>
 
           {/* Left: options panel */}
-          <div className="flex flex-col gap-5 overflow-y-auto pr-2" style={{ minWidth: '300px', maxWidth: '300px' }}>
+          <div className="flex flex-col gap-5 overflow-y-auto pr-2" style={{ minWidth: '380px', maxWidth: '380px' }}>
 
             {/* Hands */}
             <div>
