@@ -25,54 +25,81 @@ function parseHand(handStr: string): Hand {
 function pbnCallToInternal(token: string): string | null {
   const upper = token.toUpperCase();
   if (upper === 'PASS') return 'P';
-  if (upper === 'X')    return 'D';   // Double
-  if (upper === 'XX')   return 'R';   // Redouble
+  if (upper === 'X')    return 'D';
+  if (upper === 'XX')   return 'R';
   if (/^[1-7][CDHS]$/.test(upper)) return upper;
-  if (/^[1-7]NT$/.test(upper)) return upper[0] + 'N'; // "3NT" → "3N"
+  if (/^[1-7]NT$/.test(upper)) return upper[0] + 'N';
   return null;
 }
 
 function extractFirstDeal(content: string): string {
-  // Each game record starts with [Event. Find the second occurrence and clip there.
-  // We intentionally do NOT split on [Board because [Board appears inside every game.
   const eventRegex = /^\[Event\b/gm;
-  eventRegex.exec(content); // first deal's [Event] — skip it
+  eventRegex.exec(content);
   const secondDeal = eventRegex.exec(content);
   if (secondDeal) return content.slice(0, secondDeal.index);
-  // No [Event tags (or only one) — return entire content
   return content;
 }
 
 function cleanPlayerName(raw: string): string {
-  // Strip RealBridge-style "#number" suffix: "Diana Styche#22803" → "Diana Styche"
   return raw.replace(/#\d+$/, '').trim();
 }
 
 function stripComments(text: string): string {
-  // Remove { ... } comment blocks (may span lines)
   return text.replace(/\{[^}]*\}/g, ' ');
+}
+
+// Returns 'S'|'H'|'D'|'C' for a suited contract, 'N' for notrump.
+function parseTrump(contract: string): string {
+  const match = /^[1-7](NT|[SHDC])/i.exec(contract.trim());
+  if (!match) return 'N';
+  return match[1].toUpperCase() === 'NT' ? 'N' : match[1].toUpperCase();
+}
+
+// Given a complete trick (in play order, leader first), return the winning seat.
+function trickWinner(
+  trick: { seat: Direction; card: string }[],
+  trump: string,
+): Direction {
+  const leadSuit = trick[0].card[0];
+  let winnerIdx = 0;
+  for (let i = 1; i < trick.length; i++) {
+    const { card } = trick[i];
+    const suit = card[0];
+    const rank = card[1];
+    const wCard = trick[winnerIdx].card;
+    const wSuit = wCard[0];
+    const wRank = wCard[1];
+    if (trump !== 'N' && suit === trump) {
+      // This card is trump
+      if (wSuit !== trump || RANK_ORDER.indexOf(rank) < RANK_ORDER.indexOf(wRank)) {
+        winnerIdx = i;
+      }
+    } else if (suit === leadSuit && wSuit !== trump) {
+      // Same suit as lead, no trump yet played
+      if (RANK_ORDER.indexOf(rank) < RANK_ORDER.indexOf(wRank)) {
+        winnerIdx = i;
+      }
+    }
+  }
+  return trick[winnerIdx].seat;
 }
 
 export function parsePbn(rawContent: string): BridgeBoard {
   const content = extractFirstDeal(rawContent);
 
-  // Extract all [Tag "value"] pairs from the first deal
   const tags: Record<string, string> = {};
   const tagRegex = /\[(\w+)\s+"([^"]*)"\]/g;
   let m: RegExpExecArray | null;
   while ((m = tagRegex.exec(content)) !== null) {
     const [, name, value] = m;
-    if (!(name in tags)) tags[name] = value; // first occurrence wins
+    if (!(name in tags)) tags[name] = value;
   }
 
-  // Board number
   const boardNumber = parseInt(tags['Board'] ?? '1', 10) || 1;
 
-  // Dealer
   const dealerLetter = (tags['Dealer'] ?? 'N').trim().toUpperCase();
   const dealer: Direction = SEAT_LETTER[dealerLetter] ?? 'North';
 
-  // Player names (optional); strip platform-specific suffixes like "#22803"
   const playerNames: Partial<Record<Direction, string>> = {
     North: tags['North'] ? cleanPlayerName(tags['North']) : undefined,
     East:  tags['East']  ? cleanPlayerName(tags['East'])  : undefined,
@@ -80,7 +107,6 @@ export function parsePbn(rawContent: string): BridgeBoard {
     West:  tags['West']  ? cleanPlayerName(tags['West'])  : undefined,
   };
 
-  // Deal: "N:.63.AKQ987.A9732 A8654.KQ5.T.QJT6 J973.J98742.3.K4 KQT2.AT.J6542.85"
   const dealTag = tags['Deal'] ?? '';
   const colonIdx = dealTag.indexOf(':');
   const startLetter = dealTag[0]?.toUpperCase() ?? 'N';
@@ -100,45 +126,79 @@ export function parsePbn(rawContent: string): BridgeBoard {
     seats.push(seat);
   }
 
-  // Play: find [Play "X"] tag, then collect card tokens until * or next [tag]
-  // PBN card format (e.g. HT, SA, DK) is identical to the internal card key format.
-  const playTagRx = /\[Play\s+"[NESW]"\]/i;
+  // ── Play section ──────────────────────────────────────────────────────────
+  // PBN layout: [Play "X"] means X leads trick 1. Each subsequent row lists
+  // the 4 cards played in that trick in FIXED COLUMN ORDER (X, X+1, X+2, X+3
+  // clockwise), NOT in play order. To reconstruct play order we must track the
+  // trick winner (who leads next), which requires knowing the trump suit.
+  const trump = parseTrump(tags['Contract'] ?? '');
+
+  const playTagRx = /\[Play\s+"([NESW])"\]/i;
   const playTagMatch = playTagRx.exec(content);
   const play: string[] = [];
 
   if (playTagMatch) {
+    const playLetter = (playTagMatch[1] ?? 'N').toUpperCase();
+    const playStartDir = SEAT_LETTER[playLetter] ?? 'North';
+    const playStartIdx = SEAT_ORDER.indexOf(playStartDir);
+    // Fixed column order: playStartDir, next clockwise, …
+    const columnSeats: Direction[] = [0, 1, 2, 3].map(
+      i => SEAT_ORDER[(playStartIdx + i) % 4],
+    );
+
+    // Collect flat card tokens (null = '-' placeholder, stop at '*')
     const afterPlay = content.slice(playTagMatch.index + playTagMatch[0].length);
-    const nextTagMatch = /^\[/m.exec(afterPlay);
-    const playSection = nextTagMatch ? afterPlay.slice(0, nextTagMatch.index) : afterPlay;
-    const cleaned = stripComments(playSection);
-    const tokens = cleaned.trim().split(/\s+/);
-    for (const token of tokens) {
+    const nextTagAfterPlay = /^\[/m.exec(afterPlay);
+    const playSection = nextTagAfterPlay
+      ? afterPlay.slice(0, nextTagAfterPlay.index)
+      : afterPlay;
+    const cleanedPlay = stripComments(playSection);
+    const flatCards: (string | null)[] = [];
+    for (const token of cleanedPlay.trim().split(/\s+/)) {
       if (!token) continue;
-      if (token === '*') break;          // incomplete play marker
-      if (token === '-') continue;       // seat had no card in this trick
-      if (/^[SHDC][A-Z0-9]$/.test(token)) play.push(token);
+      if (token === '*') break;
+      if (token === '-') { flatCards.push(null); continue; }
+      if (/^[SHDC][A-Z0-9]$/.test(token)) flatCards.push(token);
+    }
+
+    // Process tricks, reordering each one by actual play sequence
+    let leader = playStartDir;
+    for (let t = 0; t * 4 + 3 < flatCards.length; t++) {
+      const base = t * 4;
+      const leaderColIdx = columnSeats.indexOf(leader);
+
+      // Build the trick in actual play order (leader first, then clockwise)
+      const trickInOrder: { seat: Direction; card: string }[] = [];
+      let hasNull = false;
+      for (let i = 0; i < 4; i++) {
+        const colIdx = (leaderColIdx + i) % 4;
+        const card = flatCards[base + colIdx];
+        if (card === null) { hasNull = true; break; }
+        trickInOrder.push({ seat: columnSeats[colIdx], card });
+      }
+
+      if (hasNull) break; // incomplete trick — stop here
+
+      for (const { card } of trickInOrder) play.push(card);
+      leader = trickWinner(trickInOrder, trump);
     }
   }
 
-  // Auction: find [Auction "X"] tag, then read tokens until next [...] tag line
+  // ── Auction section ───────────────────────────────────────────────────────
   const auctionTagRx = /\[Auction\s+"[NESW]"\]/i;
   const auctionTagMatch = auctionTagRx.exec(content);
   const auction: string[] = [];
 
   if (auctionTagMatch) {
     const afterAuction = content.slice(auctionTagMatch.index + auctionTagMatch[0].length);
-    // Stop at the next [...] tag (start of next section)
     const nextTagMatch = /^\[/m.exec(afterAuction);
     const auctionSection = nextTagMatch
       ? afterAuction.slice(0, nextTagMatch.index)
       : afterAuction;
 
     const cleaned = stripComments(auctionSection);
-    const tokens = cleaned.trim().split(/\s+/);
-
-    for (const token of tokens) {
-      if (!token || token === '*' || token === '-') break; // end markers
-      // Skip annotation glyphs: =N=, $N, !, ?, !!, etc.
+    for (const token of cleaned.trim().split(/\s+/)) {
+      if (!token || token === '*' || token === '-') break;
       if (/^=\d+=/.test(token)) continue;
       if (/^\$\d+/.test(token)) continue;
       if (/^[!?]+$/.test(token)) continue;
