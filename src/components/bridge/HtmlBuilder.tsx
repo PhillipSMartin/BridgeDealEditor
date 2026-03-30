@@ -312,7 +312,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                   />
                 </div>
 
-                {played > 0 && (
+                {(played > 0 || perCard) && (
                   <div className="flex flex-col gap-2">
                     <div className="text-xs mb-1" style={{ color: 'hsl(215 15% 50%)' }}>Display played cards as:</div>
                     <div className="flex gap-2 flex-wrap">
