@@ -370,7 +370,9 @@ export function buildHtml(
 
   const dirMap: Record<string, Direction> = { N: 'North', E: 'East', S: 'South', W: 'West' };
 
-  if (seatsToShow.length >= 4) {
+  if (seatsToShow.length === 0) {
+    // no hands selected — omit diagram and felt entirely
+  } else if (seatsToShow.length >= 4) {
     const allFourOpts = { ...opts, north: true, east: true, south: true, west: true };
     body += buildDiagram(board, allFourOpts, playedSet, playSequence);
   } else if (seatsToShow.length === 1) {
