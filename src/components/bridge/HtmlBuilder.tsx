@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { BridgeBoard } from '@/types/bridge';
 import JSZip from 'jszip';
 import { buildHtml, buildHtmlSeries, HtmlExportOptions } from '@/utils/buildHtml';
-import { captureHtmlToPng } from '@/utils/captureHtml';
 import { toast } from 'sonner';
 
 interface HtmlBuilderProps {
@@ -68,7 +67,6 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   const [fileName, setFileName] = useState(`board${board['Board number']}`);
   const [vertical, setVertical] = useState(false);
   const [perCard, setPerCard] = useState(false);
-  const [pngProgress, setPngProgress] = useState<string | null>(null);
 
   useEffect(() => {
     setFileName(`board${board['Board number']}`);
@@ -149,53 +147,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
 
   const baseName = () => {
     const raw = fileName.trim() || `board${board['Board number']}`;
-    return raw.replace(/\.(html?|zip|png)$/i, '');
-  };
-
-  const downloadPng = async () => {
-    try {
-      setPngProgress('Generating…');
-      const name = baseName();
-      const blob = await captureHtmlToPng(html);
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${name}.png`;
-      a.click();
-      URL.revokeObjectURL(url);
-      toast('PNG downloaded!');
-    } catch {
-      toast('Failed to generate PNG');
-    } finally {
-      setPngProgress(null);
-    }
-  };
-
-  const downloadPngZip = async () => {
-    try {
-      const name = baseName();
-      const series = buildHtmlSeries(board, playCards, opts);
-      const zip = new JSZip();
-      for (let i = 0; i < series.length; i++) {
-        setPngProgress(`Generating ${i + 1} of ${series.length}…`);
-        const { filename, html: seriesHtml } = series[i];
-        const pngBlob = await captureHtmlToPng(seriesHtml);
-        zip.file(`${name}${filename.replace(/\.html$/i, '.png')}`, pngBlob);
-      }
-      setPngProgress('Building ZIP…');
-      const blob = await zip.generateAsync({ type: 'blob' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${name}.zip`;
-      a.click();
-      URL.revokeObjectURL(url);
-      toast(`PNG ZIP downloaded (${series.length} files)`);
-    } catch {
-      toast('Failed to generate PNG ZIP');
-    } finally {
-      setPngProgress(null);
-    }
+    return raw.replace(/\.(html?|zip)$/i, '');
   };
 
   const copyHtml = () => {
@@ -399,37 +351,21 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                   className="flex-1 rounded px-2 py-1 text-sm"
                   style={{ background: 'hsl(220 18% 15%)', border: '1px solid hsl(220 18% 30%)', color: 'hsl(210 20% 85%)', outline: 'none' }}
                 />
-                <span className="text-xs" style={{ color: 'hsl(215 15% 45%)' }}>{perCard ? '.zip' : '.html / .png'}</span>
+                <span className="text-xs" style={{ color: 'hsl(215 15% 45%)' }}>{perCard ? '.zip' : '.html'}</span>
               </div>
             </div>
 
             {/* Action buttons */}
             <div className="flex flex-col gap-2 pt-1">
-              <div className="flex gap-2">
-                <Button
-                  onClick={perCard ? downloadZip : downloadHtml}
-                  disabled={!!pngProgress}
-                  className="flex-1 font-semibold text-sm"
-                  style={{ background: 'hsl(43 70% 42%)', color: 'hsl(220 25% 8%)', border: 'none' }}
-                >
-                  {perCard ? 'Download ZIP' : 'Download HTML'}
-                </Button>
-                <Button
-                  onClick={perCard ? downloadPngZip : downloadPng}
-                  disabled={!!pngProgress}
-                  className="flex-1 font-semibold text-sm"
-                  style={{
-                    background: pngProgress ? 'hsl(220 18% 22%)' : 'hsl(200 60% 30%)',
-                    color: pngProgress ? 'hsl(215 15% 55%)' : 'hsl(200 80% 88%)',
-                    border: 'none',
-                  }}
-                >
-                  {pngProgress || (perCard ? 'Download PNG ZIP' : 'Download PNG')}
-                </Button>
-              </div>
+              <Button
+                onClick={perCard ? downloadZip : downloadHtml}
+                className="flex-1 font-semibold text-sm"
+                style={{ background: 'hsl(43 70% 42%)', color: 'hsl(220 25% 8%)', border: 'none' }}
+              >
+                {perCard ? 'Download ZIP' : 'Download HTML'}
+              </Button>
               <Button
                 onClick={copyHtml}
-                disabled={!!pngProgress}
                 variant="outline"
                 className="flex-1 font-semibold text-sm"
                 style={{ background: 'hsl(220 18% 18%)', border: '1px solid hsl(220 18% 30%)', color: 'hsl(210 20% 75%)' }}
