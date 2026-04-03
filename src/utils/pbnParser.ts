@@ -97,7 +97,7 @@ export function parsePbn(rawContent: string): BridgeBoard {
 
   const boardNumber = parseInt(tags['Board'] ?? '1', 10) || 1;
 
-  const dealerLetter = (tags['Dealer'] ?? 'N').trim().toUpperCase();
+  const dealerLetter = (tags['Dealer'] ?? tags['Auction'] ?? 'N').trim().toUpperCase()[0];
   const dealer: Direction = SEAT_LETTER[dealerLetter] ?? 'North';
 
   const playerNames: Partial<Record<Direction, string>> = {
