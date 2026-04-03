@@ -34,6 +34,19 @@ const ROTATE_DIRECTION: Record<Direction, Direction> = {
   West: 'North',
 };
 
+const DIRECTION_FULL: Record<string, Direction> = {
+  N: 'North', NORTH: 'North',
+  E: 'East',  EAST:  'East',
+  S: 'South', SOUTH: 'South',
+  W: 'West',  WEST:  'West',
+};
+
+function normalizeDealer(raw: unknown): Direction {
+  if (!raw) return 'North';
+  const key = String(raw).trim().toUpperCase();
+  return DIRECTION_FULL[key] ?? 'North';
+}
+
 export const BridgeEditor: React.FC = () => {
   const [board, setBoard] = useState<BridgeBoard | null>(null);
   const [selectedCards, setSelectedCards] = useState<Set<string>>(new Set());
@@ -47,7 +60,9 @@ export const BridgeEditor: React.FC = () => {
   } | null>(null);
 
   const initializeBoardData = useCallback((boardData: BridgeBoard) => {
-    setBoard(boardData);
+    const dealer = normalizeDealer(boardData.Dealer);
+    console.log('[debug] Dealer from file:', JSON.stringify(boardData.Dealer), '→ normalized:', dealer);
+    setBoard({ ...boardData, Dealer: dealer });
     const newPlayCards = new Map<string, number>();
     boardData.Play.forEach((card: string, index: number) => {
       newPlayCards.set(card, index + 1);
