@@ -61,8 +61,8 @@ export const BridgeEditor: React.FC = () => {
 
   const initializeBoardData = useCallback((boardData: BridgeBoard) => {
     const dealer = normalizeDealer(boardData.Dealer);
-    console.log('[debug] Dealer from file:', JSON.stringify(boardData.Dealer), '→ normalized:', dealer);
-    setBoard({ ...boardData, Dealer: dealer });
+    const auction = (boardData.Auction ?? []).filter((c: string) => c !== '');
+    setBoard({ ...boardData, Dealer: dealer, Auction: auction });
     const newPlayCards = new Map<string, number>();
     boardData.Play.forEach((card: string, index: number) => {
       newPlayCards.set(card, index + 1);
