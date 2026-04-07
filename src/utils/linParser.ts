@@ -80,7 +80,7 @@ function extractPlayers(url: string): string[] {
 }
 
 function extractAuction(url: string): string[] {
-  const auction = [...url.matchAll(/mb\|([1-7SHDCNRP]+)[!|]/g)].map(m => m[1]);
+  const auction = [...url.matchAll(/mb\|([1-7shdcnrpSHDCNRP]+)[!|]/gi)].map(m => m[1].toUpperCase());
   if (auction.length === 0) throw new Error('No auction found in URL');
   return auction;
 }
