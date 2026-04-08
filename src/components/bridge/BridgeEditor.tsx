@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { BridgeTable } from './BridgeTable';
@@ -58,6 +58,19 @@ export const BridgeEditor: React.FC = () => {
     rank: string;
     fromDirection: Direction;
   } | null>(null);
+  const [exportOpen, setExportOpen] = useState(false);
+  const exportMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!exportOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (exportMenuRef.current && !exportMenuRef.current.contains(e.target as Node)) {
+        setExportOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [exportOpen]);
 
   const initializeBoardData = useCallback((boardData: BridgeBoard) => {
     const dealer = normalizeDealer(boardData.Dealer);
@@ -508,29 +521,68 @@ export const BridgeEditor: React.FC = () => {
             <span className="text-xs font-semibold uppercase tracking-widest mr-2" style={{ color: 'hsl(43 70% 55%)' }}>
               Output
             </span>
-            <Button
-              onClick={exportJson}
-              className="px-4 text-sm font-semibold"
-              style={{
-                background: 'hsl(43 70% 42%)',
-                color: 'hsl(220 25% 8%)',
-                border: 'none',
-              }}
-            >
-              Export JSON
-            </Button>
-            <Button
-              onClick={copyUrl}
-              variant="outline"
-              className="px-4 text-sm font-semibold"
-              style={{
-                background: 'hsl(220 18% 18%)',
-                border: '1px solid hsl(43 50% 35%)',
-                color: 'hsl(43 70% 60%)',
-              }}
-            >
-              Copy BBO URL
-            </Button>
+            <div ref={exportMenuRef} style={{ position: 'relative', display: 'inline-block' }}>
+              <Button
+                onClick={() => setExportOpen(o => !o)}
+                className="px-4 text-sm font-semibold"
+                style={{
+                  background: 'hsl(43 70% 42%)',
+                  color: 'hsl(220 25% 8%)',
+                  border: 'none',
+                  gap: 6,
+                }}
+              >
+                Export
+                <span style={{ fontSize: 10, marginLeft: 2 }}>▾</span>
+              </Button>
+              {exportOpen && (
+                <div style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 4px)',
+                  left: 0,
+                  zIndex: 50,
+                  minWidth: 140,
+                  background: 'hsl(220 22% 13%)',
+                  border: '1px solid hsl(43 50% 35%)',
+                  borderRadius: 8,
+                  overflow: 'hidden',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+                }}>
+                  {[
+                    { label: 'JSON',    action: () => { exportJson(); setExportOpen(false); }, enabled: true },
+                    { label: 'BBO URL', action: () => { copyUrl();    setExportOpen(false); }, enabled: true },
+                    { label: 'PBN',     action: null, enabled: false },
+                    { label: 'LIN',     action: null, enabled: false },
+                  ].map(item => (
+                    <button
+                      key={item.label}
+                      onClick={item.action ?? undefined}
+                      disabled={!item.enabled}
+                      style={{
+                        display: 'block',
+                        width: '100%',
+                        textAlign: 'left',
+                        padding: '9px 16px',
+                        background: 'transparent',
+                        border: 'none',
+                        color: item.enabled ? 'hsl(43 70% 60%)' : 'hsl(215 15% 40%)',
+                        cursor: item.enabled ? 'pointer' : 'default',
+                        fontFamily: 'inherit',
+                        fontSize: 13,
+                        fontWeight: 600,
+                        letterSpacing: '0.05em',
+                        transition: 'background 0.1s',
+                      }}
+                      onMouseEnter={e => { if (item.enabled) (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 20%)'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                    >
+                      {item.label}
+                      {!item.enabled && <span style={{ fontSize: 10, marginLeft: 6, opacity: 0.5 }}>soon</span>}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <BboUrlBuilder board={board} playCards={playCards} />
             <HtmlBuilder board={board} playCards={playCards} />
           </div>
