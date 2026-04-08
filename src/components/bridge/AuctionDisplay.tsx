@@ -6,6 +6,7 @@ interface AuctionDisplayProps {
   onEditCall?: (auctionIndex: number, rawCall: string) => void;
   onDeleteCall?: (auctionIndex: number) => void;
   onAppendCall?: (rawCall: string) => void;
+  onClearAuction?: () => void;
 }
 
 const COL_ORDER: Direction[] = ['West', 'North', 'East', 'South'];
@@ -245,7 +246,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
   );
 };
 
-export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCall, onDeleteCall, onAppendCall }) => {
+export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCall, onDeleteCall, onAppendCall, onClearAuction }) => {
   const [editState, setEditState] = useState<{ auctionIndex: number; isAppend: boolean } | null>(null);
 
   const playerMap = Object.fromEntries(
@@ -374,36 +375,67 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
         ))}
       </div>
 
-      {/* Add Call button — hidden once the auction is terminated */}
-      {onAppendCall && !isAuctionTerminated(board.Auction ?? []) && (
-        <div className="flex justify-center mt-3">
-          <button
-            onClick={handleAddCall}
-            style={{
-              background: 'hsl(220 22% 18%)',
-              border: '1px dashed hsl(220 18% 32%)',
-              borderRadius: 8,
-              color: 'hsl(43 70% 55%)',
-              cursor: 'pointer',
-              fontFamily: 'inherit',
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: '0.08em',
-              padding: '6px 20px',
-              textTransform: 'uppercase',
-              transition: 'background 0.1s, border-color 0.1s',
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 22%)';
-              (e.currentTarget as HTMLElement).style.borderColor = 'hsl(43 50% 40%)';
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 18%)';
-              (e.currentTarget as HTMLElement).style.borderColor = 'hsl(220 18% 32%)';
-            }}
-          >
-            + Add Call
-          </button>
+      {/* Action buttons */}
+      {(onAppendCall || onClearAuction) && (
+        <div className="flex justify-center gap-2 mt-3">
+          {onAppendCall && !isAuctionTerminated(board.Auction ?? []) && (
+            <button
+              onClick={handleAddCall}
+              style={{
+                background: 'hsl(220 22% 18%)',
+                border: '1px dashed hsl(220 18% 32%)',
+                borderRadius: 8,
+                color: 'hsl(43 70% 55%)',
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                padding: '6px 20px',
+                textTransform: 'uppercase',
+                transition: 'background 0.1s, border-color 0.1s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 22%)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'hsl(43 50% 40%)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 18%)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'hsl(220 18% 32%)';
+              }}
+            >
+              + Add Call
+            </button>
+          )}
+          {onClearAuction && (board.Auction ?? []).length > 0 && (
+            <button
+              onClick={onClearAuction}
+              style={{
+                background: 'hsl(220 22% 18%)',
+                border: '1px dashed hsl(0 50% 40%)',
+                borderRadius: 8,
+                color: 'hsl(0 65% 60%)',
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                padding: '6px 20px',
+                textTransform: 'uppercase',
+                transition: 'background 0.1s, border-color 0.1s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 22%)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'hsl(0 60% 50%)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = 'hsl(220 22% 18%)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'hsl(0 50% 40%)';
+              }}
+            >
+              Clear Auction
+            </button>
+          )}
         </div>
       )}
 

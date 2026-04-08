@@ -208,6 +208,10 @@ export const BridgeEditor: React.FC = () => {
     });
   }, []);
 
+  const handleClearAuction = useCallback(() => {
+    setBoard(prev => prev ? { ...prev, Auction: [] } : prev);
+  }, []);
+
   const handleDeleteAuctionCall = useCallback((index: number) => {
     setBoard(prev => {
       if (!prev) return prev;
@@ -577,6 +581,7 @@ export const BridgeEditor: React.FC = () => {
                 onEditCall={handleEditAuctionCall}
                 onDeleteCall={handleDeleteAuctionCall}
                 onAppendCall={handleAppendAuctionCall}
+                onClearAuction={handleClearAuction}
               />
             </div>
           </>
