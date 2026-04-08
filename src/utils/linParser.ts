@@ -71,12 +71,85 @@ function extractHands(url: string): string[] {
 
 function extractPlayers(url: string): string[] {
   const match = url.match(/.*?[|=]pn\|(.*?)\|/);
-  if (!match) throw new Error('No players found in URL');
+  if (!match) return ['', '', '', ''];
   const players = match[1].split(',');
   return players.map(p => {
     if (p.startsWith('~')) return 'Robot';
     return p;
   });
+}
+
+// ── Query-parameter (QP) format ───────────────────────────────────────────
+// e.g. ?n=s32hqt86d8764cj98&s=sakjth2dakq3ckt76&e=...&a=1d1s1nppp&d=s&b=12
+
+const QP_SUIT_MAP: Record<string, string> = { s: 'S', h: 'H', d: 'D', c: 'C', n: 'N' };
+const QP_DIR_MAP: Record<string, Direction> = { n: 'North', s: 'South', e: 'East', w: 'West' };
+
+function parseHandQP(handStr: string): Hand {
+  return buildHand(splitSuits(handStr.toUpperCase()));
+}
+
+function parseAuctionQP(auctionStr: string): string[] {
+  const calls: string[] = [];
+  const a = auctionStr.toLowerCase();
+  let i = 0;
+  while (i < a.length) {
+    const c = a[i];
+    if (c >= '1' && c <= '7') {
+      const suit = QP_SUIT_MAP[a[i + 1] ?? ''];
+      if (suit) calls.push(`${c}${suit}`);
+      i += 2;
+    } else if (c === 'p') { calls.push('P'); i++; }
+    else if (c === 'd') { calls.push('D'); i++; }
+    else if (c === 'x') { calls.push('D'); i++; }
+    else if (c === 'r') { calls.push('R'); i++; }
+    else { i++; }
+  }
+  return calls;
+}
+
+function parsePlayQP(playStr: string): string[] {
+  const cards: string[] = [];
+  const p = playStr.toLowerCase();
+  for (let i = 0; i + 1 < p.length; i += 2) {
+    cards.push((p[i] + p[i + 1]).toUpperCase());
+  }
+  return cards;
+}
+
+function parseQueryParamUrl(decoded: string): BridgeBoard {
+  const qmark = decoded.indexOf('?');
+  const qs = qmark >= 0 ? decoded.slice(qmark + 1) : decoded;
+  const params = new URLSearchParams(qs);
+
+  const boardNumber = parseInt(params.get('b') ?? '0', 10);
+  const dealerRaw = (params.get('d') ?? 'n').toLowerCase();
+  const dealer: Direction = QP_DIR_MAP[dealerRaw] ?? 'North';
+
+  const directionParams: [Direction, string][] = [
+    ['North', params.get('n') ?? ''],
+    ['South', params.get('s') ?? ''],
+    ['East',  params.get('e') ?? ''],
+    ['West',  params.get('w') ?? ''],
+  ];
+
+  const seats = directionParams.map(([direction, handStr]) => ({
+    Player: '',
+    Direction: direction,
+    Hand: parseHandQP(handStr),
+  }));
+
+  const auction = parseAuctionQP(params.get('a') ?? '');
+  const playStr = params.get('p') ?? '';
+  const play = playStr ? parsePlayQP(playStr) : [];
+
+  return {
+    'Board number': boardNumber,
+    Dealer: dealer,
+    Auction: auction,
+    Seats: seats,
+    Play: play,
+  };
 }
 
 function extractAuction(url: string): string[] {
@@ -87,6 +160,16 @@ export class LinParser {
   static parseLinFromUrl(url: string): BridgeBoard | null {
     try {
       const decoded = decodeURIComponent(url);
+
+      // Detect QP format (?n=...&s=...&e=...&w=...) vs LIN format (|md|...)
+      if (!decoded.includes('|md|')) {
+        const qmark = decoded.indexOf('?');
+        const qs = qmark >= 0 ? decoded.slice(qmark + 1) : decoded;
+        const params = new URLSearchParams(qs);
+        if (params.has('n') && params.has('s') && params.has('e') && params.has('w')) {
+          return parseQueryParamUrl(decoded);
+        }
+      }
 
       const boardNumber = extractBoardNumber(decoded);
       const handStrings = extractHands(decoded);
