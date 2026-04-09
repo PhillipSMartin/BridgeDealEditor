@@ -26,6 +26,7 @@ function formatCall(call: string): string {
   if (call === 'P') return 'Pass';
   if (call === 'D') return 'Dbl';
   if (call === 'R') return 'Rdbl';
+  if (call === '?') return '?';
   return call
     .replace('S', '♠')
     .replace('H', '♥')
@@ -52,6 +53,9 @@ function renderCallContent(cell: string): React.ReactNode {
     return <span style={{ color: 'hsl(210 20% 95%)' }}>{cell}</span>;
   }
 
+  if (cell === '?') {
+    return <span style={{ color: 'hsl(43 90% 65%)', fontStyle: 'italic', fontWeight: 700 }}>{cell}</span>;
+  }
   if (cell === 'Pass') {
     return <span style={{ color: 'hsl(215 15% 52%)', fontStyle: 'italic' }}>{cell}</span>;
   }
@@ -67,9 +71,11 @@ function renderCallContent(cell: string): React.ReactNode {
 
 function isAuctionTerminated(auction: string[]): boolean {
   if (auction.length === 0) return false;
+  if (auction[auction.length - 1] === '?') return false;
   let hasNonPass = false;
   let passStreak = 0;
   for (const call of auction) {
+    if (call === '?') continue;
     if (call === 'P') {
       passStreak++;
       if (!hasNonPass && passStreak === 4) return true;
@@ -164,12 +170,13 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
           Edit Call
         </div>
 
-        {/* Row 1: Pass / Dbl / Rdbl */}
+        {/* Row 1: Pass / Dbl / Rdbl / ? */}
         <div style={{ display: 'flex', gap: 8 }}>
           {[
             { label: 'Pass', raw: 'P', color: 'hsl(215 15% 60%)' },
             { label: 'Dbl',  raw: 'D', color: 'hsl(20 90% 60%)' },
             { label: 'Rdbl', raw: 'R', color: 'hsl(200 80% 60%)' },
+            { label: '?',    raw: '?', color: 'hsl(43 90% 65%)' },
           ].map(({ label, raw, color }) => (
             <button
               key={raw}

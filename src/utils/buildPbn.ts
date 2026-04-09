@@ -28,7 +28,7 @@ function handToString(hand: { Spades: string; Hearts: string; Diamonds: string; 
 function findTrump(auction: string[]): string | null {
   for (let i = auction.length - 1; i >= 0; i--) {
     const call = auction[i];
-    if (call !== 'P' && call !== 'D' && call !== 'R') {
+    if (call !== 'P' && call !== 'D' && call !== 'R' && call !== '?') {
       return call[call.length - 1]; // last char: 'N','S','H','D','C'
     }
   }
@@ -40,6 +40,7 @@ function findLeader(auction: string[], dealer: Direction): Direction | null {
   const bidRecords: { direction: Direction; suit: string }[] = [];
   let dir = dealer;
   for (const call of auction) {
+    if (call === '?') continue;
     if (call !== 'P' && call !== 'D' && call !== 'R') {
       bidRecords.push({ direction: dir, suit: call[call.length - 1] });
     }
@@ -98,7 +99,7 @@ export function buildPbn(board: BridgeBoard): string {
   );
   const dealStr = `N:${dealParts.join(' ')}`;
 
-  const pbnCalls = board.Auction.map(internalToPbnCall);
+  const pbnCalls = board.Auction.filter(c => c !== '?').map(internalToPbnCall);
   const auctionLines: string[] = [];
   for (let i = 0; i < pbnCalls.length; i += 4) {
     auctionLines.push(pbnCalls.slice(i, i + 4).join(' '));

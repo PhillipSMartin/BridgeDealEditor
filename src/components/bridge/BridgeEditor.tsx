@@ -339,7 +339,7 @@ export const BridgeEditor: React.FC = () => {
     }
 
     const mdParam = hands.join(',');
-    const auction = (currentBoard.Auction ?? []).join('');
+    const auction = (currentBoard.Auction ?? []).filter(c => c !== '?').join('');
 
     const playSequence = Array.from(currentPlayCards.entries())
       .sort((a, b) => a[1] - b[1])
