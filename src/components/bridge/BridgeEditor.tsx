@@ -8,6 +8,7 @@ import { HtmlBuilder } from './HtmlBuilder';
 import { BridgeBoard, Direction, Suit } from '@/types/bridge';
 import { LinParser } from '@/utils/linParser';
 import { parsePbn } from '@/utils/pbnParser';
+import { buildPbn } from '@/utils/buildPbn';
 import { toast } from 'sonner';
 import { RefreshCw } from 'lucide-react';
 
@@ -284,6 +285,22 @@ export const BridgeEditor: React.FC = () => {
     toast('JSON file exported successfully!');
   }, [board, playCards]);
 
+  const exportPbn = useCallback(() => {
+    if (!board) return;
+    const playSequence = Array.from(playCards.entries())
+      .sort((a, b) => a[1] - b[1])
+      .map(([card]) => card);
+    const exportData = { ...board, Play: playSequence };
+    const pbnStr = buildPbn(exportData);
+    const dataUri = 'data:text/plain;charset=utf-8,' + encodeURIComponent(pbnStr);
+    const filename = `board${board['Board number']}.pbn`;
+    const link = document.createElement('a');
+    link.setAttribute('href', dataUri);
+    link.setAttribute('download', filename);
+    link.click();
+    toast('PBN file exported successfully!');
+  }, [board, playCards]);
+
   const buildBboUrl = useCallback((currentBoard: BridgeBoard, currentPlayCards: Map<string, number>): string => {
     const directions: Direction[] = ['West', 'North', 'East', 'South'];
     const southIdx = directions.indexOf('South');
@@ -550,8 +567,8 @@ export const BridgeEditor: React.FC = () => {
                 }}>
                   {[
                     { label: 'JSON',    action: () => { exportJson(); setExportOpen(false); }, enabled: true },
+                    { label: 'PBN',     action: () => { exportPbn(); setExportOpen(false); }, enabled: true },
                     { label: 'BBO URL', action: () => { copyUrl();    setExportOpen(false); }, enabled: true },
-                    { label: 'PBN',     action: null, enabled: false },
                     { label: 'LIN',     action: null, enabled: false },
                   ].map(item => (
                     <button
