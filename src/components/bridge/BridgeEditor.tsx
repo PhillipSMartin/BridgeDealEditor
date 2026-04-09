@@ -217,6 +217,8 @@ export const BridgeEditor: React.FC = () => {
       if (!prev) return prev;
       const newAuction = [...(prev.Auction ?? [])];
       newAuction[index] = rawCall;
+      // '?' must always be the last call — truncate everything after it
+      if (rawCall === '?') return { ...prev, Auction: newAuction.slice(0, index + 1) };
       const terminationPoint = findTerminationPoint(newAuction);
       return { ...prev, Auction: terminationPoint != null ? newAuction.slice(0, terminationPoint) : newAuction };
     });

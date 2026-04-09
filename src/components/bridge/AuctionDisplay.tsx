@@ -385,7 +385,7 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
       {/* Action buttons */}
       {(onAppendCall || onClearAuction) && (
         <div className="flex justify-center gap-2 mt-3">
-          {onAppendCall && !isAuctionTerminated(board.Auction ?? []) && (
+          {onAppendCall && !isAuctionTerminated(board.Auction ?? []) && (board.Auction ?? []).at(-1) !== '?' && (
             <button
               onClick={handleAddCall}
               style={{
