@@ -433,6 +433,9 @@ export const BridgeEditor: React.FC = () => {
       >
         {/* Row 1: Import controls */}
         <div className="flex flex-wrap gap-4 items-end justify-center pb-3">
+          <span className="text-xs font-semibold uppercase tracking-widest mr-2" style={{ color: 'hsl(43 70% 55%)' }}>
+            Input
+          </span>
           {/* Load file */}
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'hsl(43 70% 55%)' }}>
