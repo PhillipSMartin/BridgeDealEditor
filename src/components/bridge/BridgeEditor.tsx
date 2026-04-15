@@ -259,6 +259,9 @@ export const BridgeEditor: React.FC = () => {
 
   const rotateDeal = useCallback(() => {
     if (!board) return;
+    const rotatedVul = board.Vulnerability === 'NS' ? 'EW'
+      : board.Vulnerability === 'EW' ? 'NS'
+      : board.Vulnerability;
     const rotated: BridgeBoard = {
       ...board,
       Dealer: ROTATE_DIRECTION[board.Dealer as Direction] ?? board.Dealer,
@@ -266,6 +269,7 @@ export const BridgeEditor: React.FC = () => {
         ...seat,
         Direction: ROTATE_DIRECTION[seat.Direction] ?? seat.Direction,
       })),
+      ...(rotatedVul !== undefined ? { Vulnerability: rotatedVul } : {}),
     };
     setBoard(rotated);
     toast('Deal rotated');
