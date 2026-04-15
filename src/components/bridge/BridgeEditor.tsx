@@ -355,7 +355,12 @@ export const BridgeEditor: React.FC = () => {
     const boardNum = currentBoard['Board number'];
     const boardPart = boardNum != null ? `Board%20${boardNum}|` : '';
 
-    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||md|${mdParam}|ah|${boardPart}mb|${auction}|${playEntries}`;
+    const VUL_TO_LIN: Record<string, string> = { None: 'o', NS: 'n', EW: 'e', Both: 'b' };
+    const svPart = currentBoard.Vulnerability !== undefined
+      ? `sv|${VUL_TO_LIN[currentBoard.Vulnerability]}|`
+      : '';
+
+    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||${svPart}md|${mdParam}|ah|${boardPart}mb|${auction}|${playEntries}`;
   }, []);
 
   const copyUrl = useCallback(() => {
