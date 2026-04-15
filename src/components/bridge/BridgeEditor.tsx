@@ -431,7 +431,7 @@ export const BridgeEditor: React.FC = () => {
           {/* Load file */}
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'hsl(43 70% 55%)' }}>
-              Load File
+              Load JSON or PBN File
             </label>
             <label
               className="flex items-center gap-2 px-4 py-2 rounded cursor-pointer text-sm font-medium transition-colors"
