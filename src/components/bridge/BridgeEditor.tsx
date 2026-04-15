@@ -353,7 +353,7 @@ export const BridgeEditor: React.FC = () => {
     const playEntries = playSequence.map(card => `pc|${card}|`).join('');
 
     const boardNum = currentBoard['Board number'];
-    const ahPart = boardNum != null ? `ah|Board ${boardNum}|` : '';
+    const ahPart = boardNum != null ? `ah|Board ${boardNum}|` : 'ah||';
 
     const VUL_TO_LIN: Record<string, string> = { None: 'o', NS: 'n', EW: 'e', Both: 'b' };
     const svCode = currentBoard.Vulnerability !== undefined ? VUL_TO_LIN[currentBoard.Vulnerability] : undefined;
