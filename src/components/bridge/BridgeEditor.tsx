@@ -353,13 +353,13 @@ export const BridgeEditor: React.FC = () => {
     const playEntries = playSequence.map(card => `pc|${card}|`).join('');
 
     const boardNum = currentBoard['Board number'];
-    const boardPart = boardNum != null ? `Board%20${boardNum}|` : '';
+    const ahPart = boardNum != null ? `ah|Board ${boardNum}|` : '';
 
     const VUL_TO_LIN: Record<string, string> = { None: 'o', NS: 'n', EW: 'e', Both: 'b' };
     const svCode = currentBoard.Vulnerability !== undefined ? VUL_TO_LIN[currentBoard.Vulnerability] : undefined;
     const svPart = svCode !== undefined ? `sv|${svCode}|` : '';
 
-    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||${svPart}md|${mdParam}|ah|${boardPart}${auctionEntries}${playEntries}`;
+    return `https://www.bridgebase.com/tools/handviewer.html?lin=md|${mdParam}|rh||${ahPart}${svPart}pn|${playersStr}|st||${auctionEntries}${playEntries}`;
   }, []);
 
   const copyUrl = useCallback(() => {
