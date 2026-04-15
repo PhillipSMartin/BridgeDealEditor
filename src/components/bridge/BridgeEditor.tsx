@@ -60,6 +60,7 @@ export const BridgeEditor: React.FC = () => {
     fromDirection: Direction;
   } | null>(null);
   const [exportOpen, setExportOpen] = useState(false);
+  const [loadedFileName, setLoadedFileName] = useState<string>('');
   const exportMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -94,6 +95,7 @@ export const BridgeEditor: React.FC = () => {
       try {
         const jsonData = JSON.parse(e.target?.result as string);
         initializeBoardData(jsonData);
+        setLoadedFileName(file.name);
         toast('JSON file loaded successfully!');
       } catch (error) {
         toast('Error parsing JSON file. Please check the format.');
@@ -111,6 +113,7 @@ export const BridgeEditor: React.FC = () => {
       try {
         const boardData = parsePbn(e.target?.result as string);
         initializeBoardData(boardData);
+        setLoadedFileName(file.name);
         toast('PBN file loaded successfully!');
       } catch (error) {
         toast('Error parsing PBN file. Please check the format.');
@@ -130,6 +133,7 @@ export const BridgeEditor: React.FC = () => {
       const boardData = LinParser.parseLinFromUrl(bboUrl.trim());
       if (boardData) {
         initializeBoardData(boardData);
+        setLoadedFileName('');
         toast('BBO URL imported successfully!');
       } else {
         toast('Could not parse the BBO URL. Please check the format.');
@@ -405,12 +409,23 @@ export const BridgeEditor: React.FC = () => {
           </p>
         </div>
         {board && (
-          <div
-            className="ml-auto flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium"
-            style={{ background: 'hsl(150 50% 15%)', border: '1px solid hsl(150 40% 28%)', color: 'hsl(150 60% 65%)' }}
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Board {board['Board number']} · {playCards.size} played cards
+          <div className="ml-auto flex flex-col items-end gap-1">
+            {loadedFileName && (
+              <span
+                className="text-xs px-2 py-0.5 rounded"
+                style={{ background: 'hsl(220 22% 16%)', color: 'hsl(215 15% 55%)', fontFamily: 'monospace' }}
+                title={loadedFileName}
+              >
+                {loadedFileName}
+              </span>
+            )}
+            <div
+              className="flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium"
+              style={{ background: 'hsl(150 50% 15%)', border: '1px solid hsl(150 40% 28%)', color: 'hsl(150 60% 65%)' }}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Board {board['Board number']} · {playCards.size} played cards
+            </div>
           </div>
         )}
       </header>
