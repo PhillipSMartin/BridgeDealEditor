@@ -88,13 +88,9 @@ function trickWinner(
   return trick[winnerIdx].seat;
 }
 
-const VUL_TO_PBN: Record<string, string> = {
+const VUL_TO_PBN: Record<Vulnerability, string> = {
   None: 'None', NS: 'NS', EW: 'EW', Both: 'All',
 };
-
-function vulToPbn(vul: Vulnerability | undefined): string {
-  return vul ? (VUL_TO_PBN[vul] ?? 'None') : 'None';
-}
 
 export function buildPbn(board: BridgeBoard): string {
   const boardNum = board['Board number'];
@@ -160,7 +156,7 @@ export function buildPbn(board: BridgeBoard): string {
       return `[${dir} "${seat?.Player ?? ''}"]`;
     }),
     `[Dealer "${dealerLetter}"]`,
-    `[Vulnerable "${vulToPbn(board.Vulnerability)}"]`,
+    ...(board.Vulnerability !== undefined ? [`[Vulnerable "${VUL_TO_PBN[board.Vulnerability]}"]`] : []),
     `[Deal "${dealStr}"]`,
     `[Scoring ""]`,
     `[Declarer ""]`,
