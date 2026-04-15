@@ -1,4 +1,4 @@
-import { BridgeBoard, Direction, Hand, Seat } from '@/types/bridge';
+import { BridgeBoard, Direction, Hand, Seat, Vulnerability } from '@/types/bridge';
 
 const SEAT_ORDER: Direction[] = ['North', 'East', 'South', 'West'];
 
@@ -207,11 +207,22 @@ export function parsePbn(rawContent: string): BridgeBoard {
     }
   }
 
-  return {
+  const vulRaw = (tags['Vulnerable'] ?? '').trim().toUpperCase();
+  const VUL_PBN: Record<string, Vulnerability> = {
+    'NONE': 'None', '-': 'None',
+    'NS': 'NS',
+    'EW': 'EW',
+    'ALL': 'Both', 'BOTH': 'Both',
+  };
+  const vulnerability: Vulnerability | undefined = VUL_PBN[vulRaw];
+
+  const board: BridgeBoard = {
     'Board number': boardNumber,
     Dealer: dealer,
     Auction: auction,
     Seats: seats,
     Play: play,
   };
+  if (vulnerability !== undefined) board.Vulnerability = vulnerability;
+  return board;
 }

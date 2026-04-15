@@ -14,9 +14,12 @@ export interface Seat {
   Hand: Hand;
 }
 
+export type Vulnerability = 'None' | 'NS' | 'EW' | 'Both';
+
 export interface BridgeBoard {
   'Board number': number;
   'Dealer': Direction;
+  'Vulnerability'?: Vulnerability;
   'Auction': string[];
   'Seats': Seat[];
   'Play': string[];

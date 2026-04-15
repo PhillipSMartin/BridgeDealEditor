@@ -1,4 +1,4 @@
-import { BridgeBoard, Direction, Hand } from '@/types/bridge';
+import { BridgeBoard, Direction, Hand, Vulnerability } from '@/types/bridge';
 
 const DIRECTIONS: Direction[] = ['West', 'North', 'East', 'South'];
 const SUIT_LETTERS = ['S', 'H', 'D', 'C'] as const;
@@ -79,6 +79,19 @@ function extractPlayers(url: string): string[] {
   });
 }
 
+// ── Vulnerability ──────────────────────────────────────────────────────────
+// Used by both LIN (`sv|X|`) and QP (`v=X`) formats.
+const VUL_MAP: Record<string, Vulnerability> = {
+  o: 'None', '-': 'None',
+  n: 'NS',
+  e: 'EW',
+  b: 'Both', a: 'Both',
+};
+
+function parseVulnerability(raw: string): Vulnerability | undefined {
+  return VUL_MAP[raw.toLowerCase()];
+}
+
 // ── Query-parameter (QP) format ───────────────────────────────────────────
 // e.g. ?n=s32hqt86d8764cj98&s=sakjth2dakq3ckt76&e=...&a=1d1s1nppp&d=s&b=12
 
@@ -142,14 +155,17 @@ function parseQueryParamUrl(decoded: string): BridgeBoard {
   const auction = parseAuctionQP(params.get('a') ?? '');
   const playStr = params.get('p') ?? '';
   const play = playStr ? parsePlayQP(playStr) : [];
+  const vulnerability = parseVulnerability(params.get('v') ?? '');
 
-  return {
+  const board: BridgeBoard = {
     'Board number': boardNumber,
     Dealer: dealer,
     Auction: auction,
     Seats: seats,
     Play: play,
   };
+  if (vulnerability !== undefined) board.Vulnerability = vulnerability;
+  return board;
 }
 
 function extractAuction(url: string): string[] {
@@ -218,13 +234,18 @@ export class LinParser {
         Hand: parsedHands[i] ?? buildHand([]),
       }));
 
-      return {
+      const svMatch = decoded.match(/sv\|([^|]*)\|/i);
+      const vulnerability = svMatch ? parseVulnerability(svMatch[1]) : undefined;
+
+      const board: BridgeBoard = {
         'Board number': boardNumber,
         Dealer: DIRECTIONS[dealer],
         Auction: auction,
         Seats: seats,
         Play: playCards,
       };
+      if (vulnerability !== undefined) board.Vulnerability = vulnerability;
+      return board;
     } catch (error) {
       console.error('Error parsing BBO URL:', error);
       return null;

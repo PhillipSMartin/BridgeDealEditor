@@ -1,4 +1,4 @@
-import { BridgeBoard, Direction } from '@/types/bridge';
+import { BridgeBoard, Direction, Vulnerability } from '@/types/bridge';
 
 const SEAT_ORDER: Direction[] = ['North', 'East', 'South', 'West'];
 
@@ -88,6 +88,14 @@ function trickWinner(
   return trick[winnerIdx].seat;
 }
 
+const VUL_TO_PBN: Record<string, string> = {
+  None: 'None', NS: 'NS', EW: 'EW', Both: 'All',
+};
+
+function vulToPbn(vul: Vulnerability | undefined): string {
+  return vul ? (VUL_TO_PBN[vul] ?? 'None') : 'None';
+}
+
 export function buildPbn(board: BridgeBoard): string {
   const boardNum = board['Board number'];
   const dealer = board.Dealer;
@@ -152,7 +160,7 @@ export function buildPbn(board: BridgeBoard): string {
       return `[${dir} "${seat?.Player ?? ''}"]`;
     }),
     `[Dealer "${dealerLetter}"]`,
-    `[Vulnerable "None"]`,
+    `[Vulnerable "${vulToPbn(board.Vulnerability)}"]`,
     `[Deal "${dealStr}"]`,
     `[Scoring ""]`,
     `[Declarer ""]`,
