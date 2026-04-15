@@ -345,7 +345,7 @@ export const BridgeEditor: React.FC = () => {
     }
 
     const mdParam = hands.join(',');
-    const auction = (currentBoard.Auction ?? []).filter(c => c !== '?').join('');
+    const auctionEntries = (currentBoard.Auction ?? []).filter(c => c !== '?').map(c => `mb|${c}|`).join('');
 
     const playSequence = Array.from(currentPlayCards.entries())
       .sort((a, b) => a[1] - b[1])
@@ -359,7 +359,7 @@ export const BridgeEditor: React.FC = () => {
     const svCode = currentBoard.Vulnerability !== undefined ? VUL_TO_LIN[currentBoard.Vulnerability] : undefined;
     const svPart = svCode !== undefined ? `sv|${svCode}|` : '';
 
-    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||${svPart}md|${mdParam}|ah|${boardPart}mb|${auction}|${playEntries}`;
+    return `https://www.bridgebase.com/tools/handviewer.html?lin=pn|${playersStr}|st||${svPart}md|${mdParam}|ah|${boardPart}${auctionEntries}${playEntries}`;
   }, []);
 
   const copyUrl = useCallback(() => {
