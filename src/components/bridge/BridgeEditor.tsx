@@ -61,6 +61,7 @@ export const BridgeEditor: React.FC = () => {
   } | null>(null);
   const [exportOpen, setExportOpen] = useState(false);
   const [loadedFileName, setLoadedFileName] = useState<string>('');
+  const [exportFileName, setExportFileName] = useState<string>('');
   const exportMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -95,15 +96,18 @@ export const BridgeEditor: React.FC = () => {
     reader.onload = (e) => {
       const text = e.target?.result as string;
       try {
+        const baseName = file.name.replace(/\.[^.]+$/, '');
         if (ext === 'json') {
           const jsonData = JSON.parse(text);
           initializeBoardData(jsonData);
           setLoadedFileName(file.name);
+          setExportFileName(baseName);
           toast('JSON file loaded successfully!');
         } else {
           const boardData = parsePbn(text);
           initializeBoardData(boardData);
           setLoadedFileName(file.name);
+          setExportFileName(baseName);
           toast('PBN file loaded successfully!');
         }
       } catch (error) {
@@ -125,6 +129,7 @@ export const BridgeEditor: React.FC = () => {
       if (boardData) {
         initializeBoardData(boardData);
         setLoadedFileName('');
+        setExportFileName(`board${boardData['Board number']}`);
         toast('BBO URL imported successfully!');
       } else {
         toast('Could not parse the BBO URL. Please check the format.');
@@ -274,13 +279,13 @@ export const BridgeEditor: React.FC = () => {
     const exportData = { ...board, Play: playSequence };
     const dataStr = JSON.stringify(exportData, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-    const exportFileDefaultName = `board${board['Board number']}_modified.json`;
+    const exportFileDefaultName = `${exportFileName.trim() || `board${board['Board number']}`}.json`;
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
     linkElement.click();
     toast('JSON file exported successfully!');
-  }, [board, playCards]);
+  }, [board, playCards, exportFileName]);
 
   const exportPbn = useCallback(() => {
     if (!board) return;
@@ -290,13 +295,13 @@ export const BridgeEditor: React.FC = () => {
     const exportData = { ...board, Play: playSequence };
     const pbnStr = buildPbn(exportData);
     const dataUri = 'data:text/plain;charset=utf-8,' + encodeURIComponent(pbnStr);
-    const filename = `board${board['Board number']}.pbn`;
+    const filename = `${exportFileName.trim() || `board${board['Board number']}`}.pbn`;
     const link = document.createElement('a');
     link.setAttribute('href', dataUri);
     link.setAttribute('download', filename);
     link.click();
     toast('PBN file exported successfully!');
-  }, [board, playCards]);
+  }, [board, playCards, exportFileName]);
 
   const buildBboUrl = useCallback((currentBoard: BridgeBoard, currentPlayCards: Map<string, number>): string => {
     const directions: Direction[] = ['West', 'North', 'East', 'South'];
@@ -524,9 +529,24 @@ export const BridgeEditor: React.FC = () => {
             className="flex flex-wrap gap-2 items-center justify-center py-3 border-t"
             style={{ borderColor: 'hsl(220 18% 20%)' }}
           >
-            <span className="text-xs font-semibold uppercase tracking-widest mr-2" style={{ color: 'hsl(43 70% 55%)' }}>
+            <span className="text-xs font-semibold uppercase tracking-widest mr-1" style={{ color: 'hsl(43 70% 55%)' }}>
               Output
             </span>
+            <input
+              type="text"
+              value={exportFileName}
+              onChange={e => setExportFileName(e.target.value)}
+              placeholder={`board${board['Board number']}`}
+              className="text-sm rounded px-2 py-1.5 mr-1"
+              style={{
+                background: 'hsl(220 18% 14%)',
+                border: '1px solid hsl(220 18% 28%)',
+                color: 'hsl(210 20% 85%)',
+                width: 200,
+                outline: 'none',
+              }}
+              title="Export filename (extension added automatically)"
+            />
             <div ref={exportMenuRef} style={{ position: 'relative', display: 'inline-block' }}>
               <Button
                 onClick={() => setExportOpen(o => !o)}
