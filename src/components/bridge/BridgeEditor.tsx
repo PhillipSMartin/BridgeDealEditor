@@ -248,12 +248,14 @@ export const BridgeEditor: React.FC = () => {
         }
         return { ...seat, Player: name.trim() };
       });
+      const dealerChanged = values.dealer !== prev.Dealer;
       return {
         ...prev,
         'Board number': values.boardNumber,
         Dealer: values.dealer,
         Vulnerability: values.vulnerability,
         Seats: newSeats,
+        ...(dealerChanged ? { Auction: [] } : {}),
       };
     });
     setBoardInfoOpen(false);
@@ -753,6 +755,7 @@ export const BridgeEditor: React.FC = () => {
       {board && (
         <BoardInfoDialog
           open={boardInfoOpen}
+          hasAuction={(board.Auction ?? []).filter(c => c !== '?').length > 0}
           initial={{
             boardNumber: board['Board number'],
             dealer: board.Dealer,

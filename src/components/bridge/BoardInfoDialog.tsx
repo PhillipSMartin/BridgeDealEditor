@@ -11,6 +11,7 @@ export interface BoardInfoValues {
 interface BoardInfoDialogProps {
   open: boolean;
   initial: BoardInfoValues;
+  hasAuction: boolean;
   onSave: (values: BoardInfoValues) => void;
   onCancel: () => void;
 }
@@ -43,6 +44,7 @@ const labelStyle: React.CSSProperties = {
 export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
   open,
   initial,
+  hasAuction,
   onSave,
   onCancel,
 }) => {
@@ -50,6 +52,7 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
   const [dealer, setDealer] = useState<Direction>(initial.dealer);
   const [vulnerability, setVulnerability] = useState<Vulnerability>(initial.vulnerability);
   const [playerNames, setPlayerNames] = useState<Record<Direction, string>>(initial.playerNames);
+  const [showDealerWarning, setShowDealerWarning] = useState(false);
 
   useEffect(() => {
     if (open) {
@@ -57,6 +60,7 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
       setDealer(initial.dealer);
       setVulnerability(initial.vulnerability);
       setPlayerNames(initial.playerNames);
+      setShowDealerWarning(false);
     }
   }, [open, initial]);
 
@@ -67,14 +71,25 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
     setPlayerNames(prev => ({ ...prev, [dir]: value }));
   }, []);
 
-  const handleSave = () => {
-    if (!boardNumberValid) return;
+  const commitSave = () => {
     onSave({ boardNumber: parsedBoardNumber, dealer, vulnerability, playerNames });
   };
 
+  const handleSave = () => {
+    if (!boardNumberValid) return;
+    if (dealer !== initial.dealer && hasAuction) {
+      setShowDealerWarning(true);
+      return;
+    }
+    commitSave();
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') onCancel();
-    if (e.key === 'Enter' && e.ctrlKey) handleSave();
+    if (e.key === 'Escape') {
+      if (showDealerWarning) { setShowDealerWarning(false); return; }
+      onCancel();
+    }
+    if (e.key === 'Enter' && e.ctrlKey && !showDealerWarning) handleSave();
   };
 
   if (!open) return null;
@@ -211,43 +226,99 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
           </div>
         </div>
 
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
-          <button
-            onClick={onCancel}
-            style={{
-              padding: '8px 20px',
-              background: 'hsl(220 18% 18%)',
-              border: '1px solid hsl(220 18% 30%)',
-              borderRadius: 6,
-              color: 'hsl(210 20% 68%)',
-              fontSize: 13,
-              fontWeight: 600,
-              cursor: 'pointer',
-              letterSpacing: '0.04em',
-            }}
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleSave}
-            disabled={!boardNumberValid}
-            style={{
-              padding: '8px 24px',
-              background: boardNumberValid ? 'hsl(43 70% 42%)' : 'hsl(43 40% 26%)',
-              border: 'none',
-              borderRadius: 6,
-              color: boardNumberValid ? 'hsl(220 25% 8%)' : 'hsl(220 20% 40%)',
-              fontSize: 13,
-              fontWeight: 700,
-              cursor: boardNumberValid ? 'pointer' : 'not-allowed',
-              letterSpacing: '0.04em',
-              opacity: boardNumberValid ? 1 : 0.6,
-            }}
-          >
-            Save
-          </button>
-        </div>
+        {/* Dealer-change warning or normal buttons */}
+        {showDealerWarning ? (
+          <div>
+            <div
+              style={{
+                background: 'hsl(38 80% 12%)',
+                border: '1px solid hsl(38 70% 35%)',
+                borderRadius: 8,
+                padding: '12px 14px',
+                marginBottom: 14,
+                fontSize: 13,
+                color: 'hsl(38 85% 72%)',
+                lineHeight: 1.5,
+              }}
+            >
+              <strong style={{ display: 'block', marginBottom: 4, color: 'hsl(38 90% 78%)' }}>
+                ⚠ Changing the dealer will clear the existing auction.
+              </strong>
+              Do you want to continue?
+            </div>
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+              <button
+                onClick={() => setShowDealerWarning(false)}
+                style={{
+                  padding: '8px 20px',
+                  background: 'hsl(220 18% 18%)',
+                  border: '1px solid hsl(220 18% 30%)',
+                  borderRadius: 6,
+                  color: 'hsl(210 20% 68%)',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                Keep editing
+              </button>
+              <button
+                onClick={commitSave}
+                style={{
+                  padding: '8px 20px',
+                  background: 'hsl(0 60% 38%)',
+                  border: 'none',
+                  borderRadius: 6,
+                  color: 'hsl(0 0% 95%)',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                Yes, clear auction
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+            <button
+              onClick={onCancel}
+              style={{
+                padding: '8px 20px',
+                background: 'hsl(220 18% 18%)',
+                border: '1px solid hsl(220 18% 30%)',
+                borderRadius: 6,
+                color: 'hsl(210 20% 68%)',
+                fontSize: 13,
+                fontWeight: 600,
+                cursor: 'pointer',
+                letterSpacing: '0.04em',
+              }}
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSave}
+              disabled={!boardNumberValid}
+              style={{
+                padding: '8px 24px',
+                background: boardNumberValid ? 'hsl(43 70% 42%)' : 'hsl(43 40% 26%)',
+                border: 'none',
+                borderRadius: 6,
+                color: boardNumberValid ? 'hsl(220 25% 8%)' : 'hsl(220 20% 40%)',
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: boardNumberValid ? 'pointer' : 'not-allowed',
+                letterSpacing: '0.04em',
+                opacity: boardNumberValid ? 1 : 0.6,
+              }}
+            >
+              Save
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
