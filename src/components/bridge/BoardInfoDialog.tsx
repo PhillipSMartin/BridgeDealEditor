@@ -46,26 +46,30 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
   onSave,
   onCancel,
 }) => {
-  const [boardNumber, setBoardNumber] = useState(initial.boardNumber);
+  const [boardNumberStr, setBoardNumberStr] = useState(String(initial.boardNumber));
   const [dealer, setDealer] = useState<Direction>(initial.dealer);
   const [vulnerability, setVulnerability] = useState<Vulnerability>(initial.vulnerability);
   const [playerNames, setPlayerNames] = useState<Record<Direction, string>>(initial.playerNames);
 
   useEffect(() => {
     if (open) {
-      setBoardNumber(initial.boardNumber);
+      setBoardNumberStr(String(initial.boardNumber));
       setDealer(initial.dealer);
       setVulnerability(initial.vulnerability);
       setPlayerNames(initial.playerNames);
     }
   }, [open, initial]);
 
+  const parsedBoardNumber = parseInt(boardNumberStr, 10);
+  const boardNumberValid = Number.isFinite(parsedBoardNumber) && parsedBoardNumber >= 1;
+
   const handlePlayerName = useCallback((dir: Direction, value: string) => {
     setPlayerNames(prev => ({ ...prev, [dir]: value }));
   }, []);
 
   const handleSave = () => {
-    onSave({ boardNumber, dealer, vulnerability, playerNames });
+    if (!boardNumberValid) return;
+    onSave({ boardNumber: parsedBoardNumber, dealer, vulnerability, playerNames });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -127,10 +131,19 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
           <input
             type="number"
             min={1}
-            value={boardNumber}
-            onChange={e => setBoardNumber(Math.max(1, Number(e.target.value)))}
-            style={{ ...inputStyle, width: 120 }}
+            value={boardNumberStr}
+            onChange={e => setBoardNumberStr(e.target.value)}
+            style={{
+              ...inputStyle,
+              width: 120,
+              borderColor: boardNumberValid ? 'hsl(220 18% 28%)' : 'hsl(0 70% 50%)',
+            }}
           />
+          {!boardNumberValid && (
+            <span style={{ fontSize: 11, color: 'hsl(0 70% 55%)', marginTop: 3, display: 'block' }}>
+              Must be a positive whole number
+            </span>
+          )}
         </div>
 
         {/* Dealer + Vulnerability row */}
@@ -218,16 +231,18 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
           </button>
           <button
             onClick={handleSave}
+            disabled={!boardNumberValid}
             style={{
               padding: '8px 24px',
-              background: 'hsl(43 70% 42%)',
+              background: boardNumberValid ? 'hsl(43 70% 42%)' : 'hsl(43 40% 26%)',
               border: 'none',
               borderRadius: 6,
-              color: 'hsl(220 25% 8%)',
+              color: boardNumberValid ? 'hsl(220 25% 8%)' : 'hsl(220 20% 40%)',
               fontSize: 13,
               fontWeight: 700,
-              cursor: 'pointer',
+              cursor: boardNumberValid ? 'pointer' : 'not-allowed',
               letterSpacing: '0.04em',
+              opacity: boardNumberValid ? 1 : 0.6,
             }}
           >
             Save
