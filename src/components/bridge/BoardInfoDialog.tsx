@@ -67,11 +67,18 @@ export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
   const parsedBoardNumber = parseInt(boardNumberStr, 10);
   const boardNumberValid = Number.isFinite(parsedBoardNumber) && parsedBoardNumber >= 1;
 
+  useEffect(() => {
+    if (showDealerWarning && dealer === initial.dealer) {
+      setShowDealerWarning(false);
+    }
+  }, [dealer, initial.dealer, showDealerWarning]);
+
   const handlePlayerName = useCallback((dir: Direction, value: string) => {
     setPlayerNames(prev => ({ ...prev, [dir]: value }));
   }, []);
 
   const commitSave = () => {
+    if (!boardNumberValid) return;
     onSave({ boardNumber: parsedBoardNumber, dealer, vulnerability, playerNames });
   };
 

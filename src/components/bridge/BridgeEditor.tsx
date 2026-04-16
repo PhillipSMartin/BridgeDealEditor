@@ -755,7 +755,7 @@ export const BridgeEditor: React.FC = () => {
       {board && (
         <BoardInfoDialog
           open={boardInfoOpen}
-          hasAuction={(board.Auction ?? []).filter(c => c !== '?').length > 0}
+          hasAuction={(board.Auction ?? []).length > 0}
           initial={{
             boardNumber: board['Board number'],
             dealer: board.Dealer,
