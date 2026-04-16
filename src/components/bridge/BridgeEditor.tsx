@@ -80,11 +80,11 @@ export const BridgeEditor: React.FC = () => {
     const auction = (boardData.Auction ?? []).filter((c: string) => c !== '');
     setBoard({ ...boardData, Dealer: dealer, Auction: auction });
     const newPlayCards = new Map<string, number>();
-    boardData.Play.forEach((card: string, index: number) => {
+    (boardData.Play ?? []).forEach((card: string, index: number) => {
       newPlayCards.set(card, index + 1);
     });
     setPlayCards(newPlayCards);
-    setPlayOrderCounter(boardData.Play.length + 1);
+    setPlayOrderCounter((boardData.Play ?? []).length + 1);
     setSelectedCards(new Set());
   }, []);
 
