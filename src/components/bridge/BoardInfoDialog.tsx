@@ -1,0 +1,239 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { Direction, Vulnerability } from '@/types/bridge';
+
+export interface BoardInfoValues {
+  boardNumber: number;
+  dealer: Direction;
+  vulnerability: Vulnerability;
+  playerNames: Record<Direction, string>;
+}
+
+interface BoardInfoDialogProps {
+  open: boolean;
+  initial: BoardInfoValues;
+  onSave: (values: BoardInfoValues) => void;
+  onCancel: () => void;
+}
+
+const DIRECTIONS: Direction[] = ['North', 'East', 'South', 'West'];
+const VULNERABILITIES: Vulnerability[] = ['None', 'NS', 'EW', 'Both'];
+
+const inputStyle: React.CSSProperties = {
+  background: 'hsl(220 18% 14%)',
+  border: '1px solid hsl(220 18% 28%)',
+  borderRadius: 6,
+  color: 'hsl(210 20% 88%)',
+  padding: '7px 10px',
+  fontSize: 14,
+  outline: 'none',
+  width: '100%',
+  boxSizing: 'border-box',
+};
+
+const labelStyle: React.CSSProperties = {
+  fontSize: 11,
+  fontWeight: 600,
+  letterSpacing: '0.07em',
+  textTransform: 'uppercase',
+  color: 'hsl(43 70% 55%)',
+  marginBottom: 4,
+  display: 'block',
+};
+
+export const BoardInfoDialog: React.FC<BoardInfoDialogProps> = ({
+  open,
+  initial,
+  onSave,
+  onCancel,
+}) => {
+  const [boardNumber, setBoardNumber] = useState(initial.boardNumber);
+  const [dealer, setDealer] = useState<Direction>(initial.dealer);
+  const [vulnerability, setVulnerability] = useState<Vulnerability>(initial.vulnerability);
+  const [playerNames, setPlayerNames] = useState<Record<Direction, string>>(initial.playerNames);
+
+  useEffect(() => {
+    if (open) {
+      setBoardNumber(initial.boardNumber);
+      setDealer(initial.dealer);
+      setVulnerability(initial.vulnerability);
+      setPlayerNames(initial.playerNames);
+    }
+  }, [open, initial]);
+
+  const handlePlayerName = useCallback((dir: Direction, value: string) => {
+    setPlayerNames(prev => ({ ...prev, [dir]: value }));
+  }, []);
+
+  const handleSave = () => {
+    onSave({ boardNumber, dealer, vulnerability, playerNames });
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') onCancel();
+    if (e.key === 'Enter' && e.ctrlKey) handleSave();
+  };
+
+  if (!open) return null;
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 1000,
+        background: 'rgba(0,0,0,0.65)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+      onClick={(e) => { if (e.target === e.currentTarget) onCancel(); }}
+      onKeyDown={handleKeyDown}
+    >
+      <div
+        style={{
+          background: 'hsl(220 25% 10%)',
+          border: '1px solid hsl(43 55% 32%)',
+          borderRadius: 12,
+          boxShadow: '0 20px 60px rgba(0,0,0,0.7)',
+          padding: '28px 32px 24px',
+          width: 440,
+          maxWidth: '95vw',
+        }}
+      >
+        {/* Title */}
+        <div style={{ marginBottom: 24 }}>
+          <h2
+            style={{
+              margin: 0,
+              fontSize: 18,
+              fontWeight: 700,
+              background: 'linear-gradient(135deg, hsl(43 90% 60%), hsl(43 70% 42%))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              letterSpacing: '0.04em',
+            }}
+          >
+            Board Info
+          </h2>
+          <p style={{ margin: '4px 0 0', fontSize: 12, color: 'hsl(215 15% 48%)' }}>
+            Edit board metadata and player names
+          </p>
+        </div>
+
+        {/* Board number */}
+        <div style={{ marginBottom: 16 }}>
+          <label style={labelStyle}>Board Number</label>
+          <input
+            type="number"
+            min={1}
+            value={boardNumber}
+            onChange={e => setBoardNumber(Math.max(1, Number(e.target.value)))}
+            style={{ ...inputStyle, width: 120 }}
+          />
+        </div>
+
+        {/* Dealer + Vulnerability row */}
+        <div style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
+          <div style={{ flex: 1 }}>
+            <label style={labelStyle}>Dealer</label>
+            <select
+              value={dealer}
+              onChange={e => setDealer(e.target.value as Direction)}
+              style={{ ...inputStyle, cursor: 'pointer' }}
+            >
+              {DIRECTIONS.map(d => (
+                <option key={d} value={d}>{d}</option>
+              ))}
+            </select>
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={labelStyle}>Vulnerability</label>
+            <select
+              value={vulnerability}
+              onChange={e => setVulnerability(e.target.value as Vulnerability)}
+              style={{ ...inputStyle, cursor: 'pointer' }}
+            >
+              {VULNERABILITIES.map(v => (
+                <option key={v} value={v}>{v}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Player names */}
+        <div
+          style={{
+            borderTop: '1px solid hsl(220 18% 20%)',
+            paddingTop: 16,
+            marginBottom: 24,
+          }}
+        >
+          <span style={{ ...labelStyle, marginBottom: 12 }}>Player Names</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            {DIRECTIONS.map(dir => (
+              <div key={dir}>
+                <label
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'hsl(215 15% 52%)',
+                    marginBottom: 4,
+                    display: 'block',
+                  }}
+                >
+                  {dir}
+                </label>
+                <input
+                  type="text"
+                  value={playerNames[dir]}
+                  onChange={e => handlePlayerName(dir, e.target.value)}
+                  placeholder={dir}
+                  style={inputStyle}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+          <button
+            onClick={onCancel}
+            style={{
+              padding: '8px 20px',
+              background: 'hsl(220 18% 18%)',
+              border: '1px solid hsl(220 18% 30%)',
+              borderRadius: 6,
+              color: 'hsl(210 20% 68%)',
+              fontSize: 13,
+              fontWeight: 600,
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+            }}
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleSave}
+            style={{
+              padding: '8px 24px',
+              background: 'hsl(43 70% 42%)',
+              border: 'none',
+              borderRadius: 6,
+              color: 'hsl(220 25% 8%)',
+              fontSize: 13,
+              fontWeight: 700,
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+            }}
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

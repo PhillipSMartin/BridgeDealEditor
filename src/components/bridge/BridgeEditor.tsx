@@ -10,7 +10,8 @@ import { LinParser } from '@/utils/linParser';
 import { parsePbn } from '@/utils/pbnParser';
 import { buildPbn } from '@/utils/buildPbn';
 import { toast } from 'sonner';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Info } from 'lucide-react';
+import { BoardInfoDialog, BoardInfoValues } from './BoardInfoDialog';
 
 function findTerminationPoint(auction: string[]): number | null {
   let hasNonPass = false;
@@ -62,6 +63,7 @@ export const BridgeEditor: React.FC = () => {
   const [exportOpen, setExportOpen] = useState(false);
   const [loadedFileName, setLoadedFileName] = useState<string>('');
   const [exportFileName, setExportFileName] = useState<string>('');
+  const [boardInfoOpen, setBoardInfoOpen] = useState(false);
   const exportMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -233,6 +235,28 @@ export const BridgeEditor: React.FC = () => {
       if (!prev) return prev;
       return { ...prev, Auction: (prev.Auction ?? []).slice(0, index) };
     });
+  }, []);
+
+  const handleBoardInfoSave = useCallback((values: BoardInfoValues) => {
+    setBoard(prev => {
+      if (!prev) return prev;
+      const newSeats = prev.Seats.map(seat => {
+        const name = values.playerNames[seat.Direction];
+        if (!name || name.trim() === '') {
+          const { Player: _removed, ...rest } = seat;
+          return rest as typeof seat;
+        }
+        return { ...seat, Player: name.trim() };
+      });
+      return {
+        ...prev,
+        'Board number': values.boardNumber,
+        Dealer: values.dealer,
+        Vulnerability: values.vulnerability,
+        Seats: newSeats,
+      };
+    });
+    setBoardInfoOpen(false);
   }, []);
 
   const handleNameChange = useCallback((direction: Direction, newName: string) => {
@@ -507,6 +531,19 @@ export const BridgeEditor: React.FC = () => {
               Edit
             </span>
             <Button
+              onClick={() => setBoardInfoOpen(true)}
+              variant="outline"
+              className="px-4 text-sm flex items-center gap-2"
+              style={{
+                background: 'hsl(220 18% 18%)',
+                border: '1px solid hsl(220 18% 30%)',
+                color: 'hsl(210 20% 75%)',
+              }}
+            >
+              <Info size={14} />
+              Board Info
+            </Button>
+            <Button
               onClick={clearPlaySequence}
               variant="outline"
               className="px-4 text-sm"
@@ -712,6 +749,25 @@ export const BridgeEditor: React.FC = () => {
           </div>
         )}
       </main>
+
+      {board && (
+        <BoardInfoDialog
+          open={boardInfoOpen}
+          initial={{
+            boardNumber: board['Board number'],
+            dealer: board.Dealer,
+            vulnerability: board.Vulnerability ?? 'None',
+            playerNames: {
+              North: board.Seats.find(s => s.Direction === 'North')?.Player ?? '',
+              East:  board.Seats.find(s => s.Direction === 'East')?.Player  ?? '',
+              South: board.Seats.find(s => s.Direction === 'South')?.Player ?? '',
+              West:  board.Seats.find(s => s.Direction === 'West')?.Player  ?? '',
+            },
+          }}
+          onSave={handleBoardInfoSave}
+          onCancel={() => setBoardInfoOpen(false)}
+        />
+      )}
     </div>
   );
 };
