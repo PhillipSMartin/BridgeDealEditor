@@ -69,6 +69,16 @@ function renderCallContent(cell: string): React.ReactNode {
   return <span style={{ color: 'hsl(210 20% 88%)' }}>{cell}</span>;
 }
 
+function trailingPassCount(auction: string[]): number {
+  const filtered = auction.filter(c => c !== '?');
+  let count = 0;
+  for (let i = filtered.length - 1; i >= 0; i--) {
+    if (filtered[i] === 'P') count++;
+    else break;
+  }
+  return count;
+}
+
 function isAuctionTerminated(auction: string[]): boolean {
   if (auction.length === 0) return false;
   if (auction[auction.length - 1] === '?') return false;
@@ -100,6 +110,8 @@ interface EditPopupProps {
   onDelete: () => void;
   onCancel: () => void;
   showDelete?: boolean;
+  passesNeeded?: number;
+  onAllPass?: () => void;
 }
 
 const SUITS_ROW = [
@@ -110,7 +122,7 @@ const SUITS_ROW = [
   { label: 'NT', raw: 'N', color: 'hsl(210 20% 95%)' },
 ];
 
-const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, showDelete = true }) => {
+const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, showDelete = true, passesNeeded, onAllPass }) => {
   const [level, setLevel] = useState<string | null>(null);
 
   const btnBase: React.CSSProperties = {
@@ -221,7 +233,27 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
           ))}
         </div>
 
-        {/* Row 4: Delete + Cancel */}
+        {/* Row 4: All Pass (append mode only) */}
+        {passesNeeded !== undefined && (
+          <div style={{ display: 'flex' }}>
+            <button
+              onClick={passesNeeded > 0 ? onAllPass : undefined}
+              disabled={passesNeeded === 0}
+              style={{
+                ...btnBase,
+                flex: 1,
+                color: passesNeeded > 0 ? 'hsl(215 15% 60%)' : 'hsl(215 15% 38%)',
+                border: '1px solid hsl(220 18% 28%)',
+                opacity: passesNeeded === 0 ? 0.45 : 1,
+                cursor: passesNeeded === 0 ? 'not-allowed' : 'pointer',
+              }}
+            >
+              All Pass{passesNeeded > 0 ? ` (×${passesNeeded})` : ''}
+            </button>
+          </div>
+        )}
+
+        {/* Row 5: Delete + Cancel */}
         <div style={{ display: 'flex', gap: 8, marginTop: 2 }}>
           {showDelete && (
             <button
@@ -300,6 +332,19 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
     if (!onAppendCall) return;
     setEditState({ auctionIndex: -1, isAppend: true });
   };
+
+  const handleAllPass = () => {
+    if (!onAppendCall) return;
+    const trailing = trailingPassCount(board.Auction ?? []);
+    const needed = trailing >= 2 ? 0 : trailing === 1 ? 2 : 3;
+    for (let i = 0; i < needed; i++) onAppendCall('P');
+    setEditState(null);
+  };
+
+  const appendPassesNeeded = (() => {
+    const trailing = trailingPassCount(board.Auction ?? []);
+    return trailing >= 2 ? 0 : trailing === 1 ? 2 : 3;
+  })();
 
   const colW = 'w-1/4';
   const cellBase = `${colW} text-sm py-1.5 px-2 text-center font-medium`;
@@ -452,6 +497,8 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
           onDelete={handleDelete}
           onCancel={() => setEditState(null)}
           showDelete={!editState.isAppend}
+          passesNeeded={editState.isAppend ? appendPassesNeeded : undefined}
+          onAllPass={editState.isAppend ? handleAllPass : undefined}
         />
       )}
     </>
