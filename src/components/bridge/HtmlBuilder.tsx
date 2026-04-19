@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 interface HtmlBuilderProps {
   board: BridgeBoard;
   playCards: Map<string, number>;
+  defaultFileName: string;
 }
 
 const sectionLabel: React.CSSProperties = {
@@ -56,7 +57,7 @@ const SUIT_SYMBOLS: { key: string; symbol: string; red: boolean }[] = [
   { key: 'c', symbol: '♣', red: false },
 ];
 
-export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) => {
+export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defaultFileName }) => {
   const [open, setOpen] = useState(false);
 
   const [north, setNorth] = useState(true);
@@ -64,13 +65,13 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   const [south, setSouth] = useState(true);
   const [west, setWest] = useState(true);
 
-  const [fileName, setFileName] = useState(`board${board['Board number']}`);
+  const [fileName, setFileName] = useState(defaultFileName);
   const [vertical, setVertical] = useState(false);
   const [perCard, setPerCard] = useState(false);
 
   useEffect(() => {
-    setFileName(`board${board['Board number']}`);
-  }, [board['Board number']]);
+    setFileName(defaultFileName);
+  }, [defaultFileName]);
 
   useEffect(() => {
     if (playCards.size === 0) setPerCard(false);
@@ -116,7 +117,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    const name = fileName.trim() || `board${board['Board number']}`;
+    const name = fileName.trim() || defaultFileName;
     a.download = name.endsWith('.html') ? name : `${name}.html`;
     a.click();
     URL.revokeObjectURL(url);
@@ -125,7 +126,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
 
   const downloadZip = async () => {
     try {
-      const rawName = fileName.trim() || `board${board['Board number']}`;
+      const rawName = fileName.trim() || defaultFileName;
       const name = rawName.replace(/\.(html?|zip)$/i, '');
       const series = buildHtmlSeries(board, playCards, opts);
       const zip = new JSZip();
@@ -146,7 +147,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
   };
 
   const baseName = () => {
-    const raw = fileName.trim() || `board${board['Board number']}`;
+    const raw = fileName.trim() || defaultFileName;
     return raw.replace(/\.(html?|zip)$/i, '');
   };
 
@@ -347,7 +348,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards }) =>
                   type="text"
                   value={fileName}
                   onChange={e => setFileName(e.target.value)}
-                  placeholder={`board${board['Board number']}`}
+                  placeholder={defaultFileName}
                   className="flex-1 rounded px-2 py-1 text-sm"
                   style={{ background: 'hsl(220 18% 15%)', border: '1px solid hsl(220 18% 30%)', color: 'hsl(210 20% 85%)', outline: 'none' }}
                 />

@@ -63,6 +63,7 @@ export const BridgeEditor: React.FC = () => {
   const [exportOpen, setExportOpen] = useState(false);
   const [loadedFileName, setLoadedFileName] = useState<string>('');
   const [exportFileName, setExportFileName] = useState<string>('');
+  const [loadedBaseName, setLoadedBaseName] = useState<string>('');
   const [boardInfoOpen, setBoardInfoOpen] = useState(false);
   const exportMenuRef = useRef<HTMLDivElement>(null);
 
@@ -104,12 +105,14 @@ export const BridgeEditor: React.FC = () => {
           initializeBoardData(jsonData);
           setLoadedFileName(file.name);
           setExportFileName(baseName);
+          setLoadedBaseName(baseName);
           toast('JSON file loaded successfully!');
         } else {
           const boardData = parsePbn(text);
           initializeBoardData(boardData);
           setLoadedFileName(file.name);
           setExportFileName(baseName);
+          setLoadedBaseName(baseName);
           toast('PBN file loaded successfully!');
         }
       } catch (error) {
@@ -132,6 +135,7 @@ export const BridgeEditor: React.FC = () => {
         initializeBoardData(boardData);
         setLoadedFileName('');
         setExportFileName(`board${boardData['Board number']}`);
+        setLoadedBaseName(`board${boardData['Board number']}`);
         toast('BBO URL imported successfully!');
       } else {
         toast('Could not parse the BBO URL. Please check the format.');
@@ -660,7 +664,7 @@ export const BridgeEditor: React.FC = () => {
               )}
             </div>
             <BboUrlBuilder board={board} playCards={playCards} />
-            <HtmlBuilder board={board} playCards={playCards} />
+            <HtmlBuilder board={board} playCards={playCards} defaultFileName={loadedBaseName} />
           </div>
         )}
       </div>
