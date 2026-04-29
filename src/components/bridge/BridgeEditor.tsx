@@ -9,6 +9,7 @@ import { BridgeBoard, Direction, Suit } from '@/types/bridge';
 import { LinParser } from '@/utils/linParser';
 import { parsePbn } from '@/utils/pbnParser';
 import { buildPbn } from '@/utils/buildPbn';
+import { buildLin } from '@/utils/buildLin';
 import { toast } from 'sonner';
 import { RefreshCw, Info } from 'lucide-react';
 import { BoardInfoDialog, BoardInfoValues } from './BoardInfoDialog';
@@ -337,6 +338,18 @@ export const BridgeEditor: React.FC = () => {
     toast('PBN file exported successfully!');
   }, [board, playCards, exportFileName]);
 
+  const exportLin = useCallback(() => {
+    if (!board) return;
+    const linStr = buildLin(board, playCards);
+    const dataUri = 'data:text/plain;charset=utf-8,' + encodeURIComponent(linStr);
+    const filename = `${exportFileName.trim() || `board${board['Board number']}`}.lin`;
+    const link = document.createElement('a');
+    link.setAttribute('href', dataUri);
+    link.setAttribute('download', filename);
+    link.click();
+    toast('LIN file exported successfully!');
+  }, [board, playCards, exportFileName]);
+
   const buildBboUrl = useCallback((currentBoard: BridgeBoard, currentPlayCards: Map<string, number>): string => {
     const directions: Direction[] = ['West', 'North', 'East', 'South'];
     const southIdx = directions.indexOf('South');
@@ -632,7 +645,7 @@ export const BridgeEditor: React.FC = () => {
                     { label: 'JSON',    action: () => { exportJson(); setExportOpen(false); }, enabled: true },
                     { label: 'PBN',     action: () => { exportPbn(); setExportOpen(false); }, enabled: true },
                     { label: 'BBO URL', action: () => { copyUrl();    setExportOpen(false); }, enabled: true },
-                    { label: 'LIN',     action: null, enabled: false },
+                    { label: 'LIN',     action: () => { exportLin(); setExportOpen(false); }, enabled: true },
                   ].map(item => (
                     <button
                       key={item.label}
