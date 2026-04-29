@@ -173,6 +173,10 @@ function extractAuction(url: string): string[] {
 }
 
 export class LinParser {
+  static parseLinString(lin: string): BridgeBoard | null {
+    return LinParser.parseLinFromUrl(lin);
+  }
+
   static parseLinFromUrl(url: string): BridgeBoard | null {
     try {
       const decoded = decodeURIComponent(url);

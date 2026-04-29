@@ -108,6 +108,14 @@ export const BridgeEditor: React.FC = () => {
           setExportFileName(baseName);
           setLoadedBaseName(baseName);
           toast('JSON file loaded successfully!');
+        } else if (ext === 'lin') {
+          const boardData = LinParser.parseLinString(text);
+          if (!boardData) throw new Error('Failed to parse LIN file');
+          initializeBoardData(boardData);
+          setLoadedFileName(file.name);
+          setExportFileName(baseName);
+          setLoadedBaseName(baseName);
+          toast('LIN file loaded successfully!');
         } else {
           const boardData = parsePbn(text);
           initializeBoardData(boardData);
@@ -490,7 +498,7 @@ export const BridgeEditor: React.FC = () => {
           {/* Load file */}
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'hsl(43 70% 55%)' }}>
-              Load JSON or PBN File
+              Load JSON, PBN, or LIN File
             </label>
             <label
               className="flex items-center gap-2 px-4 py-2 rounded cursor-pointer text-sm font-medium transition-colors"
@@ -502,7 +510,7 @@ export const BridgeEditor: React.FC = () => {
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
               Choose File
-              <input type="file" accept=".json,.pbn,.txt" onChange={loadFile} className="hidden" />
+              <input type="file" accept=".json,.pbn,.lin,.txt" onChange={loadFile} className="hidden" />
             </label>
           </div>
 
@@ -743,7 +751,7 @@ export const BridgeEditor: React.FC = () => {
                 No deal loaded
               </p>
               <p className="text-sm" style={{ color: 'hsl(215 15% 42%)' }}>
-                Load a JSON or PBN file, or paste a BBO URL above to begin editing
+                Load a JSON, PBN, or LIN file, or paste a BBO URL above to begin editing
               </p>
             </div>
             <div
