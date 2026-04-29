@@ -174,7 +174,10 @@ function extractAuction(url: string): string[] {
 
 export class LinParser {
   static parseLinString(lin: string): BridgeBoard | null {
-    return LinParser.parseLinFromUrl(lin);
+    // Raw .lin files start with 'md|…' but the URL parser expects '|md|'
+    const trimmed = lin.trim();
+    const normalized = trimmed.startsWith('md|') ? `|${trimmed}` : trimmed;
+    return LinParser.parseLinFromUrl(normalized);
   }
 
   static parseLinFromUrl(url: string): BridgeBoard | null {
