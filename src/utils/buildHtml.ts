@@ -321,7 +321,7 @@ function buildSingleHand(hand: Hand, opts: HtmlExportOptions, playedSet: Set<str
     <tbody>
       <tr>
         <td></td>
-        <td class="hand center-hand">
+        <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml}
         </td>
         <td></td>
