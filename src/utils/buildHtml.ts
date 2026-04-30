@@ -283,11 +283,11 @@ ${handHtml['North']}
   }
 
   table += `      <tr>
-        <td class="hand hand-west">
+        <td class="hand hand-west" style="white-space:nowrap">
 ${opts.west ? handHtml['West'] : ''} 
         </td>\n`;
   table += buildCardTable(cardToSeat, opts, playSequence);
-  table += `        <td class="hand hand-east">
+  table += `        <td class="hand hand-east" style="white-space:nowrap">
 ${opts.east ? handHtml['East'] : ''}
         </td>
       </tr>\n`;
