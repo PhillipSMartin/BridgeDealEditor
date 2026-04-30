@@ -51,6 +51,7 @@ const CSS = `<style>
     .bridge-diagram .east  { right: 4px; top: 50%; transform: translateY(-50%); }
     .bridge-diagram .hand-title { font-weight: 700; }
     .bridge-diagram .name { font-style: italic; }
+    .bridge-diagram .hand { white-space: nowrap; }
     .bridge-diagram .hand-west {
       text-align: left;
       white-space: nowrap;
