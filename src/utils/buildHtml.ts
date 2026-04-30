@@ -51,6 +51,7 @@ const CSS = `<style>
     .bridge-diagram .east  { right: 4px; top: 50%; transform: translateY(-50%); }
     .bridge-diagram .hand-title { font-weight: 700; }
     .bridge-diagram .name { font-style: italic; }
+    .bridge-diagram .hand { white-space: nowrap; }
     .bridge-diagram .hand-west {
       text-align: left;
       white-space: nowrap;
@@ -274,7 +275,7 @@ function buildDiagram(
   if (opts.north) {
     table += `      <tr>
         <td></td>
-        <td class="hand center-hand">
+        <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml['North']}
         </td>
         <td></td>
@@ -282,11 +283,11 @@ ${handHtml['North']}
   }
 
   table += `      <tr>
-        <td class="hand hand-west">
+        <td class="hand hand-west" style="white-space:nowrap">
 ${opts.west ? handHtml['West'] : ''} 
         </td>\n`;
   table += buildCardTable(cardToSeat, opts, playSequence);
-  table += `        <td class="hand hand-east">
+  table += `        <td class="hand hand-east" style="white-space:nowrap">
 ${opts.east ? handHtml['East'] : ''}
         </td>
       </tr>\n`;
@@ -294,7 +295,7 @@ ${opts.east ? handHtml['East'] : ''}
   if (opts.south) {
     table += `      <tr>
         <td></td>
-        <td class="hand center-hand">
+        <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml['South']}
         </td>
         <td></td>
@@ -320,7 +321,7 @@ function buildSingleHand(hand: Hand, opts: HtmlExportOptions, playedSet: Set<str
     <tbody>
       <tr>
         <td></td>
-        <td class="hand center-hand">
+        <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml}
         </td>
         <td></td>
@@ -330,7 +331,7 @@ ${handHtml}
 </div>\n`;
   }
   const handHtml = formatHand(hand, opts, playedSet, false);
-  return `<TABLE width="300" border="0" cellspacing="0" cellpadding="0" align="center"><TR><TD WIDTH="100%" Align="center">${handHtml}</TD></TR></TABLE>\n`;
+  return `<TABLE width="auto" border="0" cellspacing="0" cellpadding="0" align="center"><TR><TD style="white-space:nowrap" Align="center">${handHtml}</TD></TR></TABLE>\n`;
 }
 
 export function buildHtmlSeries(

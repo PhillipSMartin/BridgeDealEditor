@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<style>
+    body { color: #000000; background: #ffffff; color-scheme: light; }
+    .bridge-diagram {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Color Emoji", "Segoe UI Emoji";
+      --col-center: 145px;
+      --felt-w:    120px;
+    }
+    .bridge-diagram table { border-collapse: collapse; margin: 0 auto; table-layout: auto; }
+    .bridge-diagram td { vertical-align: top; padding: 0 .5rem; width: auto; }
+    .bridge-diagram .col-center { width: var(--col-center); }
+    .bridge-diagram .center-hand { text-align: left; padding-left: 30px; }
+    .bridge-diagram tbody tr:nth-child(2) td { vertical-align: middle; }
+    .bridge-diagram .table-cell { text-align:center; }
+    .bridge-diagram .felt {
+      position: relative; width: var(--felt-w); height: 80px; margin: 8px auto; background: #215b33; border-radius: 12px;
+      box-shadow: inset 0 0 0 3px #134022, inset 0 0 30px rgba(0,0,0,.35);
+    }
+    .bridge-diagram .card {
+      position: absolute; background: #fff; border-radius: 6px; border: 1px solid #d9d9d9; padding: 2px 6px;
+      font-size: 14px; font-weight: 700; line-height: 1; box-shadow: 0 2px 8px rgba(0,0,0,.18);
+    }
+    .bridge-diagram .north { top: 4px; left: 50%; transform: translateX(-50%); }
+    .bridge-diagram .south { bottom: 4px; left: 50%; transform: translateX(-50%); }
+    .bridge-diagram .west  { left: 4px; top: 50%; transform: translateY(-50%); }
+    .bridge-diagram .east  { right: 4px; top: 50%; transform: translateY(-50%); }
+    .bridge-diagram .hand-title { font-weight: 700; }
+    .bridge-diagram .name { font-style: italic; }
+    .bridge-diagram .hand-west {
+      text-align: left;
+      white-space: nowrap;
+      padding-right: .2rem;
+    }
+    .bridge-diagram .hand-east { text-align:left; }
+</style>
+<div align="center" class="bridge-diagram">
+  <table>
+    <colgroup>
+      <col class="col-left" />
+      <col class="col-center" />
+      <col class="col-right" />
+    </colgroup>
+    <tbody>
+      <tr>
+        <td></td>
+        <td class="hand center-hand">
+          <div class="hand-title">NORTH</div>
+          <div class="name">JoAnna</div>
+          &#9824; K Q J 8 3<br />
+          <span style="color:rgb(192,22,22);">&#9829;</span> 6<br />
+          <span style="color:rgb(192,22,22);">&#9830;</span> Q 10 5<br />
+          &#9827; K Q 10 2<br />
+
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="hand hand-west">
+          <div class="hand-title">WEST</div>
+          <div class="name">Peter</div>
+          &#9824; A 9 4<br />
+          <span style="color:rgb(192,22,22);">&#9829;</span> 5 4 3 2<br />
+          <span style="color:rgb(192,22,22);">&#9830;</span> A J 6 4<br />
+          &#9827; A 7<br />
+ 
+        </td>
+        <td class="table-cell">
+          <div class="felt">
+          </div>
+        </td>
+        <td class="hand hand-east">
+          <div class="hand-title">EAST</div>
+          <div class="name">Adam</div>
+          &#9824; 10 6 5 2<br />
+          <span style="color:rgb(192,22,22);">&#9829;</span> K<br />
+          <span style="color:rgb(192,22,22);">&#9830;</span> 9 8 7 3 2<br />
+          &#9827; 9 8 5<br />
+
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="hand center-hand">
+          <div class="hand-title">SOUTH</div>
+          <div class="name">Li-Chung</div>
+          &#9824; 7<br />
+          <span style="color:rgb(192,22,22);">&#9829;</span> A Q J 10 9 8 7<br />
+          <span style="color:rgb(192,22,22);">&#9830;</span> K<br />
+          &#9827; J 6 4 3<br />
+
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+<table align="center" border="0" cellpadding="0" cellspacing="0" style="width:350px;padding-left:30px">
+  <tbody>
+    <tr>
+      <td align="left" width="25%"><b>West</b></td>
+      <td align="left" width="25%"><b>North</b></td>
+      <td align="left" width="25%"><b>East</b></td>
+      <td align="left" width="25%"><b>South</b></td>
+    </tr>
+    <tr>
+      <td align="left" width="25%"><i>Peter</i></td>
+      <td align="left" width="25%"><i>JoAnna</i></td>
+      <td align="left" width="25%"><i>Adam</i></td>
+      <td align="left" width="25%"><i>Li-Chung</i></td>
+    </tr>
+    <tr>
+      <td align="left" width="25%"> </td>
+      <td align="left" width="25%">1 &#9824;</td>
+      <td align="left" width="25%">Pass</td>
+      <td align="left" width="25%">2 <span style="color:rgb(192,22,22);">&#9829;</span></td>
+    </tr>
+    <tr>
+      <td align="left" width="25%">Pass</td>
+      <td align="left" width="25%">2 NT</td>
+      <td align="left" width="25%">Pass</td>
+      <td align="left" width="25%">3 <span style="color:rgb(192,22,22);">&#9829;</span></td>
+    </tr>
+    <tr>
+      <td align="left" width="25%">Pass</td>
+      <td align="left" width="25%">3 NT</td>
+      <td align="left" width="25%">Pass</td>
+      <td align="left" width="25%">4 <span style="color:rgb(192,22,22);">&#9829;</span></td>
+    </tr>
+    <tr>
+      <td align="left" width="25%">(All pass)</td>
+      <td align="left" width="25%"> </td>
+      <td align="left" width="25%"> </td>
+      <td align="left" width="25%"> </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
