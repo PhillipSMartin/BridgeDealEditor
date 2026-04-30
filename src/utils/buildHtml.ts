@@ -275,7 +275,7 @@ function buildDiagram(
   if (opts.north) {
     table += `      <tr>
         <td></td>
-        <td class="hand center-hand">
+        <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml['North']}
         </td>
         <td></td>
@@ -295,7 +295,7 @@ ${opts.east ? handHtml['East'] : ''}
   if (opts.south) {
     table += `      <tr>
         <td></td>
-        <td class="hand center-hand">
+        <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml['South']}
         </td>
         <td></td>
