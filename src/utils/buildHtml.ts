@@ -331,7 +331,7 @@ ${handHtml}
 </div>\n`;
   }
   const handHtml = formatHand(hand, opts, playedSet, false);
-  return `<TABLE width="300" border="0" cellspacing="0" cellpadding="0" align="center"><TR><TD WIDTH="100%" Align="center">${handHtml}</TD></TR></TABLE>\n`;
+  return `<TABLE width="auto" border="0" cellspacing="0" cellpadding="0" align="center"><TR><TD style="white-space:nowrap" Align="center">${handHtml}</TD></TR></TABLE>\n`;
 }
 
 export function buildHtmlSeries(
