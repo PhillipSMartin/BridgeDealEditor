@@ -314,6 +314,11 @@ export const AuctionDisplay: React.FC<AuctionDisplayProps> = ({ board, onEditCal
     if (editState) {
       if (editState.isAppend && onAppendCall) {
         onAppendCall(rawCall);
+        const updatedAuction = [...(board.Auction ?? []), rawCall];
+        if (rawCall !== '?' && !isAuctionTerminated(updatedAuction)) {
+          setEditState({ auctionIndex: -1, isAppend: true });
+          return;
+        }
       } else if (!editState.isAppend && onEditCall) {
         onEditCall(editState.auctionIndex, rawCall);
       }
