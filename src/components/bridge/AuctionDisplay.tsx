@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BridgeBoard, Direction } from '@/types/bridge';
 
 interface AuctionDisplayProps {
@@ -124,6 +124,14 @@ const SUITS_ROW = [
 
 const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, showDelete = true, passesNeeded, onAllPass }) => {
   const [level, setLevel] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onCancel();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onCancel]);
 
   const btnBase: React.CSSProperties = {
     background: 'hsl(220 22% 20%)',
