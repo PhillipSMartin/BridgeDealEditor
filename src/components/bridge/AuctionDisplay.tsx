@@ -163,7 +163,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
 
   const handleSuit = (suitRaw: string) => {
     if (!level) return;
-    flash(suitRaw);
+    flash('suit:' + suitRaw);
     setLevel(null);
     onSelect(level + suitRaw);
   };
@@ -208,8 +208,8 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
           ].map(({ label, raw, color }) => (
             <button
               key={raw}
-              onClick={() => { flash(raw); onSelect(raw); }}
-              style={flashedBtn === raw ? { ...btnHighlight, flex: 1 } : { ...btnBase, color, flex: 1 }}
+              onClick={() => { flash('call:' + raw); onSelect(raw); }}
+              style={flashedBtn === 'call:' + raw ? { ...btnHighlight, flex: 1 } : { ...btnBase, color, flex: 1 }}
             >
               {label}
             </button>
@@ -236,7 +236,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
               key={raw}
               onClick={() => handleSuit(raw)}
               disabled={!level}
-              style={flashedBtn === raw ? {
+              style={flashedBtn === 'suit:' + raw ? {
                 ...btnHighlight,
                 flex: 1,
                 opacity: 1,
