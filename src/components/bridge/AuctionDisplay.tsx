@@ -142,6 +142,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
   }, [onCancel]);
 
   const flash = (key: string, action?: () => void) => {
+    if (flashedBtn) return;
     setFlashedBtn(key);
     const t1 = setTimeout(() => setFlashedBtn(null), FLASH_MS);
     timersRef.current.push(t1);
