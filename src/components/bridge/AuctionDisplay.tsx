@@ -124,6 +124,7 @@ const SUITS_ROW = [
 
 const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, showDelete = true, passesNeeded, onAllPass }) => {
   const [level, setLevel] = useState<string | null>(null);
+  const [flashedBtn, setFlashedBtn] = useState<string | null>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -132,6 +133,11 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onCancel]);
+
+  const flash = (key: string) => {
+    setFlashedBtn(key);
+    setTimeout(() => setFlashedBtn(null), 150);
+  };
 
   const btnBase: React.CSSProperties = {
     background: 'hsl(220 22% 20%)',
@@ -157,6 +163,8 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
 
   const handleSuit = (suitRaw: string) => {
     if (!level) return;
+    flash(suitRaw);
+    setLevel(null);
     onSelect(level + suitRaw);
   };
 
@@ -200,8 +208,8 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
           ].map(({ label, raw, color }) => (
             <button
               key={raw}
-              onClick={() => onSelect(raw)}
-              style={{ ...btnBase, color, flex: 1 }}
+              onClick={() => { flash(raw); onSelect(raw); }}
+              style={flashedBtn === raw ? { ...btnHighlight, flex: 1 } : { ...btnBase, color, flex: 1 }}
             >
               {label}
             </button>
@@ -228,7 +236,12 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
               key={raw}
               onClick={() => handleSuit(raw)}
               disabled={!level}
-              style={{
+              style={flashedBtn === raw ? {
+                ...btnHighlight,
+                flex: 1,
+                opacity: 1,
+                cursor: 'pointer',
+              } : {
                 ...btnBase,
                 flex: 1,
                 color,
@@ -245,9 +258,13 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
         {passesNeeded !== undefined && (
           <div style={{ display: 'flex' }}>
             <button
-              onClick={passesNeeded > 0 ? onAllPass : undefined}
+              onClick={passesNeeded > 0 ? () => { flash('allpass'); onAllPass?.(); } : undefined}
               disabled={passesNeeded === 0}
-              style={{
+              style={flashedBtn === 'allpass' ? {
+                ...btnHighlight,
+                flex: 1,
+                cursor: 'pointer',
+              } : {
                 ...btnBase,
                 flex: 1,
                 color: passesNeeded > 0 ? 'hsl(215 15% 60%)' : 'hsl(215 15% 38%)',
@@ -265,8 +282,8 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
         <div style={{ display: 'flex', gap: 8, marginTop: 2 }}>
           {showDelete && (
             <button
-              onClick={onDelete}
-              style={{
+              onClick={() => { flash('delete'); onDelete(); }}
+              style={flashedBtn === 'delete' ? { ...btnHighlight, flex: 1 } : {
                 ...btnBase,
                 flex: 1,
                 color: 'hsl(0 70% 60%)',
@@ -277,8 +294,8 @@ const EditPopup: React.FC<EditPopupProps> = ({ onSelect, onDelete, onCancel, sho
             </button>
           )}
           <button
-            onClick={onCancel}
-            style={{
+            onClick={() => { flash('cancel'); onCancel(); }}
+            style={flashedBtn === 'cancel' ? { ...btnHighlight, flex: 1 } : {
               ...btnBase,
               flex: 1,
               color: 'hsl(215 15% 52%)',
