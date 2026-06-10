@@ -160,17 +160,16 @@ export const BridgeEditor: React.FC = () => {
   const handleCardClick = useCallback((direction: Direction, suit: Suit, rank: string) => {
     const cardKey = getCardKey(suit, rank);
     if (playCards.has(cardKey)) {
+      const truncateFrom = playCards.get(cardKey)!;
       const newPlayCards = new Map(playCards);
-      const removedOrder = newPlayCards.get(cardKey)!;
-      newPlayCards.delete(cardKey);
-      for (const [key, order] of newPlayCards.entries()) {
-        if (order > removedOrder) {
-          newPlayCards.set(key, order - 1);
+      for (const [key, order] of playCards.entries()) {
+        if (order >= truncateFrom) {
+          newPlayCards.delete(key);
         }
       }
       setPlayCards(newPlayCards);
-      setPlayOrderCounter(playOrderCounter - 1);
-      toast(`Card ${cardKey} removed from play sequence`);
+      setPlayOrderCounter(truncateFrom);
+      toast(`Play truncated from card ${truncateFrom}`);
       return;
     }
     if (selectedCards.has(cardKey)) {
