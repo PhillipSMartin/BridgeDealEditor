@@ -81,6 +81,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
   const [played, setPlayed] = useState(0);
   const [playedStyle, setPlayedStyle] = useState<HtmlExportOptions['playedStyle']>('white');
   const [showOnFelt, setShowOnFelt] = useState(true);
+  const [showTrickScore, setShowTrickScore] = useState(false);
   const [excludeSuits, setExcludeSuits] = useState<Set<string>>(new Set());
 
   const maxPlayed = playCards.size;
@@ -93,6 +94,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
     played,
     playedStyle,
     showOnFelt,
+    showTrickScore,
     excludeSuits,
   };
 
@@ -102,7 +104,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
     } catch {
       return '<html><body><p style="color:red">Error generating HTML</p></body></html>';
     }
-  }, [board, playCards, north, east, south, west, vertical, auction, played, playedStyle, showOnFelt, excludeSuits]);
+  }, [board, playCards, north, east, south, west, vertical, auction, played, playedStyle, showOnFelt, showTrickScore, excludeSuits]);
 
   const toggleSuit = (key: string) => {
     setExcludeSuits(prev => {
@@ -287,6 +289,21 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
                     </label>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Trick score */}
+            {south && (
+              <div>
+                <label className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: 'hsl(210 20% 78%)' }}>
+                  <input
+                    type="checkbox"
+                    checked={showTrickScore}
+                    onChange={e => setShowTrickScore(e.target.checked)}
+                    className="accent-amber-500"
+                  />
+                  Show trick score in lower-right
+                </label>
               </div>
             )}
 

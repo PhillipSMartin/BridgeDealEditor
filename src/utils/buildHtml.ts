@@ -11,6 +11,7 @@ export interface HtmlExportOptions {
   playedStyle: 'grey' | 'white';
   showOnFelt: boolean;
   excludeSuits: Set<string>;
+  showTrickScore: boolean;
 }
 
 const AUCTION_DIRECTIONS: Direction[] = ['West', 'North', 'East', 'South'];
@@ -58,6 +59,67 @@ const CSS = `<style>
       padding-right: .2rem;
     }
     .bridge-diagram .hand-east { text-align:left; }
+    .trick-score {
+      --ts-ns: '0';
+      --ts-ew: '0';
+      position: relative;
+      width: 130px;
+      height: 100px;
+      display: inline-block;
+    }
+    .trick-card {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      box-sizing: border-box;
+      background-color: #174d91;
+      border: 3px solid white;
+      border-radius: 7px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.22);
+      overflow: hidden;
+    }
+    .trick-card::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .trick-card::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 2px;
+      background:
+        radial-gradient(circle at 50% 50%, transparent 0 9px, white 10px 11px, transparent 12px),
+        repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,.68) 0 1px, transparent 2px 4px),
+        repeating-linear-gradient(45deg, transparent 0 3px, rgba(255,255,255,.25) 4px, transparent 5px 8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .trick-card--vert  { width: 65px;  height: 90px; left: 10px; top: 3px;    z-index: 2; }
+    .trick-card--horiz { width: 100px; height: 65px; right: 3px; bottom: 2px; z-index: 1; }
+    .trick-card-label {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      min-width: 30px;
+      height: 40px;
+      padding: 0 5px;
+      color: #000;
+      background: white;
+      border: 2px solid white;
+      border-radius: 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .trick-card--vert  .trick-card-label::before { content: var(--ts-ns); }
+    .trick-card--horiz .trick-card-label::before { content: var(--ts-ew); }
 </style>
 `;
 
@@ -206,6 +268,21 @@ ${auctionRows}  </tbody>
 </table>\n`;
 }
 
+function buildTrickScore(opts: HtmlExportOptions): string {
+  if (!opts.showTrickScore) return '        <td></td>\n';
+  return `        <td style="vertical-align:bottom; padding-left:8px;">
+          <!-- trick counts: ns=0 ew=0 -->
+          <div class="trick-score" style="--ts-ns: '0'; --ts-ew: '0';">
+            <div class="trick-card trick-card--vert">
+              <span class="trick-card-label"></span>
+            </div>
+            <div class="trick-card trick-card--horiz">
+              <span class="trick-card-label"></span>
+            </div>
+          </div>
+        </td>\n`;
+}
+
 function buildCardTable(
   cardToSeat: Map<string, string>,
   opts: HtmlExportOptions,
@@ -298,8 +375,7 @@ ${opts.east ? handHtml['East'] : ''}
         <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml['South']}
         </td>
-        <td></td>
-      </tr>\n`;
+${buildTrickScore(opts)}      </tr>\n`;
   }
 
   table += `    </tbody>
