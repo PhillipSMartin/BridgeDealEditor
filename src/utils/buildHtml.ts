@@ -430,7 +430,7 @@ ${opts.east ? handHtml['East'] : ''}
         </td>
       </tr>\n`;
 
-  const showBottomRow = opts.south || (opts.showTrickScore && opts.played > 0);
+  const showBottomRow = opts.south || opts.showTrickScore;
   if (showBottomRow) {
     const trickCounts = opts.showTrickScore
       ? computeTrickCounts(playSequence, cardToSeat, board, opts.played)
