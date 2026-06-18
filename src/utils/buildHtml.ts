@@ -238,11 +238,102 @@ ${auctionRows}  </tbody>
 </table>\n`;
 }
 
-function buildTrickScore(opts: HtmlExportOptions): string {
+const RANK_ORDER_HL = 'AKQJT98765432'; // high → low; lower indexOf = higher card
+
+function trickWinnerDir(
+  trick: { seat: Direction; card: string }[],
+  trump: string,
+): Direction {
+  const leadSuit = trick[0].card[0];
+  let winnerIdx = 0;
+  for (let i = 1; i < trick.length; i++) {
+    const suit = trick[i].card[0];
+    const rank = trick[i].card[1];
+    const wSuit = trick[winnerIdx].card[0];
+    const wRank = trick[winnerIdx].card[1];
+    if (trump !== 'N' && suit === trump) {
+      if (wSuit !== trump || RANK_ORDER_HL.indexOf(rank) < RANK_ORDER_HL.indexOf(wRank)) {
+        winnerIdx = i;
+      }
+    } else if (suit === leadSuit && wSuit !== trump) {
+      if (RANK_ORDER_HL.indexOf(rank) < RANK_ORDER_HL.indexOf(wRank)) {
+        winnerIdx = i;
+      }
+    }
+  }
+  return trick[winnerIdx].seat;
+}
+
+function computeTrickCounts(
+  playSequence: string[],
+  cardToSeat: Map<string, string>,
+  board: BridgeBoard,
+  played: number,
+): { ns: number; ew: number } {
+  const DIR_ORDER: Direction[] = ['North', 'East', 'South', 'West'];
+
+  // Parse trump from the final contract bid in the auction
+  const auction = board.Auction;
+  let finalBid = '';
+  let finalBidIdx = -1;
+  for (let i = 0; i < auction.length; i++) {
+    const call = auction[i];
+    if (call !== 'P' && call !== 'D' && call !== 'R' && call !== '?') {
+      finalBid = call;
+      finalBidIdx = i;
+    }
+  }
+  if (!finalBid || finalBidIdx < 0) return { ns: 0, ew: 0 };
+
+  // Last char of bid is denomination: 'N' = no-trump, else suit letter
+  const trump = finalBid.endsWith('N') ? 'N' : finalBid.slice(-1).toUpperCase();
+  const denom = trump;
+
+  // Declarer = first of the declaring side to have bid this denomination
+  const dealerIdx = DIR_ORDER.indexOf(board.Dealer);
+  const bidderDir = DIR_ORDER[(dealerIdx + finalBidIdx) % 4];
+  const isNS = bidderDir === 'North' || bidderDir === 'South';
+  const declaringSide = isNS ? ['North', 'South'] : ['East', 'West'];
+
+  let declarer: Direction = bidderDir;
+  for (let i = 0; i < finalBidIdx; i++) {
+    const call = auction[i];
+    if (call === 'P' || call === 'D' || call === 'R' || call === '?') continue;
+    const callDenom = call.endsWith('N') ? 'N' : call.slice(-1).toUpperCase();
+    if (callDenom !== denom) continue;
+    const callDir = DIR_ORDER[(dealerIdx + i) % 4];
+    if (declaringSide.includes(callDir)) { declarer = callDir; break; }
+  }
+
+  // Opening leader is LHO of declarer (next clockwise)
+  const declarerIdx = DIR_ORDER.indexOf(declarer);
+  let leaderIdx = (declarerIdx + 1) % 4;
+
+  const cards = playSequence.slice(0, played);
+  let ns = 0, ew = 0;
+
+  for (let t = 0; t + 4 <= cards.length; t += 4) {
+    const trick: { seat: Direction; card: string }[] = [];
+    for (let i = 0; i < 4; i++) {
+      const card = cards[t + i];
+      const raw = cardToSeat.get(card) ?? DIR_ORDER[leaderIdx].toLowerCase();
+      const seat = (raw.charAt(0).toUpperCase() + raw.slice(1)) as Direction;
+      trick.push({ seat, card });
+    }
+    const winner = trickWinnerDir(trick, trump);
+    if (winner === 'North' || winner === 'South') ns++; else ew++;
+    leaderIdx = DIR_ORDER.indexOf(winner);
+  }
+
+  return { ns, ew };
+}
+
+function buildTrickScore(opts: HtmlExportOptions, counts: { ns: number; ew: number }): string {
   if (!opts.showTrickScore) return '        <td></td>\n';
+  const { ns, ew } = counts;
   return `        <td style="vertical-align:bottom; text-align:right; padding:0 4px 4px 0;">
-          <!-- trick counts: ns=0 ew=0 -->
-          <div class="trick-score" style="--ts-ns: '0'; --ts-ew: '0';">
+          <!-- trick counts: ns=${ns} ew=${ew} -->
+          <div class="trick-score" style="--ts-ns: '${ns}'; --ts-ew: '${ew}';">
             <div class="trick-card trick-card--vert">
               <span class="trick-card-label"></span>
             </div>
@@ -340,12 +431,15 @@ ${opts.east ? handHtml['East'] : ''}
       </tr>\n`;
 
   if (opts.south) {
+    const trickCounts = opts.showTrickScore
+      ? computeTrickCounts(playSequence, cardToSeat, board, opts.played)
+      : { ns: 0, ew: 0 };
     table += `      <tr>
         <td></td>
         <td class="hand center-hand" style="white-space:nowrap">
 ${handHtml['South']}
         </td>
-${buildTrickScore(opts)}      </tr>\n`;
+${buildTrickScore(opts, trickCounts)}      </tr>\n`;
   }
 
   table += `    </tbody>
