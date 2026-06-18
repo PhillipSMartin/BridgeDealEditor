@@ -76,7 +76,7 @@ const CSS = `<style>
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.4), 0 1px 4px rgba(0,0,0,.3);
       overflow: hidden;
     }
-    .trick-card--vert  { width: 22px; height: 32px; left: 0; top: 0;    z-index: 2; }
+    .trick-card--vert  { width: 22px; height: 32px; left: 0; top: 14px; z-index: 2; }
     .trick-card--horiz { width: 32px; height: 22px; right: 0; bottom: 0; z-index: 1; }
     .trick-card-label {
       position: absolute;
