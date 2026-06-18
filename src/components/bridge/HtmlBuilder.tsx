@@ -293,19 +293,18 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
             )}
 
             {/* Trick score */}
-            {south && (
-              <div>
-                <label className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: 'hsl(210 20% 78%)' }}>
-                  <input
-                    type="checkbox"
-                    checked={showTrickScore}
-                    onChange={e => setShowTrickScore(e.target.checked)}
-                    className="accent-amber-500"
-                  />
-                  Show trick score in lower-right
-                </label>
-              </div>
-            )}
+            <div>
+              <label className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: maxPlayed === 0 ? 'hsl(215 15% 38%)' : 'hsl(210 20% 78%)', userSelect: 'none' }}>
+                <input
+                  type="checkbox"
+                  checked={showTrickScore}
+                  onChange={e => setShowTrickScore(e.target.checked)}
+                  disabled={maxPlayed === 0}
+                  className="accent-amber-500"
+                />
+                Show trick score in lower-right
+              </label>
+            </div>
 
             {/* Per-card ZIP export */}
             <div>

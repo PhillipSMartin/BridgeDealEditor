@@ -430,16 +430,15 @@ ${opts.east ? handHtml['East'] : ''}
         </td>
       </tr>\n`;
 
-  if (opts.south) {
+  const showBottomRow = opts.south || (opts.showTrickScore && opts.played > 0);
+  if (showBottomRow) {
     const trickCounts = opts.showTrickScore
       ? computeTrickCounts(playSequence, cardToSeat, board, opts.played)
       : { ns: 0, ew: 0 };
-    table += `      <tr>
-        <td></td>
-        <td class="hand center-hand" style="white-space:nowrap">
-${handHtml['South']}
-        </td>
-${buildTrickScore(opts, trickCounts)}      </tr>\n`;
+    const southCell = opts.south
+      ? `        <td class="hand center-hand" style="white-space:nowrap">\n${handHtml['South']}\n        </td>\n`
+      : `        <td></td>\n`;
+    table += `      <tr>\n        <td></td>\n${southCell}${buildTrickScore(opts, trickCounts)}      </tr>\n`;
   }
 
   table += `    </tbody>
