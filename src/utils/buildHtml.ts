@@ -63,62 +63,32 @@ const CSS = `<style>
       --ts-ns: '0';
       --ts-ew: '0';
       position: relative;
-      width: 130px;
-      height: 100px;
+      width: 50px;
+      height: 46px;
       display: inline-block;
     }
     .trick-card {
       position: absolute;
-      display: grid;
-      place-items: center;
       box-sizing: border-box;
       background-color: #174d91;
-      border: 3px solid white;
-      border-radius: 7px;
-      box-shadow: 0 2px 6px rgba(0,0,0,.22);
-      overflow: hidden;
-    }
-    .trick-card::before {
-      content: "";
-      position: absolute;
-      inset: 4px;
-      border: 1px solid rgba(255,255,255,.9);
-      border-radius: 3px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .trick-card::after {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border-radius: 2px;
-      background:
-        radial-gradient(circle at 50% 50%, transparent 0 9px, white 10px 11px, transparent 12px),
-        repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,.68) 0 1px, transparent 2px 4px),
-        repeating-linear-gradient(45deg, transparent 0 3px, rgba(255,255,255,.25) 4px, transparent 5px 8px);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .trick-card--vert  { width: 65px;  height: 90px; left: 10px; top: 3px;    z-index: 2; }
-    .trick-card--horiz { width: 100px; height: 65px; right: 3px; bottom: 2px; z-index: 1; }
-    .trick-card-label {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      place-items: center;
-      min-width: 30px;
-      height: 40px;
-      padding: 0 5px;
-      color: #000;
-      background: white;
       border: 2px solid white;
       border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.4), 0 1px 4px rgba(0,0,0,.3);
+      overflow: hidden;
+    }
+    .trick-card--vert  { width: 22px; height: 32px; left: 0; top: 0;    z-index: 2; }
+    .trick-card--horiz { width: 32px; height: 22px; right: 0; bottom: 0; z-index: 1; }
+    .trick-card-label {
+      position: absolute;
+      color: white;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 36px;
+      font-size: 12px;
       font-weight: 700;
       line-height: 1;
     }
+    .trick-card--vert  .trick-card-label { top: 2px; left: 50%; transform: translateX(-50%); }
     .trick-card--vert  .trick-card-label::before { content: var(--ts-ns); }
+    .trick-card--horiz .trick-card-label { right: 3px; top: 50%; transform: translateY(-50%); }
     .trick-card--horiz .trick-card-label::before { content: var(--ts-ew); }
 </style>
 `;
@@ -270,7 +240,7 @@ ${auctionRows}  </tbody>
 
 function buildTrickScore(opts: HtmlExportOptions): string {
   if (!opts.showTrickScore) return '        <td></td>\n';
-  return `        <td style="vertical-align:bottom; padding-left:8px;">
+  return `        <td style="vertical-align:bottom; text-align:right; padding:0 4px 4px 0;">
           <!-- trick counts: ns=0 ew=0 -->
           <div class="trick-score" style="--ts-ns: '0'; --ts-ew: '0';">
             <div class="trick-card trick-card--vert">
