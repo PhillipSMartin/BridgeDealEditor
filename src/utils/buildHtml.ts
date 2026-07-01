@@ -122,7 +122,7 @@ function formatHand(
     if (opts.excludeSuits.has(sl)) continue;
 
     const pip = PIPS[SUIT_LETTER[suit]];
-    const cards = hand[suit];
+    const cards = hand[suit] ?? '';
     const display: string[] = [];
     const whiteDisplay: string[] = [];
 
@@ -273,7 +273,7 @@ function computeTrickCounts(
   const DIR_ORDER: Direction[] = ['North', 'East', 'South', 'West'];
 
   // Parse trump from the final contract bid in the auction
-  const auction = board.Auction;
+  const auction = board.Auction ?? [];
   let finalBid = '';
   let finalBidIdx = -1;
   for (let i = 0; i < auction.length; i++) {
@@ -388,7 +388,7 @@ function buildDiagram(
   for (const seat of board.Seats) {
     const dir = seat.Direction.toLowerCase();
     for (const suit of SUITS) {
-      for (const card of seat.Hand[suit]) {
+      for (const card of (seat.Hand[suit] ?? '')) {
         cardToSeat.set(`${SUIT_LETTER[suit]}${card}`, dir);
       }
     }
