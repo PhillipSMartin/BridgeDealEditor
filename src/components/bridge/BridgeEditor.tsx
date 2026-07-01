@@ -460,6 +460,9 @@ export const BridgeEditor: React.FC = () => {
           </h1>
           <p className="text-xs tracking-widest uppercase" style={{ color: 'hsl(215 15% 50%)' }}>
             Professional Deal Editing Tool
+            <span style={{ marginLeft: '0.75em', opacity: 0.5, fontFamily: 'monospace', letterSpacing: 0 }}>
+              {new Date(__BUILD_TIME__).toISOString().slice(0, 16).replace('T', ' ')}
+            </span>
           </p>
         </div>
         {board && (
