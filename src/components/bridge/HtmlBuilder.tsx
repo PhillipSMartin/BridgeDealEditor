@@ -154,30 +154,29 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
   };
 
   const copyHtml = () => {
-    const doFallback = () => {
-      try {
-        const ta = document.createElement('textarea');
-        ta.value = html;
-        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        const ok = document.execCommand('copy');
-        document.body.removeChild(ta);
-        if (ok) toast('HTML copied to clipboard!');
-        else toast('Failed to copy HTML');
-      } catch {
-        toast('Failed to copy HTML');
+    // Try execCommand first — synchronous, runs inside the click's user-gesture
+    // context, works even when the Clipboard API is blocked or unavailable.
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = html;
+      ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (ok) {
+        toast('HTML copied to clipboard!');
+        return;
       }
-    };
-
-    if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(html)
-        .then(() => toast('HTML copied to clipboard!'))
-        .catch(doFallback);
-    } else {
-      doFallback();
+    } catch {
+      // execCommand unavailable; fall through to Clipboard API
     }
+
+    // Async Clipboard API fallback (modern browsers, HTTPS, no iframe restriction)
+    navigator.clipboard?.writeText(html)
+      .then(() => toast('HTML copied to clipboard!'))
+      .catch(() => toast('Failed to copy HTML'));
   };
 
   return (
