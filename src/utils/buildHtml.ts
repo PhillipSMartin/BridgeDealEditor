@@ -107,12 +107,13 @@ function formatRank(r: string): string {
 }
 
 function formatHand(
-  hand: Hand,
+  hand: Hand | null | undefined,
   opts: HtmlExportOptions,
   playedSet: Set<string>,
   withBreaks = true,
   indent = 0,
 ): string {
+  if (!hand) return '';
   const br = withBreaks ? '<br />\n' : '&nbsp;&nbsp;';
   const sp = ' '.repeat(indent);
   const lines: string[] = [];
@@ -211,7 +212,7 @@ function formatAuctionRows(calls: string[]): string {
 }
 
 function buildAuctionTable(board: BridgeBoard, includeDirections: boolean): string {
-  const players = Object.fromEntries(board.Seats.map(s => [s.Direction, s.Player ?? '']));
+  const players = Object.fromEntries((board.Seats ?? []).map(s => [s.Direction, s.Player ?? '']));
 
   let header = '';
   if (includeDirections) {
@@ -228,7 +229,7 @@ function buildAuctionTable(board: BridgeBoard, includeDirections: boolean): stri
   }
   header += '    </tr>';
 
-  const auctionRows = formatAuctionRows(formatAuctionCalls(board.Auction, board.Dealer));
+  const auctionRows = formatAuctionRows(formatAuctionCalls(board.Auction ?? [], board.Dealer));
 
   return `<br/>
 <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:350px;padding-left:30px">
@@ -385,16 +386,16 @@ function buildDiagram(
   playSequence: string[],
 ): string {
   const cardToSeat = new Map<string, string>();
-  for (const seat of board.Seats) {
+  for (const seat of (board.Seats ?? [])) {
     const dir = seat.Direction.toLowerCase();
     for (const suit of SUITS) {
-      for (const card of (seat.Hand[suit] ?? '')) {
+      for (const card of (seat.Hand?.[suit] ?? '')) {
         cardToSeat.set(`${SUIT_LETTER[suit]}${card}`, dir);
       }
     }
   }
 
-  const seatMap = Object.fromEntries(board.Seats.map(s => [s.Direction, s]));
+  const seatMap = Object.fromEntries((board.Seats ?? []).map(s => [s.Direction, s]));
   const handHtml: Record<string, string> = {};
   for (const dir of ['North', 'East', 'South', 'West'] as Direction[]) {
     const seat = seatMap[dir];
@@ -517,7 +518,7 @@ export function buildHtml(
     body += buildDiagram(board, allFourOpts, playedSet, playSequence);
   } else if (seatsToShow.length === 1) {
     const dir = dirMap[seatsToShow];
-    const seat = board.Seats.find(s => s.Direction === dir);
+    const seat = (board.Seats ?? []).find(s => s.Direction === dir);
     if (seat) {
       body += buildSingleHand(seat.Hand, opts, playedSet);
     }
