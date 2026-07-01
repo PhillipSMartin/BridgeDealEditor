@@ -154,9 +154,30 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
   };
 
   const copyHtml = () => {
-    navigator.clipboard.writeText(html)
-      .then(() => toast('HTML copied to clipboard!'))
-      .catch(() => toast('Failed to copy HTML'));
+    const doFallback = () => {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = html;
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (ok) toast('HTML copied to clipboard!');
+        else toast('Failed to copy HTML');
+      } catch {
+        toast('Failed to copy HTML');
+      }
+    };
+
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(html)
+        .then(() => toast('HTML copied to clipboard!'))
+        .catch(doFallback);
+    } else {
+      doFallback();
+    }
   };
 
   return (
