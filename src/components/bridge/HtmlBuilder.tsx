@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { BridgeBoard } from '@/types/bridge';
@@ -59,6 +59,7 @@ const SUIT_SYMBOLS: { key: string; symbol: string; red: boolean }[] = [
 
 export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defaultFileName }) => {
   const [open, setOpen] = useState(false);
+  const copyRef = useRef<HTMLTextAreaElement>(null);
 
   const [north, setNorth] = useState(true);
   const [east, setEast] = useState(true);
@@ -154,26 +155,26 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
   };
 
   const copyHtml = () => {
-    // Try execCommand first — synchronous, runs inside the click's user-gesture
-    // context, works even when the Clipboard API is blocked or unavailable.
-    try {
-      const ta = document.createElement('textarea');
+    // Use the hidden textarea rendered inside the Dialog (within Radix's focus
+    // trap boundary). Appending to document.body fails because Radix immediately
+    // returns focus to the dialog, making execCommand copy nothing.
+    const ta = copyRef.current;
+    if (ta) {
       ta.value = html;
-      ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;';
-      document.body.appendChild(ta);
       ta.focus();
       ta.select();
-      const ok = document.execCommand('copy');
-      document.body.removeChild(ta);
-      if (ok) {
-        toast('HTML copied to clipboard!');
-        return;
+      try {
+        const ok = document.execCommand('copy');
+        if (ok) {
+          toast('HTML copied to clipboard!');
+          return;
+        }
+      } catch {
+        // fall through
       }
-    } catch {
-      // execCommand unavailable; fall through to Clipboard API
     }
 
-    // Async Clipboard API fallback (modern browsers, HTTPS, no iframe restriction)
+    // Async Clipboard API fallback
     navigator.clipboard?.writeText(html)
       .then(() => toast('HTML copied to clipboard!'))
       .catch(() => toast('Failed to copy HTML'));
@@ -199,6 +200,16 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
         className="max-w-5xl"
         style={{ background: 'hsl(220 22% 11%)', border: '1px solid hsl(220 18% 24%)', color: 'hsl(210 20% 88%)' }}
       >
+        {/* Hidden textarea inside the dialog — used by copyHtml so execCommand
+            runs within Radix's focus trap boundary (appending to document.body
+            fails because Radix returns focus to the dialog immediately). */}
+        <textarea
+          ref={copyRef}
+          readOnly
+          aria-hidden="true"
+          tabIndex={-1}
+          style={{ position: 'absolute', left: '-9999px', top: 0, width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
+        />
         <DialogHeader>
           <DialogTitle style={{ color: 'hsl(43 80% 60%)', fontFamily: 'Georgia, serif', fontSize: '1.2rem' }}>
             Generate HTML
