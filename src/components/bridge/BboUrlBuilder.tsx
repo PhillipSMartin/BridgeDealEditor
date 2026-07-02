@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { BridgeBoard, Direction, Hand } from '@/types/bridge';
@@ -109,6 +109,7 @@ function buildUrl(
 
 export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }) => {
   const [open, setOpen] = useState(false);
+  const copyRef = useRef<HTMLTextAreaElement>(null);
   const [type, setType] = useState<PresentationType>('all-hands');
   const [selectedDirs, setSelectedDirs] = useState<Direction[]>(['South']);
   const [includeNames, setIncludeNames] = useState(true);
@@ -132,9 +133,29 @@ export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }
   }, [board, playCards, type, selectedDirs, includeNames, includeBoard, vulnerability]);
 
   const copyUrl = () => {
-    navigator.clipboard.writeText(url).then(() => {
-      toast('URL copied to clipboard!');
-    }).catch(() => toast('Failed to copy URL'));
+    // Use the hidden textarea rendered inside the Dialog (within Radix's focus
+    // trap boundary). Appending to document.body fails because Radix immediately
+    // returns focus to the dialog, making execCommand copy nothing.
+    const ta = copyRef.current;
+    if (ta) {
+      ta.value = url;
+      ta.focus();
+      ta.select();
+      try {
+        const ok = document.execCommand('copy');
+        if (ok) {
+          toast('URL copied to clipboard!');
+          return;
+        }
+      } catch {
+        // fall through
+      }
+    }
+
+    // Async Clipboard API fallback
+    navigator.clipboard?.writeText(url)
+      .then(() => toast('URL copied to clipboard!'))
+      .catch(() => toast('Failed to copy URL'));
   };
 
   const needsDirs = type === 'single-hand' || type === 'pair-hands' || type === 'hands-with-bidding';
@@ -176,6 +197,16 @@ export const BboUrlBuilder: React.FC<BboUrlBuilderProps> = ({ board, playCards }
         className="max-w-3xl"
         style={{ background: 'hsl(220 22% 11%)', border: '1px solid hsl(220 18% 24%)', color: 'hsl(210 20% 88%)' }}
       >
+        {/* Hidden textarea inside the dialog — used by copyUrl so execCommand
+            runs within Radix's focus trap boundary (appending to document.body
+            fails because Radix returns focus to the dialog immediately). */}
+        <textarea
+          ref={copyRef}
+          readOnly
+          aria-hidden="true"
+          tabIndex={-1}
+          style={{ position: 'absolute', left: '-9999px', top: 0, width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
+        />
         <DialogHeader>
           <DialogTitle style={{ color: 'hsl(43 80% 60%)', fontFamily: 'Georgia, serif', fontSize: '1.2rem' }}>
             Generate BBO Handviewer URL
