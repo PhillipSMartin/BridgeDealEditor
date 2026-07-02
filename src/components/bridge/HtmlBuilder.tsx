@@ -60,6 +60,7 @@ const SUIT_SYMBOLS: { key: string; symbol: string; red: boolean }[] = [
 export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defaultFileName }) => {
   const [open, setOpen] = useState(false);
   const copyRef = useRef<HTMLTextAreaElement>(null);
+  const [manualCopyOpen, setManualCopyOpen] = useState(false);
 
   const [north, setNorth] = useState(true);
   const [east, setEast] = useState(true);
@@ -167,6 +168,7 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
         const ok = document.execCommand('copy');
         if (ok) {
           toast('HTML copied to clipboard!');
+          setManualCopyOpen(false);
           return;
         }
       } catch {
@@ -175,9 +177,32 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
     }
 
     // Async Clipboard API fallback
-    navigator.clipboard?.writeText(html)
-      .then(() => toast('HTML copied to clipboard!'))
-      .catch(() => toast('Failed to copy HTML'));
+    const writePromise = navigator.clipboard?.writeText(html);
+    if (writePromise) {
+      writePromise
+        .then(() => {
+          toast('HTML copied to clipboard!');
+          setManualCopyOpen(false);
+        })
+        .catch(() => revealManualCopy());
+    } else {
+      revealManualCopy();
+    }
+  };
+
+  // Last-resort fallback: some browser extensions block both execCommand and
+  // the Clipboard API entirely. Reveal a pre-selected textarea so the user can
+  // copy manually with Ctrl+C — this needs no programmatic clipboard access.
+  const revealManualCopy = () => {
+    setManualCopyOpen(true);
+    toast('Clipboard blocked by your browser — select the text below and press Ctrl+C');
+    requestAnimationFrame(() => {
+      const el = copyRef.current;
+      if (el) {
+        el.focus();
+        el.select();
+      }
+    });
   };
 
   return (
@@ -203,13 +228,15 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
         {/* Hidden textarea inside the dialog — used by copyHtml so execCommand
             runs within Radix's focus trap boundary (appending to document.body
             fails because Radix returns focus to the dialog immediately). */}
-        <textarea
-          ref={copyRef}
-          readOnly
-          aria-hidden="true"
-          tabIndex={-1}
-          style={{ position: 'absolute', left: '-9999px', top: 0, width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
-        />
+        {!manualCopyOpen && (
+          <textarea
+            ref={copyRef}
+            readOnly
+            aria-hidden="true"
+            tabIndex={-1}
+            style={{ position: 'absolute', left: '-9999px', top: 0, width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
+          />
+        )}
         <DialogHeader>
           <DialogTitle style={{ color: 'hsl(43 80% 60%)', fontFamily: 'Georgia, serif', fontSize: '1.2rem' }}>
             Generate HTML
@@ -420,6 +447,30 @@ export const HtmlBuilder: React.FC<HtmlBuilderProps> = ({ board, playCards, defa
               >
                 Copy HTML
               </Button>
+              {manualCopyOpen && (
+                <div>
+                  <div className="text-xs mb-1" style={{ color: 'hsl(43 70% 55%)' }}>
+                    Clipboard access is blocked by your browser. Select the text below and press Ctrl+C (Cmd+C) to copy it manually.
+                  </div>
+                  <textarea
+                    ref={copyRef}
+                    readOnly
+                    onFocus={e => e.currentTarget.select()}
+                    style={{
+                      width: '100%',
+                      height: '90px',
+                      fontFamily: 'monospace',
+                      fontSize: '11px',
+                      background: 'hsl(220 20% 10%)',
+                      color: 'hsl(210 20% 85%)',
+                      border: '1px solid hsl(43 60% 45%)',
+                      borderRadius: '6px',
+                      padding: '8px',
+                      resize: 'vertical',
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
